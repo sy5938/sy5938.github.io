@@ -6,15 +6,11 @@ editor: visual
 ::: callout-note
 ## Links
 
-> -   **Google Scholar**: 
-> -   **ORCID**: 
-> -   **ResearchGate:** 
+> -   **Google Scholar**:
+> -   **ORCID**:
+> -   **ResearchGate:**
 :::
-
- 
 
 ## 期刊论文
 
-
 ## 科研项目
-

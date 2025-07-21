@@ -148,3 +148,30 @@ h4 {
   background-size: 1em;
   background-position: 1em 0.5em;
 }
+/* 设置侧边栏的字体大小 */
+#quarto-margin-sidebar {
+  font-size: 16px;  // 基础字体大小
+}
+
+/* TOC 整体字体大小 */
+#TOC {
+  font-size: 16px; /* 基础字体大小 */
+}
+
+/* TOC 标题 */
+#toc-title {
+  font-size: 1.4em; /* 相对于父元素的1.2倍大小 */
+  font-weight: bold;
+}
+
+/* TOC 链接字体大小 */
+#TOC .nav-link {
+  font-size: 1.2em; /* 相对于父元素的1.1倍大小 */
+  color: #0066cc;    /* 链接颜色 */
+}
+
+/* TOC 链接悬停效果 */
+#TOC .nav-link:hover {
+  color: #004080;    /* 悬停时的颜色 */
+  text-decoration: underline;
+}
