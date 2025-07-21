@@ -1,0 +1,45 @@
+---
+title: "Siyu Wu' lab"
+image: images/sywu_2024.jpg
+about:
+  id: hero-heading
+  template: trestles
+  image-width: 12em
+  image-shape: round
+  links:
+    - icon: mailbox
+      text: 18289665799@163.com
+      href: mailto:18289665799@163.com
+    - icon: github
+      text: sywu5938
+      href: https://github.com/sy5938
+    - icon: github
+      text: gitee_siyu-Wu
+      href: https://gitee.com/siyu-Wu
+    - icon: book
+      text: Resarchgate
+      href: https://www.researchgate.net/profile/Siyu-Wu-20?ev=hdr_xprf
+    - icon: fingerprint
+      text: ORCID
+      href: https://orcid.org/my-orcid?orcid=0009-0007-7566-568X
+    - icon: solid user
+      text: 工作主页
+      href: https://sy5938.github.io/sywueco.github.io/
+    - icon: 📝
+      text: CV
+      href: CV.pdf  
+---
+
+::: {#hero-heading}
+## 个人简介
+
+我是伍斯宇，生态学研究者，专注于森林三维结构和生物多样性研究。目前我的研究兴趣包括：
+
+- 基于激光雷达点云的森林三维结构
+- 空间统计学
+- 生物多样性
+- 群落构建机制
+
+欢迎访问我的个人网站，了解我的研究工作和团队。如果您对我的研究感兴趣或有合作意向，请随时与我联系。
+
+:::

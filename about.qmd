@@ -1,0 +1,8 @@
+---
+title: "关于我"
+---
+
+## 个人简介
+我是伍斯宇
+![](images/sywu_2024.jpg){fig-align="center" width=50%}
+

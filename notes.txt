@@ -1,0 +1,5 @@
+
+
+CV.md  <==>  Chinese.qmd
+
+CV.md 用 vscode markdown 插件单独导出
