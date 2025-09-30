@@ -77,6 +77,90 @@
     "text": "延伸阅读\n\nfacet_* 系列函数用于分面。\nscale_* 控制颜色、形状与坐标轴。\ntheme() 修改图形细节。\n\n搭配 dplyr 管道与自定义主题，可以快速构建产品级别的图表模板。"
   },
   {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html",
+    "href": "codes/2025/2025-09-29-r-data-structures.html",
+    "title": "R 语言数据结构速览",
+    "section": "",
+    "text": "掌握基础数据结构是写好 R 代码的第一步。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
+    "title": "R 语言数据结构速览",
+    "section": "向量（Vector）",
+    "text": "向量（Vector）\n\n最常见的一维结构。\n元素类型必须一致。\n\n\nnumeric_vec &lt;- c(1.2, 3.5, 5)\nlogical_vec &lt;- c(TRUE, FALSE, TRUE)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#列表list",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#列表list",
+    "title": "R 语言数据结构速览",
+    "section": "列表（List）",
+    "text": "列表（List）\n\n可以存放不同类型的数据。\n是构建复杂对象（模型结果、参数集合）的基础。\n\n\nmy_list &lt;- list(\n  name = \"example\",\n  scores = c(95, 87, 92),\n  passed = TRUE\n)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
+    "title": "R 语言数据结构速览",
+    "section": "矩阵与数组（Matrix / Array）",
+    "text": "矩阵与数组（Matrix / Array）\n\n多维的同质数据结构。\n常用于线性代数和图像处理。\n\n\nmat &lt;- matrix(1:6, nrow = 2, byrow = TRUE)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
+    "title": "R 语言数据结构速览",
+    "section": "数据框（Data Frame）",
+    "text": "数据框（Data Frame）\n\n最常用的表格型结构。\n列可以是不同类型。\n\n\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(88, 92, 79)\n)\n\n合理选择数据结构能提升代码的可读性与运算效率。"
+  },
+  {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "Books",
+    "section": "",
+    "text": "平时喜欢看的一些参考书目"
+  },
+  {
+    "objectID": "books.html#r-bookdown",
+    "href": "books.html#r-bookdown",
+    "title": "Books",
+    "section": "R bookdown",
+    "text": "R bookdown"
+  },
+  {
+    "objectID": "books.html#packages",
+    "href": "books.html#packages",
+    "title": "Books",
+    "section": "Packages",
+    "text": "Packages"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "关于我",
+    "section": "",
+    "text": "我是伍斯宇"
+  },
+  {
+    "objectID": "about.html#个人简介",
+    "href": "about.html#个人简介",
+    "title": "关于我",
+    "section": "",
+    "text": "我是伍斯宇"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blogs",
+    "section": "",
+    "text": "个人记录笔记，日志和心得。"
+  },
+  {
+    "objectID": "blog.html#new-links",
+    "href": "blog.html#new-links",
+    "title": "Blogs",
+    "section": "New links",
+    "text": "New links"
+  },
+  {
     "objectID": "Chinese.html",
     "href": "Chinese.html",
     "title": "中文简历",
@@ -126,95 +210,53 @@
     "text": "科研项目"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blogs",
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
     "section": "",
-    "text": "个人记录笔记，日志和心得。"
+    "text": "分面让一张图拆成多个子图，帮助我们比较不同分组的趋势与分布差异。"
   },
   {
-    "objectID": "blog.html#new-links",
-    "href": "blog.html#new-links",
-    "title": "Blogs",
-    "section": "New links",
-    "text": "New links"
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#分面概念速览",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#分面概念速览",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "分面概念速览",
+    "text": "分面概念速览\n\n分面会根据变量的取值将数据拆成多个子集。\n每个子图共享同一绘图语法，便于观察模式是否一致。\nfacet_wrap() 适合一维分组，facet_grid() 用于二维交叉分组。"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "关于我",
-    "section": "",
-    "text": "我是伍斯宇"
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#facet_wrap一维分组的简洁拆图",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#facet_wrap一维分组的简洁拆图",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "facet_wrap：一维分组的简洁拆图",
+    "text": "facet_wrap：一维分组的简洁拆图\n\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nlibrary(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.4.3\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nmpg_filtered &lt;- mpg |&gt;\n  filter(class %in% c(\"compact\", \"midsize\", \"suv\"))\n\nggplot(mpg_filtered, aes(x = displ, y = hwy, color = drv)) +\n  geom_point(alpha = 0.7, size = 2.3) +\n  facet_wrap(~ class, ncol = 3) +\n  labs(\n    title = \"不同车身类型的油耗与排量关系\",\n    x = \"发动机排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"驱动\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\nncol / nrow 控制布局，适配屏幕宽度。\n想让每个分面有独立坐标轴，可设置 scales = \"free_y\" 或 \"free\"。"
   },
   {
-    "objectID": "about.html#个人简介",
-    "href": "about.html#个人简介",
-    "title": "关于我",
-    "section": "",
-    "text": "我是伍斯宇"
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#facet_grid二维交叉的全视角比较",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#facet_grid二维交叉的全视角比较",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "facet_grid：二维交叉的全视角比较",
+    "text": "facet_grid：二维交叉的全视角比较\n\nggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point(alpha = 0.6, color = \"#2E86AB\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#EF6F6C\") +\n  facet_grid(rows = vars(drv), cols = vars(cyl)) +\n  labs(\n    title = \"驱动方式 × 气缸数的油耗表现\",\n    x = \"城市油耗 (mpg)\",\n    y = \"高速油耗 (mpg)\"\n  ) +\n  theme_light(base_size = 12)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\nvars() 语法可以一次指定多个变量，例如 cols = vars(year, class)。\n若某一维只想按是否缺失切分，可用 cut_number() 或 if_else() 创建新变量后再分面。"
   },
   {
-    "objectID": "books.html",
-    "href": "books.html",
-    "title": "Books",
-    "section": "",
-    "text": "平时喜欢看的一些参考书目"
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#定制分面标签与顺序",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#定制分面标签与顺序",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "定制分面标签与顺序",
+    "text": "定制分面标签与顺序\n\nclass_labels &lt;- c(\n  compact = \"紧凑型\",\n  midsize = \"中型\",\n  suv = \"SUV\"\n)\n\nggplot(mpg_filtered, aes(x = displ, y = hwy)) +\n  geom_point(color = \"#6C5B7B\", alpha = 0.7) +\n  facet_wrap(\n    ~ class,\n    labeller = as_labeller(class_labels),\n    strip.position = \"bottom\"\n  ) +\n  scale_x_continuous(limits = c(1, 6)) +\n  coord_cartesian(ylim = c(15, 40)) +\n  labs(\n    title = \"自定义标签与条带位置\",\n    x = \"排量\",\n    y = \"高速油耗\"\n  ) +\n  theme_bw(base_size = 12) +\n  theme(strip.background = element_rect(fill = \"#F7F7F7\"))\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\nlabeller 接受命名向量或函数，帮助输出更友好的中文标签。\nstrip.position 可放到 \"bottom\" / \"left\" / \"right\"，配合 theme() 微调条带样式。\ncoord_cartesian() 保持原始数据范围的同时进行缩放，避免数据被裁掉。"
   },
   {
-    "objectID": "books.html#r-bookdown",
-    "href": "books.html#r-bookdown",
-    "title": "Books",
-    "section": "R bookdown",
-    "text": "R bookdown"
-  },
-  {
-    "objectID": "books.html#packages",
-    "href": "books.html#packages",
-    "title": "Books",
-    "section": "Packages",
-    "text": "Packages"
-  },
-  {
-    "objectID": "codes/2025/2025-09-29-r-data-structures.html",
-    "href": "codes/2025/2025-09-29-r-data-structures.html",
-    "title": "R 语言数据结构速览",
-    "section": "",
-    "text": "掌握基础数据结构是写好 R 代码的第一步。"
-  },
-  {
-    "objectID": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
-    "href": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
-    "title": "R 语言数据结构速览",
-    "section": "向量（Vector）",
-    "text": "向量（Vector）\n\n最常见的一维结构。\n元素类型必须一致。\n\n\nnumeric_vec &lt;- c(1.2, 3.5, 5)\nlogical_vec &lt;- c(TRUE, FALSE, TRUE)"
-  },
-  {
-    "objectID": "codes/2025/2025-09-29-r-data-structures.html#列表list",
-    "href": "codes/2025/2025-09-29-r-data-structures.html#列表list",
-    "title": "R 语言数据结构速览",
-    "section": "列表（List）",
-    "text": "列表（List）\n\n可以存放不同类型的数据。\n是构建复杂对象（模型结果、参数集合）的基础。\n\n\nmy_list &lt;- list(\n  name = \"example\",\n  scores = c(95, 87, 92),\n  passed = TRUE\n)"
-  },
-  {
-    "objectID": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
-    "href": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
-    "title": "R 语言数据结构速览",
-    "section": "矩阵与数组（Matrix / Array）",
-    "text": "矩阵与数组（Matrix / Array）\n\n多维的同质数据结构。\n常用于线性代数和图像处理。\n\n\nmat &lt;- matrix(1:6, nrow = 2, byrow = TRUE)"
-  },
-  {
-    "objectID": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
-    "href": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
-    "title": "R 语言数据结构速览",
-    "section": "数据框（Data Frame）",
-    "text": "数据框（Data Frame）\n\n最常用的表格型结构。\n列可以是不同类型。\n\n\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(88, 92, 79)\n)\n\n合理选择数据结构能提升代码的可读性与运算效率。"
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#实战建议",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#实战建议",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "实战建议",
+    "text": "实战建议\n\n先明确比较的维度数量，选对 facet_wrap 或 facet_grid。\n控制每个分面内的数据量，必要时先筛选或聚合。\n别忘了添加解释性的标题和标注，让读者知道该关注什么。"
   },
   {
     "objectID": "codes.html",
     "href": "codes.html",
     "title": "Codes",
     "section": "",
-    "text": "如果你希望订阅更多主题，欢迎在导航栏切换到其他栏目。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n使用 ggplot2 打造可视化\n\n\n\nR\n\nVisualization\n\n\n\n快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。\n\n\n\n\n\n2025-09-30\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\nR 语言数据结构速览\n\n\n\nR\n\nData\n\n\n\n整理向量、列表、矩阵与数据框的核心概念，帮助快速复习基础。\n\n\n\n\n\n2025-09-29\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
+    "text": "如果你希望订阅更多主题，欢迎在导航栏切换到其他栏目。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot2 分面技巧：一图展开多维信息\n\n\n\nR\n\nVisualization\n\n\n\n介绍 facet_wrap 与 facet_grid 的核心概念，并展示如何控制布局、标签与缩放。\n\n\n\n\n\n2025-09-30\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\n使用 ggplot2 打造可视化\n\n\n\nR\n\nVisualization\n\n\n\n快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。\n\n\n\n\n\n2025-09-30\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\nR 语言数据结构速览\n\n\n\nR\n\nData\n\n\n\n整理向量、列表、矩阵与数据框的核心概念，帮助快速复习基础。\n\n\n\n\n\n2025-09-29\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
