@@ -1,5 +1,5 @@
 ---
-title: "Siyu Wu' lab"
+title: "Siyu Wu's Lab"
 image: images/sywu_2024.jpg
 about:
   id: hero-heading
@@ -17,7 +17,7 @@ about:
       text: gitee_siyu-Wu
       href: https://gitee.com/siyu-Wu
     - icon: book
-      text: Resarchgate
+      text: ResearchGate
       href: https://www.researchgate.net/profile/Siyu-Wu-20?ev=hdr_xprf
     - icon: fingerprint
       text: ORCID
@@ -27,7 +27,7 @@ about:
       href: https://sy5938.github.io/
     - icon: 📝
       text: CV
-      href: CV.pdf  
+      href: CV.pdf
 ---
 
 ::: {#hero-heading}
@@ -41,5 +41,44 @@ about:
 - 群落构建机制
 
 欢迎访问我的个人网站，了解我的研究工作和团队。如果您对我的研究感兴趣或有合作意向，请随时与我联系。
-
 :::
+
+## 研究方向一览
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+### 森林结构与遥感
+利用激光雷达点云重建森林冠层和树木结构，探索林分动态与碳循环机制。
+:::
+::: {.g-col-12 .g-col-md-6}
+### 生物多样性与群落生态
+结合空间统计与生态网络，解析物种共存及群落构建过程。
+:::
+::: {.g-col-12 .g-col-md-6}
+### 数据科学工具
+开发与共享生态遥感分析流程，促进科研的可重复性与透明度。
+:::
+::: {.g-col-12 .g-col-md-6}
+### 跨学科合作
+与林业、地理信息和计算科学伙伴合作，推动生态学问题的综合解决。
+:::
+:::
+
+## 近期动态
+
+- 🛰️ **项目推进**：筹备基于 UAV-LiDAR 的森林结构监测实验。
+- 📄 **论文撰写**：整理森林功能多样性与空间格局的研究成果。
+- 🤝 **学术交流**：欢迎邀请学术报告、课程合作与联合培养。
+
+## 网站架构速览
+
+- [团队介绍](team.qmd)：了解团队成员与合作伙伴。
+- [成果发表](publications.qmd)：汇总论文、项目与获奖情况。
+- [参考书目](books.qmd)：整理常用教材与学习资料。
+- [博客日志](blog.qmd)：记录科研过程中的心得与工具分享。
+- [开源代码](codes.qmd)：沉淀数据处理与分析脚本。
+- [中文简介](Chinese.qmd)：获取中文简历及详细背景。
+
+## 联系与合作
+
+如需合作或了解更多信息，欢迎通过邮箱联系，也欢迎在 GitHub 与我交流。期待与对生态学、遥感和数据科学有共同兴趣的伙伴展开合作。
