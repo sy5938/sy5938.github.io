@@ -5,18 +5,8 @@ editor:
     wrap: 72
 ---
 平时喜欢看的一些参考书目
-<div style="display: flex; justify-content: space-between;">
-  <a href="https://book.lianxh.cn/stata101/index.html">
-    <img style="width: 250px" src="https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/stata101-front.png">
-  </a>
-  
-  <a href="https://book.lianxh.cn/ds/index.html">
-    <img style="width: 260px" src="https://book.lianxh.cn/ds/images/ds-book-front.png">
-  </a>
-  
-  <a href="https://lianxhcn.github.io/quarto_book/">
-    <img style="width: 248px" src="https://lianxhcn.github.io/quarto_book/images/book-front.png">
-  </a>
-</div>
+
 ## R bookdown
+
+
 ## Packages

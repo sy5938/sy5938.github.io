@@ -49,6 +49,34 @@
     "text": "伍斯宇，男，博士在读，修读于华东师范大学生态与环境科学学院2020级生态学专业，方向为基于激光雷达点云的森林三维结构，生物多样性，群落构建机制。 ## 教育和工作背景 - 2020.09-今 华东师范大学 生态与环境科学学院 博士在读 生态学 (空间统计方向) - 2015.09-2019.07 上海师范大学 环境与生命科学学院 本科 生物科学 学士学位 ## 研究兴趣 ## 部分论文 ## 科研项目"
   },
   {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html",
+    "href": "codes/2025/2025-09-30-ggplot2.html",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "",
+    "text": "ggplot2 让数据可视化像搭积木一样高效优雅。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html#核心理念",
+    "href": "codes/2025/2025-09-30-ggplot2.html#核心理念",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "核心理念",
+    "text": "核心理念\nggplot2 的设计基于 Grammar of Graphics。我们通过图层（layer）叠加的方式构建图形，流程通常包含：\n\n准备数据框（data）。\n映射变量到美学属性（aes）。\n选择几何对象（geom_*）。\n根据需要添加统计转换、坐标系统和主题。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html#快速示例",
+    "href": "codes/2025/2025-09-30-ggplot2.html#快速示例",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "快速示例",
+    "text": "快速示例\n\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(size = 2.5, alpha = 0.8) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  labs(\n    title = \"发动机排量与高速油耗\",\n    x = \"排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"车型\"\n  ) +\n  theme_minimal(base_size = 12)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: span too small.  fewer data values than degrees of freedom.\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 5.6935\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.5065\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.65044\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 4.008\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.708\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.25"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html#延伸阅读",
+    "href": "codes/2025/2025-09-30-ggplot2.html#延伸阅读",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "延伸阅读",
+    "text": "延伸阅读\n\nfacet_* 系列函数用于分面。\nscale_* 控制颜色、形状与坐标轴。\ntheme() 修改图形细节。\n\n搭配 dplyr 管道与自定义主题，可以快速构建产品级别的图表模板。"
+  },
+  {
     "objectID": "Chinese.html",
     "href": "Chinese.html",
     "title": "中文简历",
@@ -102,7 +130,14 @@
     "href": "blog.html",
     "title": "Blogs",
     "section": "",
-    "text": "个人记录笔记，日志和心得。 ## New links"
+    "text": "个人记录笔记，日志和心得。"
+  },
+  {
+    "objectID": "blog.html#new-links",
+    "href": "blog.html#new-links",
+    "title": "Blogs",
+    "section": "New links",
+    "text": "New links"
   },
   {
     "objectID": "about.html",
@@ -119,6 +154,13 @@
     "text": "我是伍斯宇"
   },
   {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "Books",
+    "section": "",
+    "text": "平时喜欢看的一些参考书目"
+  },
+  {
     "objectID": "books.html#r-bookdown",
     "href": "books.html#r-bookdown",
     "title": "Books",
@@ -131,6 +173,48 @@
     "title": "Books",
     "section": "Packages",
     "text": "Packages"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html",
+    "href": "codes/2025/2025-09-29-r-data-structures.html",
+    "title": "R 语言数据结构速览",
+    "section": "",
+    "text": "掌握基础数据结构是写好 R 代码的第一步。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
+    "title": "R 语言数据结构速览",
+    "section": "向量（Vector）",
+    "text": "向量（Vector）\n\n最常见的一维结构。\n元素类型必须一致。\n\n\nnumeric_vec &lt;- c(1.2, 3.5, 5)\nlogical_vec &lt;- c(TRUE, FALSE, TRUE)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#列表list",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#列表list",
+    "title": "R 语言数据结构速览",
+    "section": "列表（List）",
+    "text": "列表（List）\n\n可以存放不同类型的数据。\n是构建复杂对象（模型结果、参数集合）的基础。\n\n\nmy_list &lt;- list(\n  name = \"example\",\n  scores = c(95, 87, 92),\n  passed = TRUE\n)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
+    "title": "R 语言数据结构速览",
+    "section": "矩阵与数组（Matrix / Array）",
+    "text": "矩阵与数组（Matrix / Array）\n\n多维的同质数据结构。\n常用于线性代数和图像处理。\n\n\nmat &lt;- matrix(1:6, nrow = 2, byrow = TRUE)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
+    "title": "R 语言数据结构速览",
+    "section": "数据框（Data Frame）",
+    "text": "数据框（Data Frame）\n\n最常用的表格型结构。\n列可以是不同类型。\n\n\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(88, 92, 79)\n)\n\n合理选择数据结构能提升代码的可读性与运算效率。"
+  },
+  {
+    "objectID": "codes.html",
+    "href": "codes.html",
+    "title": "Codes",
+    "section": "",
+    "text": "如果你希望订阅更多主题，欢迎在导航栏切换到其他栏目。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n使用 ggplot2 打造可视化\n\n\n\nR\n\nVisualization\n\n\n\n快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。\n\n\n\n\n\n2025-09-30\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\nR 语言数据结构速览\n\n\n\nR\n\nData\n\n\n\n整理向量、列表、矩阵与数据框的核心概念，帮助快速复习基础。\n\n\n\n\n\n2025-09-29\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

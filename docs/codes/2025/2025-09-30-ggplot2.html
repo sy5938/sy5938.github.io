@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Siyu Wu">
+<meta name="dcterms.date" content="2025-09-30">
+<meta name="description" content="快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。">
 
-<title>中文简历 – Siyu Wu</title>
+<title>使用 ggplot2 打造可视化 – Siyu Wu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +23,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/site-logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2575636bf12bba71c1c5b79222bd7450.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e0b32985eebbd4740cf6ced4f5028f25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/site-logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2575636bf12bba71c1c5b79222bd7450.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e0b32985eebbd4740cf6ced4f5028f25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,6 +106,198 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+/* Codes listing page styles */
+.quarto-title {
+  max-width: 760px;
+  margin-bottom: 1.8rem;
+}
+
+.quarto-title .title {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #503621;
+}
+
+.quarto-title .quarto-categories {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.quarto-title .quarto-category {
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 96, 78, 0.28);
+  background-color: #f7efe6;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #705542;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.quarto-title .quarto-category:hover {
+  background-color: #efe2d4;
+  border-color: rgba(120, 96, 78, 0.45);
+}
+
+.quarto-title-meta {
+  margin-top: 2rem;
+  padding: 0;
+  border: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+
+.quarto-title-meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+}
+
+.quarto-title-meta-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a7766;
+}
+
+.quarto-title-meta-contents {
+  margin: 0;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3f2c1f;
+}
+
+.quarto-title + blockquote {
+  border-left: 4px solid rgba(118, 85, 59, 0.4);
+  color: #9a5132;
+  padding-left: 1rem;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+#title-block-header .description {
+  margin: 0.85rem 0 2.4rem;
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+.quarto-listing-default .quarto-post {
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.quarto-listing-default .quarto-post:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.quarto-listing-default .quarto-post .metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.quarto-listing-default .quarto-post .metadata a {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.quarto-listing-default .listing-title {
+  margin-bottom: 1.2rem;
+}
+
+.quarto-listing-default .listing-categories {
+  margin-bottom: 1.2rem;
+}
+
+#title-block-header .quarto-title-meta-contents .date,
+.quarto-listing-default .listing-date {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+</style>
+<script>
+// 将 Codes 目录下文章的日期转为本地化显示 + 相对时间
+// 同时保留列表页的默认布局
+window.addEventListener('DOMContentLoaded', () => {
+  // 当前时间
+  const now = new Date();
+  const dayMs = 24 * 60 * 60 * 1000; // 一天的毫秒数
+
+  // 日期格式化器（中文年月日）
+  const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  // 相对时间格式化器（如“3天前”）
+  const relativeFormatter = new Intl.RelativeTimeFormat('zh-CN', {
+    numeric: 'auto'
+  });
+
+  // 根据天数差选择合适的单位（年/月/周/天）
+  const pickUnit = (diffDays) => {
+    const abs = Math.abs(diffDays);
+    if (abs >= 365) return { unit: 'year', value: Math.round(diffDays / 365) };
+    if (abs >= 30) return { unit: 'month', value: Math.round(diffDays / 30) };
+    if (abs >= 7) return { unit: 'week', value: Math.round(diffDays / 7) };
+    return { unit: 'day', value: diffDays };
+  };
+
+  // 解析日期字符串
+  const parseDate = (text) => {
+    const trimmed = (text || '').trim();
+    if (!trimmed) return null;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return new Date(trimmed + 'T00:00:00');
+    const parsed = Date.parse(trimmed);
+    if (!Number.isNaN(parsed)) return new Date(parsed);
+    return null;
+  };
+
+  // 更新元素内容为本地化日期和相对时间
+  const updateElement = (el) => {
+    if (!el || el.dataset.dynamicDate === 'applied') return;
+    const original = el.textContent;
+    const date = parseDate(original);
+    if (!date) return;
+    const diffDays = Math.round((date.getTime() - now.getTime()) / dayMs);
+    const { unit, value } = pickUnit(diffDays);
+    const relativeLabel = relativeFormatter.format(value, unit);
+    const formattedDate = dateFormatter.format(date);
+    el.innerHTML = `${formattedDate} · ${relativeLabel}`;
+    el.setAttribute('data-original-date', original);
+    el.dataset.dynamicDate = 'applied';
+  };
+
+  // 选择所有需要处理的日期元素并更新
+  document
+    .querySelectorAll('.quarto-title-meta-contents .date, .listing-date')
+    .forEach(updateElement);
+});
+</script>
+
+
+
+
+
 
 
 </head>
@@ -79,7 +309,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Siyu Wu</span>
     </a>
   </div>
@@ -90,35 +320,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./team.html"> 
+    <a class="nav-link" href="../../team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./books.html"> 
+    <a class="nav-link" href="../../books.html"> 
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./codes.html"> 
+    <a class="nav-link" href="../../codes.html"> 
 <span class="menu-text">Codes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Chinese.html"> 
+    <a class="nav-link" href="../../Chinese.html"> 
 <span class="menu-text">中文</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./CV.pdf"> 
+    <a class="nav-link" href="../../CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -137,23 +367,46 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#伍斯宇个人简介" id="toc-伍斯宇个人简介" class="nav-link active" data-scroll-target="#伍斯宇个人简介">伍斯宇个人简介</a></li>
+  <li><a href="#核心理念" id="toc-核心理念" class="nav-link active" data-scroll-target="#核心理念">核心理念</a></li>
+  <li><a href="#快速示例" id="toc-快速示例" class="nav-link" data-scroll-target="#快速示例">快速示例</a></li>
+  <li><a href="#延伸阅读" id="toc-延伸阅读" class="nav-link" data-scroll-target="#延伸阅读">延伸阅读</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/CV.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-09-30-ggplot2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">中文简历</h1>
-</div>
+<h1 class="title">使用 ggplot2 打造可视化</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Visualization</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Siyu Wu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 30, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -163,9 +416,92 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="伍斯宇个人简介" class="level2">
-<h2 class="anchored" data-anchor-id="伍斯宇个人简介">伍斯宇个人简介</h2>
-<p>伍斯宇，男，博士在读，修读于华东师范大学生态与环境科学学院2020级生态学专业，方向为基于激光雷达点云的森林三维结构，生物多样性，群落构建机制。 ## 教育和工作背景 - 2020.09-今 华东师范大学 生态与环境科学学院 博士在读 生态学 (空间统计方向) - 2015.09-2019.07 上海师范大学 环境与生命科学学院 本科 生物科学 学士学位 ## 研究兴趣 ## 部分论文 ## 科研项目</p>
+<blockquote class="blockquote">
+<p>ggplot2 让数据可视化像搭积木一样高效优雅。</p>
+</blockquote>
+<section id="核心理念" class="level2">
+<h2 class="anchored" data-anchor-id="核心理念">核心理念</h2>
+<p><code>ggplot2</code> 的设计基于 <strong>Grammar of Graphics</strong>。我们通过图层（layer）叠加的方式构建图形，流程通常包含：</p>
+<ol type="1">
+<li>准备数据框（<code>data</code>）。</li>
+<li>映射变量到美学属性（<code>aes</code>）。</li>
+<li>选择几何对象（<code>geom_*</code>）。</li>
+<li>根据需要添加统计转换、坐标系统和主题。</li>
+</ol>
+</section>
+<section id="快速示例" class="level2">
+<h2 class="anchored" data-anchor-id="快速示例">快速示例</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"发动机排量与高速油耗"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"排量 (L)"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"高速油耗 (mpg)"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"车型"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: span too small.  fewer data values than degrees of freedom.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: pseudoinverse used at 5.6935</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: neighborhood radius 0.5065</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: reciprocal condition number 0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: There are other near singularities as well. 0.65044</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: pseudoinverse used at 4.008</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: neighborhood radius 0.708</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: reciprocal condition number 0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
+: There are other near singularities as well. 0.25</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-09-30-ggplot2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="延伸阅读" class="level2">
+<h2 class="anchored" data-anchor-id="延伸阅读">延伸阅读</h2>
+<ul>
+<li><code>facet_*</code> 系列函数用于分面。</li>
+<li><code>scale_*</code> 控制颜色、形状与坐标轴。</li>
+<li><code>theme()</code> 修改图形细节。</li>
+</ul>
+<p>搭配 <code>dplyr</code> 管道与自定义主题，可以快速构建产品级别的图表模板。</p>
 
 
 </section>
@@ -578,7 +914,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/CV.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-09-30-ggplot2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a><br></p>
 </div>
@@ -588,4 +924,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
