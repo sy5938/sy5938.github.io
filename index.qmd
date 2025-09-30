@@ -24,7 +24,7 @@ about:
       href: https://orcid.org/my-orcid?orcid=0009-0007-7566-568X
     - icon: solid user
       text: 工作主页
-      href: https://sy5938.github.io/sywueco.github.io/
+      href: https://sy5938.github.io/
     - icon: 📝
       text: CV
       href: CV.pdf  
