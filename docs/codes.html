@@ -101,196 +101,392 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
+
 /* Codes listing page styles */
+
 .quarto-title {
+
   max-width: 760px;
+
   margin-bottom: 1.8rem;
+
 }
+
+
 
 .quarto-title .title {
+
   font-family: "PT Serif", serif;
+
   font-weight: 700;
+
   letter-spacing: 0.02em;
+
   color: #503621;
+
 }
+
+
 
 .quarto-title .quarto-categories {
+
   margin-top: 1.25rem;
+
   display: flex;
+
   gap: 0.6rem;
+
   flex-wrap: wrap;
+
 }
+
+
 
 .quarto-title .quarto-category {
+
   padding: 0.3rem 0.9rem;
+
   border-radius: 999px;
+
   border: 1px solid rgba(120, 96, 78, 0.28);
+
   background-color: #f7efe6;
+
   font-size: 0.78rem;
+
   font-weight: 600;
+
   letter-spacing: 0.12em;
+
   text-transform: uppercase;
+
   color: #705542;
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 0.35rem;
+
 }
+
+
 
 .quarto-title .quarto-category:hover {
+
   background-color: #efe2d4;
+
   border-color: rgba(120, 96, 78, 0.45);
+
 }
+
+
 
 .quarto-title-meta {
+
   margin-top: 2rem;
+
   padding: 0;
+
   border: none;
+
   display: grid;
+
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
   gap: 1.4rem;
+
 }
+
+
 
 .quarto-title-meta > div {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 0.35rem;
+
   align-items: flex-start;
+
 }
+
+
 
 .quarto-title-meta-heading {
+
   font-size: 0.78rem;
+
   font-weight: 600;
+
   letter-spacing: 0.22em;
+
   text-transform: uppercase;
+
   color: #8a7766;
+
 }
+
+
 
 .quarto-title-meta-contents {
+
   margin: 0;
+
   text-align: left;
+
   font-size: 1rem;
+
   font-weight: 600;
+
   color: #3f2c1f;
+
 }
+
+
 
 .quarto-title + blockquote {
+
   border-left: 4px solid rgba(118, 85, 59, 0.4);
+
   color: #9a5132;
+
   padding-left: 1rem;
+
   margin-top: 1.5rem;
+
   font-style: italic;
+
 }
+
+
 
 #title-block-header .description {
+
   margin: 0.85rem 0 2.4rem;
+
   max-width: 760px;
+
   line-height: 1.6;
+
 }
+
+
 
 .quarto-listing-default .quarto-post {
+
   gap: 1.5rem;
+
   align-items: flex-start;
+
   padding-bottom: 1.75rem;
+
   border-bottom: 1px solid #dee2e6;
+
 }
+
+
 
 .quarto-listing-default .quarto-post:last-child {
+
   padding-bottom: 0;
+
   border-bottom: none;
+
 }
+
+
 
 .quarto-listing-default .quarto-post .metadata {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 0.35rem;
+
   text-align: left;
+
 }
+
+
 
 .quarto-listing-default .quarto-post .metadata a {
+
   display: inline-flex;
+
   flex-direction: column;
+
   gap: 0.3rem;
+
 }
+
+
 
 .quarto-listing-default .listing-title {
+
   margin-bottom: 1.9rem;
+
   
+
 }
+
+
 
 .quarto-listing-default .listing-categories {
+
   margin-top: 0.6rem;
 
+
+
 }
+
+
 
 #title-block-header .quarto-title-meta-contents .date,
+
 .quarto-listing-default .listing-date {
+
   font-size: 0.95rem;
+
   font-weight: 500;
+
 }
+
 </style>
+
 <script>
+
 // 将 Codes 目录下文章的日期转为本地化显示 + 相对时间
+
 // 同时保留列表页的默认布局
+
 window.addEventListener('DOMContentLoaded', () => {
+
   // 当前时间
+
   const now = new Date();
+
   const dayMs = 24 * 60 * 60 * 1000; // 一天的毫秒数
+
   const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
   const todayStart = startOfDay(now);
 
+
+
   // 日期格式化器（中文年月日）
+
   const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+
     year: 'numeric',
+
     month: 'long',
+
     day: 'numeric'
+
   });
+
+
 
   // 相对时间格式化器（如“3天前”）
+
   const relativeFormatter = new Intl.RelativeTimeFormat('zh-CN', {
+
     numeric: 'auto'
+
   });
 
+
+
   // 根据天数差选择合适的单位（年/月/周/天）
+
   const pickUnit = (diffDays) => {
+
     const abs = Math.abs(diffDays);
+
     if (abs >= 365) return { unit: 'year', value: Math.round(diffDays / 365) };
+
     if (abs >= 30) return { unit: 'month', value: Math.round(diffDays / 30) };
+
     if (abs >= 7) return { unit: 'week', value: Math.round(diffDays / 7) };
+
     return { unit: 'day', value: diffDays };
+
   };
+
+
 
   // 解析日期字符串
+
   const parseDate = (text) => {
+
     const trimmed = (text || '').trim();
+
     if (!trimmed) return null;
+
     if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return new Date(trimmed + 'T00:00:00');
+
     const parsed = Date.parse(trimmed);
+
     if (!Number.isNaN(parsed)) return new Date(parsed);
+
     return null;
+
   };
+
+
 
   // 更新元素内容为本地化日期和相对时间
+
   const updateElement = (el) => {
+
     if (!el || el.dataset.dynamicDate === 'applied') return;
+
     const original = el.textContent;
+
     const date = parseDate(original);
+
     if (!date) return;
+
     const targetStart = startOfDay(date);
+
     const diffDays = Math.round((targetStart.getTime() - todayStart.getTime()) / dayMs);
+
     const { unit, value } = pickUnit(diffDays);
+
     const relativeLabel = relativeFormatter.format(value, unit);
+
     const formattedDate = dateFormatter.format(date);
+
     el.innerHTML = `${formattedDate} · ${relativeLabel}`;
+
     el.setAttribute('data-original-date', original);
+
     el.dataset.dynamicDate = 'applied';
+
   };
 
+
+
   // 选择所有需要处理的日期元素并更新
+
   document
+
     .querySelectorAll('.quarto-title-meta-contents .date, .listing-date')
+
     .forEach(updateElement);
+
 });
+
 </script>
+
+
+
+
+
+
 
 
 
@@ -428,7 +624,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1760457600000" data-listing-file-modified-sort="1760513191851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="404">
+<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1760457600000" data-listing-file-modified-sort="1760515225141" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="404">
 <div class="thumbnail"><a href="./codes/2025/2025-10-15-ggside-marginal.html" class="no-external">
 
 <p class="card-img-top"><img src="codes\2025\2025-10-15-ggside-marginal_files\figure-html\unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
