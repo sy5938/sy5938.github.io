@@ -235,6 +235,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // 当前时间
   const now = new Date();
   const dayMs = 24 * 60 * 60 * 1000; // 一天的毫秒数
+  const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const todayStart = startOfDay(now);
 
   // 日期格式化器（中文年月日）
   const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
@@ -273,7 +275,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const original = el.textContent;
     const date = parseDate(original);
     if (!date) return;
-    const diffDays = Math.round((date.getTime() - now.getTime()) / dayMs);
+    const targetStart = startOfDay(date);
+    const diffDays = Math.round((targetStart.getTime() - todayStart.getTime()) / dayMs);
     const { unit, value } = pickUnit(diffDays);
     const relativeLabel = relativeFormatter.format(value, unit);
     const formattedDate = dateFormatter.format(date);
