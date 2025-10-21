@@ -1,0 +1,55 @@
+---
+title: "R 语言数据结构速览"
+date: 2025-09-29
+description: "整理向量、列表、矩阵与数据框的核心概念，帮助快速复习基础。"
+categories: [R, Data]
+---
+
+掌握基础数据结构是写好 R 代码的第一步。
+
+## 向量（Vector）
+
+- 最常见的一维结构。
+- 元素类型必须一致。
+
+```{r}
+numeric_vec <- c(1.2, 3.5, 5)
+logical_vec <- c(TRUE, FALSE, TRUE)
+```
+
+## 列表（List）
+
+- 可以存放不同类型的数据。
+- 是构建复杂对象（模型结果、参数集合）的基础。
+
+```{r}
+my_list <- list(
+  name = "example",
+  scores = c(95, 87, 92),
+  passed = TRUE
+)
+```
+
+## 矩阵与数组（Matrix / Array）
+
+- 多维的同质数据结构。
+- 常用于线性代数和图像处理。
+
+```{r}
+mat <- matrix(1:6, nrow = 2, byrow = TRUE)
+```
+
+## 数据框（Data Frame）
+
+- 最常用的表格型结构。
+- 列可以是不同类型。
+
+```{r}
+df <- data.frame(
+  id = 1:3,
+  name = c("A", "B", "C"),
+  score = c(88, 92, 79)
+)
+```
+
+合理选择数据结构能提升代码的可读性与运算效率。

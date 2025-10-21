@@ -1,7 +1,19 @@
 ---
 title: "Codes"
-editor: 
-  markdown: 
-    wrap: 72
+description: "本页汇集近期整理的 R 语言代码笔记，按照时间倒序自动展示，最新内容会排在最前面。"
+format:
+  html:
+    include-in-header:
+      - _includes/codes-styles.html
+listing:
+  contents:
+    - codes
+  sort: "date desc"
+  type: default
+  date-format: "YYYY-MM-DD"
+  categories: true
 ---
+
+> 如果你希望订阅更多主题，欢迎在导航栏切换到其他栏目。
+
 

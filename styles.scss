@@ -82,7 +82,7 @@ body {
 
 /* 2. 列表项的行间距调整 */
 ul, ol {
-  line-height: 1.7; /* 列表项的行间距设置为 1.7 */
+  line-height: 1.9; /* 列表项的行间距设置为 1.7 */
 }
 
 /* 3. 超链接颜色和悬停颜色调整 */
@@ -108,13 +108,13 @@ code {
 h1 {
   color: $theme-darkcoffee3;
   font-family: $font-pt;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 h2 {
   color: $theme-darkcoffee3;
   font-family: $font-pt;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 h3, h4 {
@@ -150,17 +150,17 @@ h4 {
 }
 /* 设置侧边栏的字体大小 */
 #quarto-margin-sidebar {
-  font-size: 16px;  // 基础字体大小
+  font-size: 14px;  // 基础字体大小
 }
 
 /* TOC 整体字体大小 */
 #TOC {
-  font-size: 16px; /* 基础字体大小 */
+  font-size: 14px; /* 基础字体大小 */
 }
 
 /* TOC 标题 */
 #toc-title {
-  font-size: 1.4em; /* 相对于父元素的1.2倍大小 */
+  font-size: 1.2em; /* 相对于父元素的1.2倍大小 */
   font-weight: bold;
 }
 

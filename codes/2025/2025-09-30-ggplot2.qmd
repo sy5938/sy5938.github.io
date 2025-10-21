@@ -1,0 +1,42 @@
+---
+title: "使用 ggplot2 打造可视化"
+date: 2025-09-30
+description: "快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。"
+categories: [R, Visualization]
+---
+
+> ggplot2 让数据可视化像搭积木一样高效优雅。
+
+## 核心理念
+
+`ggplot2` 的设计基于 **Grammar of Graphics**。我们通过图层（layer）叠加的方式构建图形，流程通常包含：
+
+1. 准备数据框（`data`）。
+2. 映射变量到美学属性（`aes`）。
+3. 选择几何对象（`geom_*`）。
+4. 根据需要添加统计转换、坐标系统和主题。
+
+## 快速示例
+
+```{r}
+library(ggplot2)
+
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 2.5, alpha = 0.8) +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(
+    title = "发动机排量与高速油耗",
+    x = "排量 (L)",
+    y = "高速油耗 (mpg)",
+    color = "车型"
+  ) +
+  theme_minimal(base_size = 12)
+```
+
+## 延伸阅读
+
+- `facet_*` 系列函数用于分面。
+- `scale_*` 控制颜色、形状与坐标轴。
+- `theme()` 修改图形细节。
+
+搭配 `dplyr` 管道与自定义主题，可以快速构建产品级别的图表模板。

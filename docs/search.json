@@ -49,6 +49,83 @@
     "text": "伍斯宇，男，博士在读，修读于华东师范大学生态与环境科学学院2020级生态学专业，方向为基于激光雷达点云的森林三维结构，生物多样性，群落构建机制。 ## 教育和工作背景 - 2020.09-今 华东师范大学 生态与环境科学学院 博士在读 生态学 (空间统计方向) - 2015.09-2019.07 上海师范大学 环境与生命科学学院 本科 生物科学 学士学位 ## 研究兴趣 ## 部分论文 ## 科研项目"
   },
   {
+    "objectID": "codes/2025/2025-10-15-ggside-marginal.html",
+    "href": "codes/2025/2025-10-15-ggside-marginal.html",
+    "title": "使用 ggside 为散点图添加边际密度",
+    "section": "",
+    "text": "在探索两个连续变量的关系时，仅看散点图往往难以判断各自的边际分布形态； 结合边际密度曲线能够同时观察总体趋势与组内差异。本文基于 iris 数据集， 使用 ggplot2 搭配 ggside 在同一画布中绘制散点图与上下/左右边际密度， 代码改写自脚本 original_src/ggside_margin.R，并补充少量说明与注释。"
+  },
+  {
+    "objectID": "codes/2025/2025-10-15-ggside-marginal.html#准备与数据",
+    "href": "codes/2025/2025-10-15-ggside-marginal.html#准备与数据",
+    "title": "使用 ggside 为散点图添加边际密度",
+    "section": "准备与数据",
+    "text": "准备与数据\n\n# 安装/加载所需包（缺失时自动安装）\nensure_package &lt;- function(pkg) {\n  if (!requireNamespace(pkg, quietly = TRUE)) {\n    install.packages(pkg, repos = 'https://cloud.r-project.org')\n  }\n  suppressWarnings(suppressPackageStartupMessages(\n    library(pkg, character.only = TRUE)\n  ))\n}\n\nensure_package('ggplot2')\nensure_package('ggside')\n\nset.seed(42)\n\n# 使用内置 iris 数据，增加分组列以便映射到颜色/填充\ndf &lt;- transform(iris, grp = Species)\n\n# 为三类花设置一致的调色板，保持主图与边际图配色统一\npal &lt;- c(\n  setosa     = '#9e2f2f',\n  versicolor = '#2f6db5',\n  virginica  = '#d4a017'\n)\n\n# 预先计算取值范围，去除多余留白时更易控制\nx_rng &lt;- range(df$Sepal.Length)\ny_rng &lt;- range(df$Sepal.Width)"
+  },
+  {
+    "objectID": "codes/2025/2025-10-15-ggside-marginal.html#使用-ggside-添加边际密度",
+    "href": "codes/2025/2025-10-15-ggside-marginal.html#使用-ggside-添加边际密度",
+    "title": "使用 ggside 为散点图添加边际密度",
+    "section": "使用 ggside 添加边际密度",
+    "text": "使用 ggside 添加边际密度\n\nlibrary(ggplot2)\nlibrary(ggside)\n\np &lt;- ggplot(df, aes(Sepal.Length, Sepal.Width, colour = grp)) +\n  # 关系趋势：线性回归平滑线（含置信带）\n  geom_smooth(method = 'lm', se = TRUE, fill = 'grey70', alpha = 0.35, linewidth = 0.9) +\n  # 主图散点\n  geom_point(size = 2.3, alpha = 0.95) +\n  # 顶部边际密度：y 使用 after_stat(density)\n  ggside::geom_xsidedensity(aes(y = after_stat(density), fill = grp),\n                            position = 'identity', alpha = 0.6, linewidth = 0.3) +\n  # 右侧边际密度：x 使用 after_stat(density)\n  ggside::geom_ysidedensity(aes(x = after_stat(density), fill = grp),\n                            position = 'identity', alpha = 0.6, linewidth = 0.3) +\n  # 统一配色\n  scale_colour_manual(values = pal, name = 'grp') +\n  scale_fill_manual(values = pal, name = 'grp') +\n  # 去除边界多余留白，视野更紧凑\n  scale_x_continuous(limits = x_rng, expand = expansion(mult = 0)) +\n  scale_y_continuous(limits = y_rng, expand = expansion(mult = 0)) +\n  labs(\n    title = '带边际密度的散点图（iris）',\n    x = 'Sepal.Length',\n    y = 'Sepal.Width'\n  ) +\n  # 底图与侧面板样式\n  theme_bw(base_size = 14) +\n  theme(\n    legend.position = 'right',\n    plot.margin = margin(8, 8, 8, 8),\n    plot.background = element_rect(fill = 'white', colour = NA),\n    panel.border = element_rect(colour = 'black', fill = NA, linewidth = 1),\n    ggside.panel.scale = 0.18,  # 控制边际面板相对大小\n    ggside.panel.background = element_rect(fill = 'white', colour = NA),\n    ggside.panel.border = element_blank()\n  ) +\n  theme_ggside_classic() +\n  guides(fill = 'none')\n\np\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "codes/2025/2025-10-15-ggside-marginal.html#导出图像可选",
+    "href": "codes/2025/2025-10-15-ggside-marginal.html#导出图像可选",
+    "title": "使用 ggside 为散点图添加边际密度",
+    "section": "导出图像（可选）",
+    "text": "导出图像（可选）\n如需在同目录保存图片，可执行：\n\nggsave(\n  filename = 'scatter_marginal_ggside.png',\n  plot = p,\n  width = 1600, height = 1600, units = 'px', dpi = 150\n)"
+  },
+  {
+    "objectID": "codes/2025/2025-10-15-ggside-marginal.html#实战要点",
+    "href": "codes/2025/2025-10-15-ggside-marginal.html#实战要点",
+    "title": "使用 ggside 为散点图添加边际密度",
+    "section": "实战要点",
+    "text": "实战要点\n\n使用 after_stat(density) 显示边际密度，更直观比较组间差异。\n通过 ggside.panel.scale 调节边际面板占比，避免喧宾夺主。\n主图与边际图共用调色板，统一视觉编码，降低理解成本。\nexpand = expansion(mult = 0) 去除轴向留白，突出数据区域。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "",
+    "text": "分面让一张图拆成多个子图，帮助我们比较不同分组的趋势与分布差异。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#分面概念速览",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#分面概念速览",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "分面概念速览",
+    "text": "分面概念速览\n\n分面会根据变量的取值将数据拆成多个子集。\n每个子图共享同一绘图语法，便于观察模式是否一致。\nfacet_wrap() 适合一维分组，facet_grid() 用于二维交叉分组。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#facet_wrap一维分组的简洁拆图",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#facet_wrap一维分组的简洁拆图",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "facet_wrap：一维分组的简洁拆图",
+    "text": "facet_wrap：一维分组的简洁拆图\n\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nlibrary(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.4.3\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nmpg_filtered &lt;- mpg |&gt;\n  filter(class %in% c(\"compact\", \"midsize\", \"suv\"))\n\nggplot(mpg_filtered, aes(x = displ, y = hwy, color = drv)) +\n  geom_point(alpha = 0.7, size = 2.3) +\n  facet_wrap(~ class, ncol = 3) +\n  labs(\n    title = \"不同车身类型的油耗与排量关系\",\n    x = \"发动机排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"驱动\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\nncol / nrow 控制布局，适配屏幕宽度。\n想让每个分面有独立坐标轴，可设置 scales = \"free_y\" 或 \"free\"。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#facet_grid二维交叉的全视角比较",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#facet_grid二维交叉的全视角比较",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "facet_grid：二维交叉的全视角比较",
+    "text": "facet_grid：二维交叉的全视角比较\n\nggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point(alpha = 0.6, color = \"#2E86AB\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#EF6F6C\") +\n  facet_grid(rows = vars(drv), cols = vars(cyl)) +\n  labs(\n    title = \"驱动方式 × 气缸数的油耗表现\",\n    x = \"城市油耗 (mpg)\",\n    y = \"高速油耗 (mpg)\"\n  ) +\n  theme_light(base_size = 12)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\nvars() 语法可以一次指定多个变量，例如 cols = vars(year, class)。\n若某一维只想按是否缺失切分，可用 cut_number() 或 if_else() 创建新变量后再分面。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#定制分面标签与顺序",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#定制分面标签与顺序",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "定制分面标签与顺序",
+    "text": "定制分面标签与顺序\n\nclass_labels &lt;- c(\n  compact = \"紧凑型\",\n  midsize = \"中型\",\n  suv = \"SUV\"\n)\n\nggplot(mpg_filtered, aes(x = displ, y = hwy)) +\n  geom_point(color = \"#6C5B7B\", alpha = 0.7) +\n  facet_wrap(\n    ~ class,\n    labeller = as_labeller(class_labels),\n    strip.position = \"bottom\"\n  ) +\n  scale_x_continuous(limits = c(1, 6)) +\n  coord_cartesian(ylim = c(15, 40)) +\n  labs(\n    title = \"自定义标签与条带位置\",\n    x = \"排量\",\n    y = \"高速油耗\"\n  ) +\n  theme_bw(base_size = 12) +\n  theme(strip.background = element_rect(fill = \"#F7F7F7\"))\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\nlabeller 接受命名向量或函数，帮助输出更友好的中文标签。\nstrip.position 可放到 \"bottom\" / \"left\" / \"right\"，配合 theme() 微调条带样式。\ncoord_cartesian() 保持原始数据范围的同时进行缩放，避免数据被裁掉。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#实战建议",
+    "href": "codes/2025/2025-09-30-ggplot2-facets.html#实战建议",
+    "title": "ggplot2 分面技巧：一图展开多维信息",
+    "section": "实战建议",
+    "text": "实战建议\n\n先明确比较的维度数量，选对 facet_wrap 或 facet_grid。\n控制每个分面内的数据量，必要时先筛选或聚合。\n别忘了添加解释性的标题和标注，让读者知道该关注什么。"
+  },
+  {
     "objectID": "Chinese.html",
     "href": "Chinese.html",
     "title": "中文简历",
@@ -102,7 +179,14 @@
     "href": "blog.html",
     "title": "Blogs",
     "section": "",
-    "text": "个人记录笔记，日志和心得。 ## New links"
+    "text": "个人记录笔记，日志和心得。"
+  },
+  {
+    "objectID": "blog.html#new-links",
+    "href": "blog.html#new-links",
+    "title": "Blogs",
+    "section": "New links",
+    "text": "New links"
   },
   {
     "objectID": "about.html",
@@ -119,6 +203,13 @@
     "text": "我是伍斯宇"
   },
   {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "Books",
+    "section": "",
+    "text": "平时喜欢看的一些参考书目"
+  },
+  {
     "objectID": "books.html#r-bookdown",
     "href": "books.html#r-bookdown",
     "title": "Books",
@@ -133,17 +224,115 @@
     "text": "Packages"
   },
   {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html",
+    "href": "codes/2025/2025-09-29-r-data-structures.html",
+    "title": "R 语言数据结构速览",
+    "section": "",
+    "text": "掌握基础数据结构是写好 R 代码的第一步。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#向量vector",
+    "title": "R 语言数据结构速览",
+    "section": "向量（Vector）",
+    "text": "向量（Vector）\n\n最常见的一维结构。\n元素类型必须一致。\n\n\nnumeric_vec &lt;- c(1.2, 3.5, 5)\nlogical_vec &lt;- c(TRUE, FALSE, TRUE)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#列表list",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#列表list",
+    "title": "R 语言数据结构速览",
+    "section": "列表（List）",
+    "text": "列表（List）\n\n可以存放不同类型的数据。\n是构建复杂对象（模型结果、参数集合）的基础。\n\n\nmy_list &lt;- list(\n  name = \"example\",\n  scores = c(95, 87, 92),\n  passed = TRUE\n)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#矩阵与数组matrix-array",
+    "title": "R 语言数据结构速览",
+    "section": "矩阵与数组（Matrix / Array）",
+    "text": "矩阵与数组（Matrix / Array）\n\n多维的同质数据结构。\n常用于线性代数和图像处理。\n\n\nmat &lt;- matrix(1:6, nrow = 2, byrow = TRUE)"
+  },
+  {
+    "objectID": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
+    "href": "codes/2025/2025-09-29-r-data-structures.html#数据框data-frame",
+    "title": "R 语言数据结构速览",
+    "section": "数据框（Data Frame）",
+    "text": "数据框（Data Frame）\n\n最常用的表格型结构。\n列可以是不同类型。\n\n\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(88, 92, 79)\n)\n\n合理选择数据结构能提升代码的可读性与运算效率。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html",
+    "href": "codes/2025/2025-09-30-ggplot2.html",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "",
+    "text": "ggplot2 让数据可视化像搭积木一样高效优雅。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html#核心理念",
+    "href": "codes/2025/2025-09-30-ggplot2.html#核心理念",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "核心理念",
+    "text": "核心理念\nggplot2 的设计基于 Grammar of Graphics。我们通过图层（layer）叠加的方式构建图形，流程通常包含：\n\n准备数据框（data）。\n映射变量到美学属性（aes）。\n选择几何对象（geom_*）。\n根据需要添加统计转换、坐标系统和主题。"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html#快速示例",
+    "href": "codes/2025/2025-09-30-ggplot2.html#快速示例",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "快速示例",
+    "text": "快速示例\n\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(size = 2.5, alpha = 0.8) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  labs(\n    title = \"发动机排量与高速油耗\",\n    x = \"排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"车型\"\n  ) +\n  theme_minimal(base_size = 12)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: span too small.  fewer data values than degrees of freedom.\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 5.6935\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.5065\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.65044\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 4.008\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.708\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.25"
+  },
+  {
+    "objectID": "codes/2025/2025-09-30-ggplot2.html#延伸阅读",
+    "href": "codes/2025/2025-09-30-ggplot2.html#延伸阅读",
+    "title": "使用 ggplot2 打造可视化",
+    "section": "延伸阅读",
+    "text": "延伸阅读\n\nfacet_* 系列函数用于分面。\nscale_* 控制颜色、形状与坐标轴。\ntheme() 修改图形细节。\n\n搭配 dplyr 管道与自定义主题，可以快速构建产品级别的图表模板。"
+  },
+  {
+    "objectID": "codes.html",
+    "href": "codes.html",
+    "title": "Codes",
+    "section": "",
+    "text": "如果你希望订阅更多主题，欢迎在导航栏切换到其他栏目。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n使用 ggside 为散点图添加边际密度\n\n\n\nR\n\nVisualization\n\n\n\n基于 iris 数据集，演示 ggside 的 geom_xsidedensity 与 geom_ysidedensity，在同一画面显示双变量关系与各自边际分布。\n\n\n\n\n\n2025-10-15\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\nggplot2 分面技巧：一图展开多维信息\n\n\n\nR\n\nVisualization\n\n\n\n介绍 facet_wrap 与 facet_grid 的核心概念，并展示如何控制布局、标签与缩放。\n\n\n\n\n\n2025-09-30\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\n使用 ggplot2 打造可视化\n\n\n\nR\n\nVisualization\n\n\n\n快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。\n\n\n\n\n\n2025-09-30\n\n\nSiyu Wu\n\n\n\n\n\n\n\n\n\n\n\n\nR 语言数据结构速览\n\n\n\nR\n\nData\n\n\n\n整理向量、列表、矩阵与数据框的核心概念，帮助快速复习基础。\n\n\n\n\n\n2025-09-29\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Siyu Wu’ lab",
+    "title": "Siyu Wu’s Lab",
     "section": "",
-    "text": "18289665799@163.com\n  \n  \n    \n     sywu5938\n  \n  \n    \n     gitee_siyu-Wu\n  \n  \n    \n     Resarchgate\n  \n  \n    \n     ORCID\n  \n  \n    \n     工作主页\n  \n  \n    \n     CV\n  \n\n  \n  \n\n\n我是伍斯宇，生态学研究者，专注于森林三维结构和生物多样性研究。目前我的研究兴趣包括：\n\n基于激光雷达点云的森林三维结构\n空间统计学\n生物多样性\n群落构建机制\n\n欢迎访问我的个人网站，了解我的研究工作和团队。如果您对我的研究感兴趣或有合作意向，请随时与我联系。"
+    "text": "18289665799@163.com\n  \n  \n    \n     sywu5938\n  \n  \n    \n     gitee_siyu-Wu\n  \n  \n    \n     ResearchGate\n  \n  \n    \n     ORCID\n  \n  \n    \n     工作主页\n  \n  \n    \n     CV\n  \n\n  \n  \n\n\n我是伍斯宇，生态学研究者，专注于森林三维结构和生物多样性研究。目前我的研究兴趣包括：\n\n基于激光雷达点云的森林三维结构\n空间统计学\n生物多样性\n群落构建机制\n\n欢迎访问我的个人网站，了解我的研究工作和团队。如果您对我的研究感兴趣或有合作意向，请随时与我联系。"
   },
   {
     "objectID": "index.html#个人简介",
     "href": "index.html#个人简介",
-    "title": "Siyu Wu’ lab",
+    "title": "Siyu Wu’s Lab",
     "section": "",
     "text": "我是伍斯宇，生态学研究者，专注于森林三维结构和生物多样性研究。目前我的研究兴趣包括：\n\n基于激光雷达点云的森林三维结构\n空间统计学\n生物多样性\n群落构建机制\n\n欢迎访问我的个人网站，了解我的研究工作和团队。如果您对我的研究感兴趣或有合作意向，请随时与我联系。"
+  },
+  {
+    "objectID": "index.html#研究方向一览",
+    "href": "index.html#研究方向一览",
+    "title": "Siyu Wu’s Lab",
+    "section": "研究方向一览",
+    "text": "研究方向一览\n\n\n森林结构与遥感\n利用激光雷达点云重建森林冠层和树木结构，探索林分动态与碳循环机制。\n\n\n生物多样性与群落生态\n结合空间统计与生态网络，解析物种共存及群落构建过程。\n\n\n数据科学工具\n开发与共享生态遥感分析流程，促进科研的可重复性与透明度。\n\n\n跨学科合作\n与林业、地理信息和计算科学伙伴合作，推动生态学问题的综合解决。"
+  },
+  {
+    "objectID": "index.html#近期动态",
+    "href": "index.html#近期动态",
+    "title": "Siyu Wu’s Lab",
+    "section": "近期动态",
+    "text": "近期动态\n\n🛰️ 项目推进：筹备基于 UAV-LiDAR 的森林结构监测实验。\n📄 论文撰写：整理森林功能多样性与空间格局的研究成果。\n🤝 学术交流：欢迎邀请学术报告、课程合作与联合培养。"
+  },
+  {
+    "objectID": "index.html#网站架构速览",
+    "href": "index.html#网站架构速览",
+    "title": "Siyu Wu’s Lab",
+    "section": "网站架构速览",
+    "text": "网站架构速览\n\n团队介绍：了解团队成员与合作伙伴。\n成果发表：汇总论文、项目与获奖情况。\n参考书目：整理常用教材与学习资料。\n博客日志：记录科研过程中的心得与工具分享。\n开源代码：沉淀数据处理与分析脚本。\n中文简介：获取中文简历及详细背景。"
+  },
+  {
+    "objectID": "index.html#联系与合作",
+    "href": "index.html#联系与合作",
+    "title": "Siyu Wu’s Lab",
+    "section": "联系与合作",
+    "text": "联系与合作\n如需合作或了解更多信息，欢迎通过邮箱联系，也欢迎在 GitHub 与我交流。期待与对生态学、遥感和数据科学有共同兴趣的伙伴展开合作。"
   }
 ]

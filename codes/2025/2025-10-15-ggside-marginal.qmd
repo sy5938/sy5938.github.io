@@ -1,0 +1,109 @@
+---
+title: "使用 ggside 为散点图添加边际密度"
+date: 2025-10-15
+description: "基于 iris 数据集，演示 ggside 的 geom_xsidedensity 与 geom_ysidedensity，在同一画面显示双变量关系与各自边际分布。"
+categories: [R, Visualization]
+---
+
+> 在探索两个连续变量的关系时，仅看散点图往往难以判断各自的边际分布形态；
+> 结合边际密度曲线能够同时观察总体趋势与组内差异。本文基于 iris 数据集，
+> 使用 ggplot2 搭配 ggside 在同一画布中绘制散点图与上下/左右边际密度，
+> 代码改写自脚本 `original_src/ggside_margin.R`，并补充少量说明与注释。
+
+## 准备与数据
+
+```{r}
+# 安装/加载所需包（缺失时自动安装）
+ensure_package <- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg, repos = 'https://cloud.r-project.org')
+  }
+  suppressWarnings(suppressPackageStartupMessages(
+    library(pkg, character.only = TRUE)
+  ))
+}
+
+ensure_package('ggplot2')
+ensure_package('ggside')
+
+set.seed(42)
+
+# 使用内置 iris 数据，增加分组列以便映射到颜色/填充
+df <- transform(iris, grp = Species)
+
+# 为三类花设置一致的调色板，保持主图与边际图配色统一
+pal <- c(
+  setosa     = '#9e2f2f',
+  versicolor = '#2f6db5',
+  virginica  = '#d4a017'
+)
+
+# 预先计算取值范围，去除多余留白时更易控制
+x_rng <- range(df$Sepal.Length)
+y_rng <- range(df$Sepal.Width)
+```
+
+## 使用 ggside 添加边际密度
+
+```{r}
+library(ggplot2)
+library(ggside)
+
+p <- ggplot(df, aes(Sepal.Length, Sepal.Width, colour = grp)) +
+  # 关系趋势：线性回归平滑线（含置信带）
+  geom_smooth(method = 'lm', se = TRUE, fill = 'grey70', alpha = 0.35, linewidth = 0.9) +
+  # 主图散点
+  geom_point(size = 2.3, alpha = 0.95) +
+  # 顶部边际密度：y 使用 after_stat(density)
+  ggside::geom_xsidedensity(aes(y = after_stat(density), fill = grp),
+                            position = 'identity', alpha = 0.6, linewidth = 0.3) +
+  # 右侧边际密度：x 使用 after_stat(density)
+  ggside::geom_ysidedensity(aes(x = after_stat(density), fill = grp),
+                            position = 'identity', alpha = 0.6, linewidth = 0.3) +
+  # 统一配色
+  scale_colour_manual(values = pal, name = 'grp') +
+  scale_fill_manual(values = pal, name = 'grp') +
+  # 去除边界多余留白，视野更紧凑
+  scale_x_continuous(limits = x_rng, expand = expansion(mult = 0)) +
+  scale_y_continuous(limits = y_rng, expand = expansion(mult = 0)) +
+  labs(
+    title = '带边际密度的散点图（iris）',
+    x = 'Sepal.Length',
+    y = 'Sepal.Width'
+  ) +
+  # 底图与侧面板样式
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = 'right',
+    plot.margin = margin(8, 8, 8, 8),
+    plot.background = element_rect(fill = 'white', colour = NA),
+    panel.border = element_rect(colour = 'black', fill = NA, linewidth = 1),
+    ggside.panel.scale = 0.18,  # 控制边际面板相对大小
+    ggside.panel.background = element_rect(fill = 'white', colour = NA),
+    ggside.panel.border = element_blank()
+  ) +
+  theme_ggside_classic() +
+  guides(fill = 'none')
+
+p
+```
+
+## 导出图像（可选）
+
+如需在同目录保存图片，可执行：
+
+```{r, eval=F}
+ggsave(
+  filename = 'scatter_marginal_ggside.png',
+  plot = p,
+  width = 1600, height = 1600, units = 'px', dpi = 150
+)
+```
+
+## 实战要点
+
+- 使用 `after_stat(density)` 显示边际密度，更直观比较组间差异。
+- 通过 `ggside.panel.scale` 调节边际面板占比，避免喧宾夺主。
+- 主图与边际图共用调色板，统一视觉编码，降低理解成本。
+- `expand = expansion(mult = 0)` 去除轴向留白，突出数据区域。
+
