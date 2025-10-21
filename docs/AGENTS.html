@@ -132,8 +132,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#博客封面图listing-预览规则" id="toc-博客封面图listing-预览规则" class="nav-link active" data-scroll-target="#博客封面图listing-预览规则">博客封面图（Listing 预览）规则</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/AGENTS.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -145,6 +151,18 @@ ul.task-list li input[type="checkbox"] {
 <p>本仓库采用 Quarto 构建静态网站，导航与主题集中在 <code>_quarto.yml</code> 维护；内容按“顶层页面 + 专题目录”组织，输出统一至 <code>docs/</code> 并用于 GitHub Pages 发布。</p>
 <p>## 项目结构与模块组织 - 顶层页面：根目录放主要入口与频道页 <code>*.qmd</code>/<code>*.md</code>（如 <code>index.qmd</code>、<code>blog.qmd</code>、<code>codes.qmd</code>、<code>Chinese.qmd</code>、<code>publications.qmd</code>）。 - 站点配置：<code>_quarto.yml</code>（导航、主题、输出目录、页脚、仓库链接等）。 - 代码笔记频道：<code>codes/</code> 采用“年份/文章”分层：如 <code>codes/2025/2025-09-30-ggplot2.qmd</code>。 - 元数据继承：<code>codes/_metadata.yml</code> 统一注入样式与 TOC 等设置。 - 列表页：<code>codes.qmd</code> 使用 <code>listing</code> 自动聚合 <code>codes/</code> 下的内容（按 <code>date desc</code> 排序）。 - 资源与样式：<code>images/</code>（图片资产，按主题分子目录）、<code>styles.scss</code>（全站主题与变量）。 - HTML 片段：<code>_includes/</code>（如 <code>codes-styles.html</code>，由频道或页面按需 <code>include-in-header</code> 引用）。 - 扩展：<code>_extensions/</code>（Quarto 扩展，包含 <code>coatless/webr</code> 相关文件，勿直接改动其生成代码）。 - 生成产物：<code>docs/</code>（GitHub Pages 发布目录）—请勿手改，改源文件后统一渲染生成。 - 开发缓存：<code>.quarto/</code>（无需手动修改）。</p>
 <p>## 内容与命名约定 - YAML 头部：使用 2 空格缩进；键名统一小写-连字符（如 <code>page-footer</code>、<code>site-url</code>）。 - 页面命名：顶层页面用小写-连字符（如 <code>about-team.qmd</code>）。 - Codes 文章：采用 <code>YYYY-MM-DD-主题.qmd</code> 命名，置于按年份分组目录（如 <code>codes/2025/…</code>）。 - 资源引用：图片统一放入 <code>images/</code>，并按主题分子目录管理；页面内使用相对路径。 - 样式维护：尽量集中到 <code>styles.scss</code>，避免零散内联样式；优先复用已定义 Sass 变量与色板。</p>
+<section id="博客封面图listing-预览规则" class="level3">
+<h3 class="anchored" data-anchor-id="博客封面图listing-预览规则">博客封面图（Listing 预览）规则</h3>
+<ul>
+<li>存放位置：建议与文章同目录（如 <code>blog/2025/</code>），文件名可使用 <code>cover.*</code>/<code>preview.*</code> 或与主题相关的英文短名。</li>
+<li>前置元数据：在文章 YAML 中添加：
+<ul>
+<li><code>image: &lt;文件名&gt;</code>（相对路径，指向同目录图片）</li>
+<li>可选：<code>image-alt: &lt;描述&gt;</code>（无障碍与 SEO）、<code>title-block-banner: true</code>（页内顶部展示横幅）</li>
+</ul></li>
+<li>推荐规格：横向 16:9 或 4:3，宽度 ≥ 1200px，体积 ≤ 300KB（优先使用 WebP/JPEG 压缩）。</li>
+<li>列表回退：未设置 <code>image</code> 时，列表不显示封面图；如需全局默认图，后续可在模板层做扩展。</li>
+</ul>
 <p>## 构建与本地开发 - <code>quarto check</code>：检查本地 Quarto 与依赖。 - <code>quarto preview</code>：本地预览并监听变更（默认 http://localhost:4200）。 - <code>quarto render</code>：渲染全站到 <code>_quarto.yml: output-dir</code>（本仓库为 <code>docs/</code>）。 - <code>quarto clean</code>：清理构建缓存与中间文件。 - 渲染单页示例：<code>quarto render codes/2025/2025-09-30-ggplot2.qmd</code>。 - 工作流建议：修改内容 → <code>quarto preview</code> 验证导航/TOC/图片/链接 → <code>quarto render</code> → 提交包含 <code>docs/</code> 的更新。</p>
 <p>## 样式与扩展 - 主题入口：<code>styles.scss</code>。若需频道定制（如 Codes 列表页），通过页面 YAML 的 <code>include-in-header</code> 引用 <code>_includes/</code> 片段（参考 <code>codes/_metadata.yml</code> 与 <code>codes.qmd</code>）。 - 扩展管理：扩展文件存放于 <code>_extensions/</code>，不建议直接改动第三方扩展生成文件；如需调整，优先在页面/样式层做覆盖。</p>
 <p>## 测试清单 - 预览检查：导航、面包屑/页面导航、TOC、链接、图片、表格、代码高亮是否正常。 - 终端报错：<code>quarto preview</code> 控制台无明显报错与 404；移动/桌面端样式无错位。 - 生成一致性：<code>quarto render</code> 后 <code>docs/</code> 内容与预览一致（含 <code>search.json</code>、<code>sitemap.xml</code> 等）。</p>
@@ -155,6 +173,7 @@ ul.task-list li input[type="checkbox"] {
 <p>面向自动化代理（AGENTS）提示：本文件对整个仓库生效。进行任何改动时，务必遵循以上结构、命名与渲染流程；严禁直接编辑 <code>docs/</code>。如需对频道进行样式或布局调整，优先通过 <code>styles.scss</code>、页面 YAML 或 <code>_includes/</code> 片段实现，不要直接改动第三方扩展代码。</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -564,7 +583,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/AGENTS.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/AGENTS.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a><br></p>
 </div>

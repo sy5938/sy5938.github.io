@@ -3,22 +3,27 @@ title: "更新 npm 与 Codex CLI"
 date: 2025-10-21
 categories: [环境管理, 工具更新]
 description: "快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。"
+image: ./gpt5_screenshot.jpg
+image-alt: "Codex 与 npm 更新示意截图"
+title-block-banner: false
 ---
 
 本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。
+
+![](gpt5_screenshot.jpg)
 
 ## 更新 npm
 
 查看版本：
 
-```bash
+``` bash
 node -v
 npm -v
 ```
 
 升级 npm（全局）：
 
-```bash
+``` bash
 # 通用（管理员或有权限的 Shell）
 npm install -g npm@latest
 
@@ -28,13 +33,13 @@ sudo npm install -g npm@latest
 
 验证：
 
-```bash
+``` bash
 npm -v
 ```
 
 提示：若使用 nvm 管理 Node.js，推荐通过 nvm 升级 Node（会附带合适版本的 npm）：
 
-```bash
+``` bash
 # 例：安装/切换到最新 LTS（nvm 环境）
 nvm install --lts
 nvm use --lts
@@ -46,19 +51,18 @@ Codex CLI 的安装来源可能不同，请对应选择。以下命令以常见�
 
 以windows为例：
 
-```bash
+``` bash
 npm i -g @openai/codex
 ```
 
-
-```bash
+``` bash
 # 查看版本（命令名示例）
 codex --version
 ```
 
 常见更新路径：
 
-```bash
+``` bash
 # 若通过 npm 全局安装（以包名 codex-cli 为例）
 npm i -g codex-cli
 
@@ -74,13 +78,12 @@ git -C /path/to/codex-cli pull --rebase
 
 验证：
 
-```bash
+``` bash
 codex --version
 ```
 
 > 说明：Codex CLI 包名/命令名可能因发行渠道不同而有差异。若不确定，可用以下方式定位：
 >
-> - npm：`npm list -g --depth=0 | rg codex`
-> - pipx：`pipx list | rg codex`
-> - brew：`brew list | rg codex`
-
+> -   npm：`npm list -g --depth=0 | rg codex`
+> -   pipx：`pipx list | rg codex`
+> -   brew：`brew list | rg codex`
