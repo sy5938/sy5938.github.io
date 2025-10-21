@@ -1,10 +1,17 @@
 ---
 title: "Blogs"
-editor: 
-  markdown: 
-    wrap: 72
+description: "记录开发与研究的笔记、日志与心得，按时间倒序自动展示。"
+format:
+  html:
+    include-in-header:
+      - _includes/codes-styles.html
+listing:
+  contents:
+    - blog
+  sort: "date desc"
+  type: default
+  date-format: "YYYY-MM-DD"
+  categories: true
 ---
-个人记录笔记，日志和心得。
 
-
-## New links
+> 随笔、项目进展与工具记录会更新在这里。

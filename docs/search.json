@@ -60,7 +60,7 @@
     "href": "codes/2025/2025-10-15-ggside-marginal.html#准备与数据",
     "title": "使用 ggside 为散点图添加边际密度",
     "section": "准备与数据",
-    "text": "准备与数据\n\n# 安装/加载所需包（缺失时自动安装）\nensure_package &lt;- function(pkg) {\n  if (!requireNamespace(pkg, quietly = TRUE)) {\n    install.packages(pkg, repos = 'https://cloud.r-project.org')\n  }\n  suppressWarnings(suppressPackageStartupMessages(\n    library(pkg, character.only = TRUE)\n  ))\n}\n\nensure_package('ggplot2')\nensure_package('ggside')\n\nset.seed(42)\n\n# 使用内置 iris 数据，增加分组列以便映射到颜色/填充\ndf &lt;- transform(iris, grp = Species)\n\n# 为三类花设置一致的调色板，保持主图与边际图配色统一\npal &lt;- c(\n  setosa     = '#9e2f2f',\n  versicolor = '#2f6db5',\n  virginica  = '#d4a017'\n)\n\n# 预先计算取值范围，去除多余留白时更易控制\nx_rng &lt;- range(df$Sepal.Length)\ny_rng &lt;- range(df$Sepal.Width)"
+    "text": "准备与数据\n\n# 安装/加载所需包（缺失时自动安装）\nensure_package &lt;- function(pkg) {\n  if (!requireNamespace(pkg, quietly = TRUE)) {\n    install.packages(pkg, repos = 'https://cloud.r-project.org')\n  }\n  suppressWarnings(suppressPackageStartupMessages(\n    library(pkg, character.only = TRUE)\n  ))\n}\n\nensure_package('ggplot2')\nensure_package('ggside')\n\npackage 'ggside' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Sy\\AppData\\Local\\Temp\\RtmpuSBzep\\downloaded_packages\n\nset.seed(42)\n\n# 使用内置 iris 数据，增加分组列以便映射到颜色/填充\ndf &lt;- transform(iris, grp = Species)\n\n# 为三类花设置一致的调色板，保持主图与边际图配色统一\npal &lt;- c(\n  setosa     = '#9e2f2f',\n  versicolor = '#2f6db5',\n  virginica  = '#d4a017'\n)\n\n# 预先计算取值范围，去除多余留白时更易控制\nx_rng &lt;- range(df$Sepal.Length)\ny_rng &lt;- range(df$Sepal.Width)"
   },
   {
     "objectID": "codes/2025/2025-10-15-ggside-marginal.html#使用-ggside-添加边际密度",
@@ -102,7 +102,7 @@
     "href": "codes/2025/2025-09-30-ggplot2-facets.html#facet_wrap一维分组的简洁拆图",
     "title": "ggplot2 分面技巧：一图展开多维信息",
     "section": "facet_wrap：一维分组的简洁拆图",
-    "text": "facet_wrap：一维分组的简洁拆图\n\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nlibrary(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.4.3\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nmpg_filtered &lt;- mpg |&gt;\n  filter(class %in% c(\"compact\", \"midsize\", \"suv\"))\n\nggplot(mpg_filtered, aes(x = displ, y = hwy, color = drv)) +\n  geom_point(alpha = 0.7, size = 2.3) +\n  facet_wrap(~ class, ncol = 3) +\n  labs(\n    title = \"不同车身类型的油耗与排量关系\",\n    x = \"发动机排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"驱动\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\nncol / nrow 控制布局，适配屏幕宽度。\n想让每个分面有独立坐标轴，可设置 scales = \"free_y\" 或 \"free\"。"
+    "text": "facet_wrap：一维分组的简洁拆图\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nmpg_filtered &lt;- mpg |&gt;\n  filter(class %in% c(\"compact\", \"midsize\", \"suv\"))\n\nggplot(mpg_filtered, aes(x = displ, y = hwy, color = drv)) +\n  geom_point(alpha = 0.7, size = 2.3) +\n  facet_wrap(~ class, ncol = 3) +\n  labs(\n    title = \"不同车身类型的油耗与排量关系\",\n    x = \"发动机排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"驱动\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\nncol / nrow 控制布局，适配屏幕宽度。\n想让每个分面有独立坐标轴，可设置 scales = \"free_y\" 或 \"free\"。"
   },
   {
     "objectID": "codes/2025/2025-09-30-ggplot2-facets.html#facet_grid二维交叉的全视角比较",
@@ -179,14 +179,14 @@
     "href": "blog.html",
     "title": "Blogs",
     "section": "",
-    "text": "个人记录笔记，日志和心得。"
+    "text": "随笔、项目进展与工具记录会更新在这里。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n更新 npm 与 Codex CLI\n\n\n\n环境管理\n\n工具更新\n\n\n\n快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。\n\n\n\n\n\n2025-10-21\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "blog.html#new-links",
-    "href": "blog.html#new-links",
-    "title": "Blogs",
-    "section": "New links",
-    "text": "New links"
+    "objectID": "AGENTS.html",
+    "href": "AGENTS.html",
+    "title": "Siyu Wu",
+    "section": "",
+    "text": "# Repository Guidelines（针对新架构已更新）\n本仓库采用 Quarto 构建静态网站，导航与主题集中在 _quarto.yml 维护；内容按“顶层页面 + 专题目录”组织，输出统一至 docs/ 并用于 GitHub Pages 发布。\n## 项目结构与模块组织 - 顶层页面：根目录放主要入口与频道页 *.qmd/*.md（如 index.qmd、blog.qmd、codes.qmd、Chinese.qmd、publications.qmd）。 - 站点配置：_quarto.yml（导航、主题、输出目录、页脚、仓库链接等）。 - 代码笔记频道：codes/ 采用“年份/文章”分层：如 codes/2025/2025-09-30-ggplot2.qmd。 - 元数据继承：codes/_metadata.yml 统一注入样式与 TOC 等设置。 - 列表页：codes.qmd 使用 listing 自动聚合 codes/ 下的内容（按 date desc 排序）。 - 资源与样式：images/（图片资产，按主题分子目录）、styles.scss（全站主题与变量）。 - HTML 片段：_includes/（如 codes-styles.html，由频道或页面按需 include-in-header 引用）。 - 扩展：_extensions/（Quarto 扩展，包含 coatless/webr 相关文件，勿直接改动其生成代码）。 - 生成产物：docs/（GitHub Pages 发布目录）—请勿手改，改源文件后统一渲染生成。 - 开发缓存：.quarto/（无需手动修改）。\n## 内容与命名约定 - YAML 头部：使用 2 空格缩进；键名统一小写-连字符（如 page-footer、site-url）。 - 页面命名：顶层页面用小写-连字符（如 about-team.qmd）。 - Codes 文章：采用 YYYY-MM-DD-主题.qmd 命名，置于按年份分组目录（如 codes/2025/…）。 - 资源引用：图片统一放入 images/，并按主题分子目录管理；页面内使用相对路径。 - 样式维护：尽量集中到 styles.scss，避免零散内联样式；优先复用已定义 Sass 变量与色板。\n## 构建与本地开发 - quarto check：检查本地 Quarto 与依赖。 - quarto preview：本地预览并监听变更（默认 http://localhost:4200）。 - quarto render：渲染全站到 _quarto.yml: output-dir（本仓库为 docs/）。 - quarto clean：清理构建缓存与中间文件。 - 渲染单页示例：quarto render codes/2025/2025-09-30-ggplot2.qmd。 - 工作流建议：修改内容 → quarto preview 验证导航/TOC/图片/链接 → quarto render → 提交包含 docs/ 的更新。\n## 样式与扩展 - 主题入口：styles.scss。若需频道定制（如 Codes 列表页），通过页面 YAML 的 include-in-header 引用 _includes/ 片段（参考 codes/_metadata.yml 与 codes.qmd）。 - 扩展管理：扩展文件存放于 _extensions/，不建议直接改动第三方扩展生成文件；如需调整，优先在页面/样式层做覆盖。\n## 测试清单 - 预览检查：导航、面包屑/页面导航、TOC、链接、图片、表格、代码高亮是否正常。 - 终端报错：quarto preview 控制台无明显报错与 404；移动/桌面端样式无错位。 - 生成一致性：quarto render 后 docs/ 内容与预览一致（含 search.json、sitemap.xml 等）。\n## 提交与 Pull Request 规范 - Commit 信息：动词开头、简洁明确，建议前缀（feat:、fix:、docs:、update:）。 - 例：update: 调整 navbar 配色并修复外链。 - PR 要求：说明变更动机与范围、关联 issue、必要截图/预览说明；包含已渲染的 docs/ 变更。 - 发布目录：禁止直接修改 docs/ 源文件，所有改动需通过渲染生成。\n## 安全与配置提示 - 站点信息集中在 _quarto.yml: website.* 维护；外链尽量使用 https。 - 新增页面后，记得更新 _quarto.yml: navbar 菜单；新增 Codes 文章遵循年份分组与命名约定。 - 禁止提交密钥与敏感信息。\n## 常见操作示例 - 新增 Codes 文章： 1) 创建文件：codes/2025/2025-10-21-my-topic.qmd 2) 添加 YAML 头并撰写内容（日期、标题、分类等） 3) 预览：quarto preview 4) 渲染：quarto render 5) 提交：包含源文件与 docs/ 渲染结果 - 新增顶层页面： 1) 在根目录添加如 about-team.qmd 2) 在 _quarto.yml: navbar 增加菜单项并指向该文件 3) 预览与渲染同上\n\n面向自动化代理（AGENTS）提示：本文件对整个仓库生效。进行任何改动时，务必遵循以上结构、命名与渲染流程；严禁直接编辑 docs/。如需对频道进行样式或布局调整，优先通过 styles.scss、页面 YAML 或 _includes/ 片段实现，不要直接改动第三方扩展代码。"
   },
   {
     "objectID": "about.html",
@@ -201,6 +201,27 @@
     "title": "关于我",
     "section": "",
     "text": "我是伍斯宇"
+  },
+  {
+    "objectID": "blog/2025/2025-10-21-update-tools.html",
+    "href": "blog/2025/2025-10-21-update-tools.html",
+    "title": "更新 npm 与 Codex CLI",
+    "section": "",
+    "text": "本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。"
+  },
+  {
+    "objectID": "blog/2025/2025-10-21-update-tools.html#更新-npm",
+    "href": "blog/2025/2025-10-21-update-tools.html#更新-npm",
+    "title": "更新 npm 与 Codex CLI",
+    "section": "更新 npm",
+    "text": "更新 npm\n查看版本：\nnode -v\nnpm -v\n升级 npm（全局）：\n# 通用（管理员或有权限的 Shell）\nnpm install -g npm@latest\n\n# 如遇权限问题（macOS/Linux，可选）\nsudo npm install -g npm@latest\n验证：\nnpm -v\n提示：若使用 nvm 管理 Node.js，推荐通过 nvm 升级 Node（会附带合适版本的 npm）：\n# 例：安装/切换到最新 LTS（nvm 环境）\nnvm install --lts\nnvm use --lts"
+  },
+  {
+    "objectID": "blog/2025/2025-10-21-update-tools.html#更新-codex-cli",
+    "href": "blog/2025/2025-10-21-update-tools.html#更新-codex-cli",
+    "title": "更新 npm 与 Codex CLI",
+    "section": "更新 Codex CLI",
+    "text": "更新 Codex CLI\nCodex CLI 的安装来源可能不同，请对应选择。以下命令以常见命令名为示例；若你本地命令不同（如 codex-cli、codex），请据实替换。\n以windows为例：\nnpm i -g @openai/codex\n# 查看版本（命令名示例）\ncodex --version\n常见更新路径：\n# 若通过 npm 全局安装（以包名 codex-cli 为例）\nnpm i -g codex-cli\n\n# 若通过 pipx 安装（以可执行名 codex 为例）\npipx upgrade codex\n\n# 若通过 Homebrew 安装（macOS）\nbrew upgrade codex-cli\n\n# 若本地是从源码克隆\ngit -C /path/to/codex-cli pull --rebase\n验证：\ncodex --version\n\n说明：Codex CLI 包名/命令名可能因发行渠道不同而有差异。若不确定，可用以下方式定位：\n\nnpm：npm list -g --depth=0 | rg codex\npipx：pipx list | rg codex\nbrew：brew list | rg codex"
   },
   {
     "objectID": "books.html",
@@ -277,7 +298,7 @@
     "href": "codes/2025/2025-09-30-ggplot2.html#快速示例",
     "title": "使用 ggplot2 打造可视化",
     "section": "快速示例",
-    "text": "快速示例\n\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.3\n\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(size = 2.5, alpha = 0.8) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  labs(\n    title = \"发动机排量与高速油耗\",\n    x = \"排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"车型\"\n  ) +\n  theme_minimal(base_size = 12)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: span too small.  fewer data values than degrees of freedom.\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 5.6935\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.5065\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.65044\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 4.008\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.708\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.25"
+    "text": "快速示例\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(size = 2.5, alpha = 0.8) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  labs(\n    title = \"发动机排量与高速油耗\",\n    x = \"排量 (L)\",\n    y = \"高速油耗 (mpg)\",\n    color = \"车型\"\n  ) +\n  theme_minimal(base_size = 12)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: span too small.  fewer data values than degrees of freedom.\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 5.6935\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.5065\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.65044\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: pseudoinverse used at 4.008\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: neighborhood radius 0.708\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: reciprocal condition number 0\n\n\nWarning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,\n: There are other near singularities as well. 0.25"
   },
   {
     "objectID": "codes/2025/2025-09-30-ggplot2.html#延伸阅读",

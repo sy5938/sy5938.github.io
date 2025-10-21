@@ -1,0 +1,9 @@
+author: Siyu Wu
+format:
+  html:
+    include-in-header:
+      - ../_includes/codes-styles.html
+    toc: true
+    toc-location: right
+    smooth-scroll: true
+

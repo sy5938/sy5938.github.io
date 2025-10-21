@@ -1,5 +1,11 @@
 [
   {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2025/2025-10-21-update-tools.html"
+    ]
+  },
+  {
     "listing": "/codes.html",
     "items": [
       "/codes/2025/2025-10-15-ggside-marginal.html",

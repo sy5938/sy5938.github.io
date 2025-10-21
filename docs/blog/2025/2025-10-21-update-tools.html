@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Siyu Wu">
-<meta name="dcterms.date" content="2025-09-30">
-<meta name="description" content="快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。">
+<meta name="dcterms.date" content="2025-10-21">
+<meta name="description" content="快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。">
 
-<title>使用 ggplot2 打造可视化 – Siyu Wu</title>
+<title>更新 npm 与 Codex CLI – Siyu Wu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -568,27 +568,26 @@ window.addEventListener('DOMContentLoaded', () => {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#核心理念" id="toc-核心理念" class="nav-link active" data-scroll-target="#核心理念">核心理念</a></li>
-  <li><a href="#快速示例" id="toc-快速示例" class="nav-link" data-scroll-target="#快速示例">快速示例</a></li>
-  <li><a href="#延伸阅读" id="toc-延伸阅读" class="nav-link" data-scroll-target="#延伸阅读">延伸阅读</a></li>
+  <li><a href="#更新-npm" id="toc-更新-npm" class="nav-link active" data-scroll-target="#更新-npm">更新 npm</a></li>
+  <li><a href="#更新-codex-cli" id="toc-更新-codex-cli" class="nav-link" data-scroll-target="#更新-codex-cli">更新 Codex CLI</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-09-30-ggplot2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/blog/2025/2025-10-21-update-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">使用 ggplot2 打造可视化</h1>
+<h1 class="title">更新 npm 与 Codex CLI</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">R</div>
-    <div class="quarto-category">Visualization</div>
+    <div class="quarto-category">环境管理</div>
+    <div class="quarto-category">工具更新</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。
+    快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。
   </div>
 </div>
 
@@ -605,7 +604,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 30, 2025</p>
+      <p class="date">October 21, 2025</p>
     </div>
   </div>
   
@@ -617,90 +616,54 @@ window.addEventListener('DOMContentLoaded', () => {
 </header>
 
 
+<p>本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。</p>
+<section id="更新-npm" class="level2">
+<h2 class="anchored" data-anchor-id="更新-npm">更新 npm</h2>
+<p>查看版本：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">-v</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>升级 npm（全局）：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 通用（管理员或有权限的 Shell）</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> npm@latest</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 如遇权限问题（macOS/Linux，可选）</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> npm install <span class="at">-g</span> npm@latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>验证：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>提示：若使用 nvm 管理 Node.js，推荐通过 nvm 升级 Node（会附带合适版本的 npm）：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 例：安装/切换到最新 LTS（nvm 环境）</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install <span class="at">--lts</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> use <span class="at">--lts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="更新-codex-cli" class="level2">
+<h2 class="anchored" data-anchor-id="更新-codex-cli">更新 Codex CLI</h2>
+<p>Codex CLI 的安装来源可能不同，请对应选择。以下命令以常见命令名为示例；若你本地命令不同（如 <code>codex-cli</code>、<code>codex</code>），请据实替换。</p>
+<p>以windows为例：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> @openai/codex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看版本（命令名示例）</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>常见更新路径：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 npm 全局安装（以包名 codex-cli 为例）</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> codex-cli</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 pipx 安装（以可执行名 codex 为例）</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> upgrade codex</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 Homebrew 安装（macOS）</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> upgrade codex-cli</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 若本地是从源码克隆</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /path/to/codex-cli pull <span class="at">--rebase</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>验证：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
-<p>ggplot2 让数据可视化像搭积木一样高效优雅。</p>
-</blockquote>
-<section id="核心理念" class="level2">
-<h2 class="anchored" data-anchor-id="核心理念">核心理念</h2>
-<p><code>ggplot2</code> 的设计基于 <strong>Grammar of Graphics</strong>。我们通过图层（layer）叠加的方式构建图形，流程通常包含：</p>
-<ol type="1">
-<li>准备数据框（<code>data</code>）。</li>
-<li>映射变量到美学属性（<code>aes</code>）。</li>
-<li>选择几何对象（<code>geom_*</code>）。</li>
-<li>根据需要添加统计转换、坐标系统和主题。</li>
-</ol>
-</section>
-<section id="快速示例" class="level2">
-<h2 class="anchored" data-anchor-id="快速示例">快速示例</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"发动机排量与高速油耗"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"排量 (L)"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"高速油耗 (mpg)"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"车型"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: span too small.  fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: pseudoinverse used at 5.6935</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: neighborhood radius 0.5065</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: There are other near singularities as well. 0.65044</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: pseudoinverse used at 4.008</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: neighborhood radius 0.708</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: There are other near singularities as well. 0.25</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2025-09-30-ggplot2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="延伸阅读" class="level2">
-<h2 class="anchored" data-anchor-id="延伸阅读">延伸阅读</h2>
+<p>说明：Codex CLI 包名/命令名可能因发行渠道不同而有差异。若不确定，可用以下方式定位：</p>
 <ul>
-<li><code>facet_*</code> 系列函数用于分面。</li>
-<li><code>scale_*</code> 控制颜色、形状与坐标轴。</li>
-<li><code>theme()</code> 修改图形细节。</li>
+<li>npm：<code>npm list -g --depth=0 | rg codex</code></li>
+<li>pipx：<code>pipx list | rg codex</code></li>
+<li>brew：<code>brew list | rg codex</code></li>
 </ul>
-<p>搭配 <code>dplyr</code> 管道与自定义主题，可以快速构建产品级别的图表模板。</p>
+</blockquote>
 
 
 </section>
@@ -1113,7 +1076,7 @@ window.addEventListener('DOMContentLoaded', () => {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-09-30-ggplot2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/blog/2025/2025-10-21-update-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a><br></p>
 </div>

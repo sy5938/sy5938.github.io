@@ -1,0 +1,86 @@
+---
+title: "更新 npm 与 Codex CLI"
+date: 2025-10-21
+categories: [环境管理, 工具更新]
+description: "快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。"
+---
+
+本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。
+
+## 更新 npm
+
+查看版本：
+
+```bash
+node -v
+npm -v
+```
+
+升级 npm（全局）：
+
+```bash
+# 通用（管理员或有权限的 Shell）
+npm install -g npm@latest
+
+# 如遇权限问题（macOS/Linux，可选）
+sudo npm install -g npm@latest
+```
+
+验证：
+
+```bash
+npm -v
+```
+
+提示：若使用 nvm 管理 Node.js，推荐通过 nvm 升级 Node（会附带合适版本的 npm）：
+
+```bash
+# 例：安装/切换到最新 LTS（nvm 环境）
+nvm install --lts
+nvm use --lts
+```
+
+## 更新 Codex CLI
+
+Codex CLI 的安装来源可能不同，请对应选择。以下命令以常见命令名为示例；若你本地命令不同（如 `codex-cli`、`codex`），请据实替换。
+
+以windows为例：
+
+```bash
+npm i -g @openai/codex
+```
+
+
+```bash
+# 查看版本（命令名示例）
+codex --version
+```
+
+常见更新路径：
+
+```bash
+# 若通过 npm 全局安装（以包名 codex-cli 为例）
+npm i -g codex-cli
+
+# 若通过 pipx 安装（以可执行名 codex 为例）
+pipx upgrade codex
+
+# 若通过 Homebrew 安装（macOS）
+brew upgrade codex-cli
+
+# 若本地是从源码克隆
+git -C /path/to/codex-cli pull --rebase
+```
+
+验证：
+
+```bash
+codex --version
+```
+
+> 说明：Codex CLI 包名/命令名可能因发行渠道不同而有差异。若不确定，可用以下方式定位：
+>
+> - npm：`npm list -g --depth=0 | rg codex`
+> - pipx：`pipx list | rg codex`
+> - brew：`brew list | rg codex`
+

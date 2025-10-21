@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Siyu Wu">
-<meta name="dcterms.date" content="2025-09-30">
-<meta name="description" content="快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。">
 
-<title>使用 ggplot2 打造可视化 – Siyu Wu</title>
+<title>agents – Siyu Wu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,62 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../images/site-logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2575636bf12bba71c1c5b79222bd7450.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e0b32985eebbd4740cf6ced4f5028f25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/site-logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2575636bf12bba71c1c5b79222bd7450.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e0b32985eebbd4740cf6ced4f5028f25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,399 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<style>
-
-/* Codes listing page styles */
-
-.quarto-title {
-
-  max-width: 760px;
-
-  margin-bottom: 1.8rem;
-
-}
-
-
-
-.quarto-title .title {
-
-  font-family: "PT Serif", serif;
-
-  font-weight: 700;
-
-  letter-spacing: 0.02em;
-
-  color: #503621;
-
-}
-
-
-
-.quarto-title .quarto-categories {
-
-  margin-top: 1.25rem;
-
-  display: flex;
-
-  gap: 0.6rem;
-
-  flex-wrap: wrap;
-
-}
-
-
-
-.quarto-title .quarto-category {
-
-  padding: 0.3rem 0.9rem;
-
-  border-radius: 999px;
-
-  border: 1px solid rgba(120, 96, 78, 0.28);
-
-  background-color: #f7efe6;
-
-  font-size: 0.78rem;
-
-  font-weight: 600;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-
-  color: #705542;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 0.35rem;
-
-}
-
-
-
-.quarto-title .quarto-category:hover {
-
-  background-color: #efe2d4;
-
-  border-color: rgba(120, 96, 78, 0.45);
-
-}
-
-
-
-.quarto-title-meta {
-
-  margin-top: 2rem;
-
-  padding: 0;
-
-  border: none;
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-  gap: 1.4rem;
-
-}
-
-
-
-.quarto-title-meta > div {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 0.35rem;
-
-  align-items: flex-start;
-
-}
-
-
-
-.quarto-title-meta-heading {
-
-  font-size: 0.78rem;
-
-  font-weight: 600;
-
-  letter-spacing: 0.22em;
-
-  text-transform: uppercase;
-
-  color: #8a7766;
-
-}
-
-
-
-.quarto-title-meta-contents {
-
-  margin: 0;
-
-  text-align: left;
-
-  font-size: 1rem;
-
-  font-weight: 600;
-
-  color: #3f2c1f;
-
-}
-
-
-
-.quarto-title + blockquote {
-
-  border-left: 4px solid rgba(118, 85, 59, 0.4);
-
-  color: #9a5132;
-
-  padding-left: 1rem;
-
-  margin-top: 1.5rem;
-
-  font-style: italic;
-
-}
-
-
-
-#title-block-header .description {
-
-  margin: 0.85rem 0 2.4rem;
-
-  max-width: 760px;
-
-  line-height: 1.6;
-
-}
-
-
-
-.quarto-listing-default .quarto-post {
-
-  gap: 1.5rem;
-
-  align-items: flex-start;
-
-  padding-bottom: 1.75rem;
-
-  border-bottom: 1px solid #dee2e6;
-
-}
-
-
-
-.quarto-listing-default .quarto-post:last-child {
-
-  padding-bottom: 0;
-
-  border-bottom: none;
-
-}
-
-
-
-.quarto-listing-default .quarto-post .metadata {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 0.35rem;
-
-  text-align: left;
-
-}
-
-
-
-.quarto-listing-default .quarto-post .metadata a {
-
-  display: inline-flex;
-
-  flex-direction: column;
-
-  gap: 0.3rem;
-
-}
-
-
-
-.quarto-listing-default .listing-title {
-
-  margin-bottom: 1.9rem;
-
-  
-
-}
-
-
-
-.quarto-listing-default .listing-categories {
-
-  margin-top: 0.6rem;
-
-
-
-}
-
-
-
-#title-block-header .quarto-title-meta-contents .date,
-
-.quarto-listing-default .listing-date {
-
-  font-size: 0.95rem;
-
-  font-weight: 500;
-
-}
-
-</style>
-
-<script>
-
-// 将 Codes 目录下文章的日期转为本地化显示 + 相对时间
-
-// 同时保留列表页的默认布局
-
-window.addEventListener('DOMContentLoaded', () => {
-
-  // 当前时间
-
-  const now = new Date();
-
-  const dayMs = 24 * 60 * 60 * 1000; // 一天的毫秒数
-
-  const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-  const todayStart = startOfDay(now);
-
-
-
-  // 日期格式化器（中文年月日）
-
-  const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
-
-    year: 'numeric',
-
-    month: 'long',
-
-    day: 'numeric'
-
-  });
-
-
-
-  // 相对时间格式化器（如“3天前”）
-
-  const relativeFormatter = new Intl.RelativeTimeFormat('zh-CN', {
-
-    numeric: 'auto'
-
-  });
-
-
-
-  // 根据天数差选择合适的单位（年/月/周/天）
-
-  const pickUnit = (diffDays) => {
-
-    const abs = Math.abs(diffDays);
-
-    if (abs >= 365) return { unit: 'year', value: Math.round(diffDays / 365) };
-
-    if (abs >= 30) return { unit: 'month', value: Math.round(diffDays / 30) };
-
-    if (abs >= 7) return { unit: 'week', value: Math.round(diffDays / 7) };
-
-    return { unit: 'day', value: diffDays };
-
-  };
-
-
-
-  // 解析日期字符串
-
-  const parseDate = (text) => {
-
-    const trimmed = (text || '').trim();
-
-    if (!trimmed) return null;
-
-    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return new Date(trimmed + 'T00:00:00');
-
-    const parsed = Date.parse(trimmed);
-
-    if (!Number.isNaN(parsed)) return new Date(parsed);
-
-    return null;
-
-  };
-
-
-
-  // 更新元素内容为本地化日期和相对时间
-
-  const updateElement = (el) => {
-
-    if (!el || el.dataset.dynamicDate === 'applied') return;
-
-    const original = el.textContent;
-
-    const date = parseDate(original);
-
-    if (!date) return;
-
-    const targetStart = startOfDay(date);
-
-    const diffDays = Math.round((targetStart.getTime() - todayStart.getTime()) / dayMs);
-
-    const { unit, value } = pickUnit(diffDays);
-
-    const relativeLabel = relativeFormatter.format(value, unit);
-
-    const formattedDate = dateFormatter.format(date);
-
-    el.innerHTML = `${formattedDate} · ${relativeLabel}`;
-
-    el.setAttribute('data-original-date', original);
-
-    el.dataset.dynamicDate = 'applied';
-
-  };
-
-
-
-  // 选择所有需要处理的日期元素并更新
-
-  document
-
-    .querySelectorAll('.quarto-title-meta-contents .date, .listing-date')
-
-    .forEach(updateElement);
-
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </head>
@@ -510,7 +79,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Siyu Wu</span>
     </a>
   </div>
@@ -521,35 +90,35 @@ window.addEventListener('DOMContentLoaded', () => {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../team.html"> 
+    <a class="nav-link" href="./team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications.html"> 
+    <a class="nav-link" href="./publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../books.html"> 
+    <a class="nav-link" href="./books.html"> 
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../codes.html"> 
+    <a class="nav-link" href="./codes.html"> 
 <span class="menu-text">Codes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Chinese.html"> 
+    <a class="nav-link" href="./Chinese.html"> 
 <span class="menu-text">中文</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../CV.pdf"> 
+    <a class="nav-link" href="./CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -563,147 +132,29 @@ window.addEventListener('DOMContentLoaded', () => {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#核心理念" id="toc-核心理念" class="nav-link active" data-scroll-target="#核心理念">核心理念</a></li>
-  <li><a href="#快速示例" id="toc-快速示例" class="nav-link" data-scroll-target="#快速示例">快速示例</a></li>
-  <li><a href="#延伸阅读" id="toc-延伸阅读" class="nav-link" data-scroll-target="#延伸阅读">延伸阅读</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-09-30-ggplot2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">使用 ggplot2 打造可视化</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">R</div>
-    <div class="quarto-category">Visualization</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    快速回顾 ggplot2 的语法结构，并通过示例演示图形语法的组合。
-  </div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Siyu Wu </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 30, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
+<p># Repository Guidelines（针对新架构已更新）</p>
+<p>本仓库采用 Quarto 构建静态网站，导航与主题集中在 <code>_quarto.yml</code> 维护；内容按“顶层页面 + 专题目录”组织，输出统一至 <code>docs/</code> 并用于 GitHub Pages 发布。</p>
+<p>## 项目结构与模块组织 - 顶层页面：根目录放主要入口与频道页 <code>*.qmd</code>/<code>*.md</code>（如 <code>index.qmd</code>、<code>blog.qmd</code>、<code>codes.qmd</code>、<code>Chinese.qmd</code>、<code>publications.qmd</code>）。 - 站点配置：<code>_quarto.yml</code>（导航、主题、输出目录、页脚、仓库链接等）。 - 代码笔记频道：<code>codes/</code> 采用“年份/文章”分层：如 <code>codes/2025/2025-09-30-ggplot2.qmd</code>。 - 元数据继承：<code>codes/_metadata.yml</code> 统一注入样式与 TOC 等设置。 - 列表页：<code>codes.qmd</code> 使用 <code>listing</code> 自动聚合 <code>codes/</code> 下的内容（按 <code>date desc</code> 排序）。 - 资源与样式：<code>images/</code>（图片资产，按主题分子目录）、<code>styles.scss</code>（全站主题与变量）。 - HTML 片段：<code>_includes/</code>（如 <code>codes-styles.html</code>，由频道或页面按需 <code>include-in-header</code> 引用）。 - 扩展：<code>_extensions/</code>（Quarto 扩展，包含 <code>coatless/webr</code> 相关文件，勿直接改动其生成代码）。 - 生成产物：<code>docs/</code>（GitHub Pages 发布目录）—请勿手改，改源文件后统一渲染生成。 - 开发缓存：<code>.quarto/</code>（无需手动修改）。</p>
+<p>## 内容与命名约定 - YAML 头部：使用 2 空格缩进；键名统一小写-连字符（如 <code>page-footer</code>、<code>site-url</code>）。 - 页面命名：顶层页面用小写-连字符（如 <code>about-team.qmd</code>）。 - Codes 文章：采用 <code>YYYY-MM-DD-主题.qmd</code> 命名，置于按年份分组目录（如 <code>codes/2025/…</code>）。 - 资源引用：图片统一放入 <code>images/</code>，并按主题分子目录管理；页面内使用相对路径。 - 样式维护：尽量集中到 <code>styles.scss</code>，避免零散内联样式；优先复用已定义 Sass 变量与色板。</p>
+<p>## 构建与本地开发 - <code>quarto check</code>：检查本地 Quarto 与依赖。 - <code>quarto preview</code>：本地预览并监听变更（默认 http://localhost:4200）。 - <code>quarto render</code>：渲染全站到 <code>_quarto.yml: output-dir</code>（本仓库为 <code>docs/</code>）。 - <code>quarto clean</code>：清理构建缓存与中间文件。 - 渲染单页示例：<code>quarto render codes/2025/2025-09-30-ggplot2.qmd</code>。 - 工作流建议：修改内容 → <code>quarto preview</code> 验证导航/TOC/图片/链接 → <code>quarto render</code> → 提交包含 <code>docs/</code> 的更新。</p>
+<p>## 样式与扩展 - 主题入口：<code>styles.scss</code>。若需频道定制（如 Codes 列表页），通过页面 YAML 的 <code>include-in-header</code> 引用 <code>_includes/</code> 片段（参考 <code>codes/_metadata.yml</code> 与 <code>codes.qmd</code>）。 - 扩展管理：扩展文件存放于 <code>_extensions/</code>，不建议直接改动第三方扩展生成文件；如需调整，优先在页面/样式层做覆盖。</p>
+<p>## 测试清单 - 预览检查：导航、面包屑/页面导航、TOC、链接、图片、表格、代码高亮是否正常。 - 终端报错：<code>quarto preview</code> 控制台无明显报错与 404；移动/桌面端样式无错位。 - 生成一致性：<code>quarto render</code> 后 <code>docs/</code> 内容与预览一致（含 <code>search.json</code>、<code>sitemap.xml</code> 等）。</p>
+<p>## 提交与 Pull Request 规范 - Commit 信息：动词开头、简洁明确，建议前缀（<code>feat:</code>、<code>fix:</code>、<code>docs:</code>、<code>update:</code>）。 - 例：<code>update: 调整 navbar 配色并修复外链</code>。 - PR 要求：说明变更动机与范围、关联 issue、必要截图/预览说明；包含已渲染的 <code>docs/</code> 变更。 - 发布目录：禁止直接修改 <code>docs/</code> 源文件，所有改动需通过渲染生成。</p>
+<p>## 安全与配置提示 - 站点信息集中在 <code>_quarto.yml: website.*</code> 维护；外链尽量使用 <code>https</code>。 - 新增页面后，记得更新 <code>_quarto.yml: navbar</code> 菜单；新增 Codes 文章遵循年份分组与命名约定。 - 禁止提交密钥与敏感信息。</p>
+<p>## 常见操作示例 - 新增 Codes 文章： 1) 创建文件：<code>codes/2025/2025-10-21-my-topic.qmd</code> 2) 添加 YAML 头并撰写内容（日期、标题、分类等） 3) 预览：<code>quarto preview</code> 4) 渲染：<code>quarto render</code> 5) 提交：包含源文件与 <code>docs/</code> 渲染结果 - 新增顶层页面： 1) 在根目录添加如 <code>about-team.qmd</code> 2) 在 <code>_quarto.yml: navbar</code> 增加菜单项并指向该文件 3) 预览与渲染同上</p>
+<hr>
+<p>面向自动化代理（AGENTS）提示：本文件对整个仓库生效。进行任何改动时，务必遵循以上结构、命名与渲染流程；严禁直接编辑 <code>docs/</code>。如需对频道进行样式或布局调整，优先通过 <code>styles.scss</code>、页面 YAML 或 <code>_includes/</code> 片段实现，不要直接改动第三方扩展代码。</p>
 
 
-<blockquote class="blockquote">
-<p>ggplot2 让数据可视化像搭积木一样高效优雅。</p>
-</blockquote>
-<section id="核心理念" class="level2">
-<h2 class="anchored" data-anchor-id="核心理念">核心理念</h2>
-<p><code>ggplot2</code> 的设计基于 <strong>Grammar of Graphics</strong>。我们通过图层（layer）叠加的方式构建图形，流程通常包含：</p>
-<ol type="1">
-<li>准备数据框（<code>data</code>）。</li>
-<li>映射变量到美学属性（<code>aes</code>）。</li>
-<li>选择几何对象（<code>geom_*</code>）。</li>
-<li>根据需要添加统计转换、坐标系统和主题。</li>
-</ol>
-</section>
-<section id="快速示例" class="level2">
-<h2 class="anchored" data-anchor-id="快速示例">快速示例</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"发动机排量与高速油耗"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"排量 (L)"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"高速油耗 (mpg)"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"车型"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: span too small.  fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: pseudoinverse used at 5.6935</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: neighborhood radius 0.5065</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: There are other near singularities as well. 0.65044</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: pseudoinverse used at 4.008</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: neighborhood radius 0.708</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-: There are other near singularities as well. 0.25</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2025-09-30-ggplot2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="延伸阅读" class="level2">
-<h2 class="anchored" data-anchor-id="延伸阅读">延伸阅读</h2>
-<ul>
-<li><code>facet_*</code> 系列函数用于分面。</li>
-<li><code>scale_*</code> 控制颜色、形状与坐标轴。</li>
-<li><code>theme()</code> 修改图形细节。</li>
-</ul>
-<p>搭配 <code>dplyr</code> 管道与自定义主题，可以快速构建产品级别的图表模板。</p>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1113,7 +564,7 @@ window.addEventListener('DOMContentLoaded', () => {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-09-30-ggplot2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/AGENTS.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a><br></p>
 </div>
@@ -1123,5 +574,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
