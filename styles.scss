@@ -178,3 +178,49 @@ h4 {
 #toc-actions {
   font-size: 1.4em; /* 相对于父元素的1.1倍大小 */
 }
+
+/* --- 代码块左上角语言标签 --- */
+
+/* 让代码块容器成为相对定位，用来放标签 */
+div.sourceCode,
+pre.sourceCode {
+  position: relative;
+}
+
+/* 统一的标签外观 */
+code.sourceCode::before {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $theme-darkcoffee1;                     /* 文字颜色 */
+  background-color: rgba(255, 255, 255, 0.75);   /* 半透明底色 */
+  border-radius: 0.2rem;
+}
+
+/* 给代码正文腾出一点上边距，避免被标签压住 */
+pre.sourceCode code.sourceCode {
+  display: block;
+  padding-top: 0.9rem;
+}
+
+/* 不同语言的标签文字 */
+code.sourceCode.r::before {
+  content: "R";
+}
+
+code.sourceCode.bash::before {
+  content: "BASH";
+}
+
+code.sourceCode.powershell::before {
+  content: "POWERSHELL";
+}
+
+code.sourceCode.python::before {
+  content: "PYTHON";
+}

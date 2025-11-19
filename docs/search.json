@@ -179,7 +179,7 @@
     "href": "blog.html",
     "title": "Blogs",
     "section": "",
-    "text": "随笔、项目进展与工具记录会更新在这里。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n更新 npm 与 Codex CLI\n\n\n\n环境管理\n\n工具更新\n\n\n\n快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。\n\n\n\n\n\n2025-10-21\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
+    "text": "随笔、项目进展与工具记录会更新在这里。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n更新 npm 与 Codex CLI\n\n\n\n环境管理\n\n工具更新\n\n\n\n快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。\n\n\n\n\n\n2025-11-19\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "AGENTS.html",
@@ -207,7 +207,14 @@
     "href": "blog/2025/2025-10-21-update-tools.html",
     "title": "更新 npm 与 Codex CLI",
     "section": "",
-    "text": "本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。"
+    "text": "本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。 补充，如果windows 有 winget 可以在 powershell中安装。"
+  },
+  {
+    "objectID": "blog/2025/2025-10-21-update-tools.html#安装-npm-和-nodejs",
+    "href": "blog/2025/2025-10-21-update-tools.html#安装-npm-和-nodejs",
+    "title": "更新 npm 与 Codex CLI",
+    "section": "安装 npm 和 nodejs",
+    "text": "安装 npm 和 nodejs\n在windows中，如果想要下载 nodejs, npm库，可以输入以下命令：\nwinget install --id=OpenJS.NodeJS\n如果 powershell 不能打开 npm，您可以尝试将 PowerShell 的执行策略更改为允许脚本运行。在管理员权限下的 PowerShell 窗口中运行以下命令： Set-ExecutionPolicy RemoteSigned\n补充内容，更新与 2025-11-19 。\n\nSys.Date()\n\n[1] \"2025-11-19\""
   },
   {
     "objectID": "blog/2025/2025-10-21-update-tools.html#更新-npm",
