@@ -190,8 +190,8 @@ pre.sourceCode {
 /* 统一的标签外观 */
 code.sourceCode::before {
   position: absolute;
-  top: 0.35rem;
-  left: 0.75rem;
+  top: 0.15rem;
+  left: 0.15rem;
   padding: 0.1rem 0.4rem;
   font-size: 0.70rem;
   font-weight: 600;
@@ -205,7 +205,7 @@ code.sourceCode::before {
 /* 给代码正文腾出一点上边距，避免被标签压住 */
 pre.sourceCode code.sourceCode {
   display: block;
-  padding-top: 0.9rem;
+  padding-top: 2.1rem;
 }
 
 /* 不同语言的标签文字 */
