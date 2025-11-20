@@ -22,6 +22,7 @@ $font-size-root: 16px;
 
 /* 亮/暗主题变量 */
 :root {
+  color-scheme: light;
   --page-bg: #f9f7f3;
   --surface-bg: #ffffff;
   --muted-surface: #f2e8dc;
@@ -41,8 +42,8 @@ $font-size-root: 16px;
   --code-label-bg: rgba(255, 255, 255, 0.8);
   --label-text: #3e342f;
   --toc-bg: #f0e6da;
-  --navbar-bg: #a9cce3;
-  --navbar-text: #1b2a3c;
+  --navbar-bg: #b7d8ef;
+  --navbar-text: #14293f;
   --callout-note: #5c7c6e;
   --callout-tip: #3e6f54;
   --tag-bg: #f7efe6;
@@ -57,6 +58,7 @@ $font-size-root: 16px;
 }
 
 :root.theme-dark {
+  color-scheme: dark;
   --page-bg: #0f141b;
   --surface-bg: #161d27;
   --muted-surface: #1c2431;
@@ -76,8 +78,8 @@ $font-size-root: 16px;
   --code-label-bg: rgba(15, 23, 36, 0.95);
   --label-text: #e8eef7;
   --toc-bg: #1a222d;
-  --navbar-bg: #1c2632;
-  --navbar-text: #e6ebf1;
+  --navbar-bg: #0f1724;
+  --navbar-text: #e7eef6;
   --callout-note: #8fbfaf;
   --callout-tip: #87d1a2;
   --tag-bg: #202a36;
@@ -295,6 +297,16 @@ div.callout {
   background-color: var(--muted-surface);
 }
 
+div.callout .callout-header {
+  background-color: var(--muted-surface);
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+div.callout .callout-icon {
+  color: var(--accent-color);
+}
+
 div.callout-note {
   border-left-color: var(--callout-note);
 }
@@ -324,7 +336,7 @@ div.callout-tip {
   font-family: "PT Serif", serif;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--heading-color);
+  color: var(--accent-color);
 }
 
 .quarto-title .quarto-categories {
@@ -425,20 +437,23 @@ div.callout-tip {
 /* 顶部日/夜切换按钮 */
 .theme-toggle {
   position: fixed;
-  top: 74px;
-  left: 18px;
+  top: auto;
+  left: auto;
   z-index: 1100;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 5px 10px;
+  gap: 2px; 
+  padding: 14px 10px;
+  min-height: 0px; 
+  max-height: 10px;
   border-radius: 999px;
-  border: 1px solid var(--border-color);
+  border: 3px solid var(--border-color);
   background-color: var(--surface-bg);
   color: var(--text-primary);
   box-shadow: var(--shadow-soft);
   cursor: pointer;
   font-weight: 700;
+  font-size: 0.92rem;
   letter-spacing: 0.02em;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   backdrop-filter: blur(5px);
@@ -450,16 +465,53 @@ div.callout-tip {
 }
 
 .theme-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
   font-size: 0.9rem;
   line-height: 1;
 }
 
-@media (max-width: 768px) {
+.theme-toggle__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.05;
+}
+
+/* 移动端使用导航内的切换项，隐藏浮动按钮 */
+@media (max-width: 991.98px) {
   .theme-toggle {
-    top: 66px;
-    left: 12px;
-    padding: 5px 9px;
-    font-size: 0.88rem;
+    display: none;
+  }
+
+  .theme-toggle-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.35rem 0;
+    border: none;
+    background: none;
+    color: var(--navbar-text);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .theme-toggle-mobile:hover {
+    color: var(--link-hover);
+  }
+
+  .theme-toggle-mobile .theme-toggle__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .theme-toggle-mobile .theme-toggle__label {
+    line-height: 1.05;
   }
 }
 
@@ -468,16 +520,59 @@ footer,
 .footer,
 .page-footer,
 .quarto-page-footer {
-  background-color: var(--surface-bg);
-  color: var(--text-muted);
+  background-color: var(--surface-bg) !important;
+  color: var(--text-muted) !important;
   border-top: 1px solid var(--border-color);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-footer {
+  background-color: var(--surface-bg) !important;
+  color: var(--text-muted) !important;
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-footer a,
+.nav-footer .toc-action,
+.nav-footer .toc-action i {
+  color: var(--link-color) !important;
+  transition: color 0.2s ease;
+}
+
+.nav-footer a:hover,
+.nav-footer .toc-action:hover {
+  color: var(--link-hover) !important;
+}
+
+/* About 卡片链接使用全局超链接色，去除边框背景 */
+div.quarto-about-trestles .about-entity .about-link {
+  color: var(--link-color);
+  border: none;
+  background: none;
+  padding: 3px 3px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  border: 1px solid var(--bs-gray);
+  border-radius: 10px;
+}
+
+div.quarto-about-trestles .about-entity .about-link:hover {
+  color: var(--link-hover);
+}
+
+.nav-footer-left p,
+.nav-footer-right p,
+.nav-footer-center p,
+.nav-footer .toc-actions {
+  color: var(--text-muted) !important;
 }
 
 footer a,
 .footer a,
 .page-footer a,
 .quarto-page-footer a {
-  color: var(--link-color);
+  color: var(--link-color) !important;
 }
 
 footer a:hover,
@@ -485,4 +580,10 @@ footer a:hover,
 .page-footer a:hover,
 .quarto-page-footer a:hover {
   color: var(--link-hover);
+}
+
+.quarto-page-footer,
+.quarto-page-footer p,
+.quarto-page-footer small {
+  color: var(--text-muted) !important;
 }
