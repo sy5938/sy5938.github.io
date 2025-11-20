@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-804438b2675e458d6ff5d23af2479f71.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f8b4d9c171d3c77da8000cb5b572835f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-07f9968051e2f913c75d04eba946b0f2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,6 +68,31 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+(() => {
+  const storageKey = 'sywu-site-theme';
+  const root = document.documentElement;
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const prefersDark = window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const initial = getStored() || (prefersDark ? 'dark' : 'light');
+  if (initial === 'dark') {
+    root.classList.add('theme-dark');
+  } else {
+    root.classList.remove('theme-dark');
+  }
+  root.setAttribute('data-color-mode', initial);
+})();
+</script>
 
 
 </head>
@@ -145,6 +170,67 @@ ul.task-list li input[type="checkbox"] {
 
 
 </main> <!-- /main -->
+<div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
+  <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
+  <span class="theme-toggle__label">Day</span>
+</div>
+<script>
+(() => {
+  const storageKey = 'sywu-site-theme';
+  const root = document.documentElement;
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const applyTheme = (mode) => {
+    const isDark = mode === 'dark';
+    root.classList.toggle('theme-dark', isDark);
+    root.setAttribute('data-color-mode', mode);
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(isDark));
+      const icon = toggle.querySelector('.theme-toggle__icon');
+      const label = toggle.querySelector('.theme-toggle__label');
+      if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+      if (label) label.textContent = isDark ? 'Night' : 'Day';
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    const stored = getStored();
+    const prefersDark = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = stored || (prefersDark ? 'dark' : 'light');
+    applyTheme(initial);
+
+    toggle.addEventListener('click', () => {
+      const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+      applyTheme(next);
+      try {
+        localStorage.setItem(storageKey, next);
+      } catch (err) {
+        // ignore storage failures
+      }
+    });
+
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener('change', (event) => {
+        if (getStored()) return;
+        applyTheme(event.matches ? 'dark' : 'light');
+      });
+    }
+  });
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

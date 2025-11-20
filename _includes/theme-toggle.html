@@ -1,0 +1,61 @@
+<div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
+  <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
+  <span class="theme-toggle__label">Day</span>
+</div>
+<script>
+(() => {
+  const storageKey = 'sywu-site-theme';
+  const root = document.documentElement;
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const applyTheme = (mode) => {
+    const isDark = mode === 'dark';
+    root.classList.toggle('theme-dark', isDark);
+    root.setAttribute('data-color-mode', mode);
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(isDark));
+      const icon = toggle.querySelector('.theme-toggle__icon');
+      const label = toggle.querySelector('.theme-toggle__label');
+      if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+      if (label) label.textContent = isDark ? 'Night' : 'Day';
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    const stored = getStored();
+    const prefersDark = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = stored || (prefersDark ? 'dark' : 'light');
+    applyTheme(initial);
+
+    toggle.addEventListener('click', () => {
+      const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+      applyTheme(next);
+      try {
+        localStorage.setItem(storageKey, next);
+      } catch (err) {
+        // ignore storage failures
+      }
+    });
+
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener('change', (event) => {
+        if (getStored()) return;
+        applyTheme(event.matches ? 'dark' : 'light');
+      });
+    }
+  });
+})();
+</script>

@@ -1,54 +1,6 @@
 /*-- scss:defaults --*/
 
-/* 主题颜色定义 */
-$theme-black: #4c4c4c;
-$theme-white: white;
-$theme-grey: #e9ecef;
-
-$theme-purple3: #88398A;
-$theme-purple4: #9d709e;
-$theme-purple5: #562457;
-$theme-purplebrown1: #b996a4;
-$theme-purplebrown2: #7c6c84;
-$theme-darkcoffee1: #570e06;
-$theme-darkcoffee2: #78504b;
-$theme-darkcoffee3: #632e0d;
-$theme-milkcoffee0: #f2ece3;
-$theme-milkcoffee3: #cca79f;
-$theme-milkcoffee2: #b98f68;
-$theme-milkcoffee1: #9e736a;
-$theme-mocha1: #7f2606;
-$theme-mocha2: #9a4c28;
-$theme-mocha3: #b46939;
-$theme-orange: #f9af11;
-$theme-pumpkin: #d05808;
-$theme-darkgreen1: #355E3B;
-$theme-darkgreen2: #445740;
-
-/* 新增红色变量定义 */
-$red: #ff0000; /* 定义红色变量 */
-$blue: #0000ff;  /* 定义蓝色变量 */
-
-/* 主要背景和字体颜色 */
-$body-bg: $theme-white;
-$body-color: $theme-darkcoffee1; /* 正文字体颜色 */
-$headings-color: $theme-milkcoffee2; /* 标题字体颜色 */
-$link-color: $red; /* 默认超链接颜色 */
-
-/* 代码样式 */
-$code-color: $theme-mocha2; /* 代码文本颜色 */
-$code-bg: $theme-milkcoffee0; /* 代码背景颜色 */
-$code-block-bg-alpha: -0.8; /* 代码块背景的透明度 */
-$background-color: $theme-milkcoffee0; /* 页面背景色 */
-
-/* 导航栏 */
-$navbar-bg: $theme-darkgreen1; /* 导航栏背景颜色 */
-
-/* 提示框颜色 */
-$callout-color-note: $theme-darkgreen2; /* 提示框的注释颜色 */
-$callout-color-tip: $theme-darkgreen1; /* 提示框的小贴士颜色 */
-
-/* 字体设置 */
+/* 字体与基础设置 */
 @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code_Pro&display=swap');
@@ -58,169 +10,479 @@ $callout-color-tip: $theme-darkgreen1; /* 提示框的小贴士颜色 */
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
-$font-family-sans-serif: 'Lato', sans-serif; /* 无衬线字体 */
-$font-family-monospace: 'Source Code Pro', monospace; /* 等宽字体 */
+$font-family-sans-serif: 'Lato', sans-serif;
+$font-family-monospace: 'Source Code Pro', monospace;
 $font-poppins: 'Poppins', sans-serif; 
 $font-pt: 'PT Serif', sans-serif;
 $font-cabin: 'Cabin', sans-serif;
 $font-montserrat: 'Montserrat', sans-serif;
 $font-prompt: 'Prompt', sans-serif;
 
-$font-size-root: 16px; /* 根字体大小 */
+$font-size-root: 16px;
 
-/* 链接颜色 */
-$link-color: $red; /* 链接的颜色为红色 */
-$link-hover-color: $blue; /* 链接悬停时的颜色 */
+/* 亮/暗主题变量 */
+:root {
+  --page-bg: #f9f7f3;
+  --surface-bg: #ffffff;
+  --muted-surface: #f2e8dc;
+  --text-primary: #2f2622;
+  --text-muted: #62564f;
+  --heading-color: #4b3322;
+  --accent-color: #c85b2b;
+  --link-color: #0a66c2;
+  --link-hover: #2b7a4b;
+  --border-color: #d9cfc6;
+  --shadow-soft: 0 10px 35px rgba(33, 28, 22, 0.08);
+  --code-block-bg: #f3ede7;
+  --code-block-border: #e3d6c9;
+  --code-block-text: #6a3527;
+  --code-inline-bg: #f1e8de;
+  --code-inline-border: #e4d7c9;
+  --code-label-bg: rgba(255, 255, 255, 0.8);
+  --label-text: #3e342f;
+  --toc-bg: #f0e6da;
+  --navbar-bg: #a9cce3;
+  --navbar-text: #1b2a3c;
+  --callout-note: #5c7c6e;
+  --callout-tip: #3e6f54;
+  --tag-bg: #f7efe6;
+  --tag-border: rgba(120, 96, 78, 0.25);
+  --tag-text: #705542;
+  --hl-kw: #a6471c;
+  --hl-fu: #5a3b1f;
+  --hl-st: #9e3040;
+  --hl-co: #5d514a;
+  --hl-nu: #784523;
+  --muted-border: #e5dbcf;
+}
+
+:root.theme-dark {
+  --page-bg: #0f141b;
+  --surface-bg: #161d27;
+  --muted-surface: #1c2431;
+  --text-primary: #e6ebf1;
+  --text-muted: #a6b2c4;
+  --heading-color: #f7e2bf;
+  --accent-color: #f78c6c;
+  --link-color: #8cc7ff;
+  --link-hover: #7de8bc;
+  --border-color: #27313d;
+  --shadow-soft: 0 12px 45px rgba(0, 0, 0, 0.45);
+  --code-block-bg: #0f1724;
+  --code-block-border: #1f2c41;
+  --code-block-text: #d9e6f5;
+  --code-inline-bg: #162236;
+  --code-inline-border: #223147;
+  --code-label-bg: rgba(15, 23, 36, 0.95);
+  --label-text: #e8eef7;
+  --toc-bg: #1a222d;
+  --navbar-bg: #1c2632;
+  --navbar-text: #e6ebf1;
+  --callout-note: #8fbfaf;
+  --callout-tip: #87d1a2;
+  --tag-bg: #202a36;
+  --tag-border: rgba(255, 255, 255, 0.08);
+  --tag-text: #d7e2f1;
+  --hl-kw: #f6d186;
+  --hl-fu: #8bc8ff;
+  --hl-st: #9de8d0;
+  --hl-co: #9ba8c2;
+  --hl-nu: #f2b3b3;
+  --muted-border: #303b48;
+}
 
 /*-- scss:rules --*/
 
-/* 1. 正文行间距和字体颜色调整 */
 body {
-  line-height: 1.7; /* 正文的行间距设置为 1.7 */
-  color: #000000; /* 正文字体颜色为黑色 */
+  font-family: $font-family-sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* 2. 列表项的行间距调整 */
-ul, ol {
-  line-height: 1.9; /* 列表项的行间距设置为 1.7 */
-}
-
-/* 3. 超链接颜色和悬停颜色调整 */
 a {
-  color: #0066cc; /* 超链接的颜色设置为蓝色 */
-  text-decoration: none; /* 去除默认的下划线 */
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 a:hover {
-  color: #006400; /* 悬停时的颜色设置为深绿色 */
+  color: var(--link-hover);
+  text-decoration: underline;
 }
 
-/* 4. 代码样式高亮调整，背景为浅灰色，github 风格 */
+p,
+li {
+  color: var(--text-primary);
+}
+
+small,
+.text-muted {
+  color: var(--text-muted);
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-pt;
+  color: var(--heading-color);
+  margin-top: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+h1 { font-size: 35px; }
+h2 { font-size: 28px; }
+h3 { color: var(--accent-color); font-size: 22px; }
+h4 { color: var(--callout-tip); font-size: 18px; }
+
+header.navbar,
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  box-shadow: var(--shadow-soft);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-nav .nav-link {
+  color: var(--navbar-text) !important;
+  font-weight: 600;
+}
+
+.navbar .nav-link:hover {
+  color: var(--link-hover) !important;
+}
+
+.navbar .navbar-nav .nav-link.active {
+  color: var(--accent-color) !important;
+}
+
+main.container,
+.content,
+.page-content {
+  background-color: var(--surface-bg);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.2rem;
+}
+
+@media (max-width: 992px) {
+  main.container,
+  .content,
+  .page-content {
+    box-shadow: none;
+    padding: 1rem;
+  }
+}
+
+ul, ol {
+  line-height: 1.9;
+}
+
 code {
-  color: #d63384; /* 代码文本的颜色，使用 GitHub 风格的红色 */
-  background-color: #f5f5f5; /* 代码块的背景色为浅灰色 */
-  padding: 2px 4px; /* 增加内边距，使代码更加突出 */
-  border-radius: 3px; /* 为代码块添加圆角 */
-  font-family: Consolas, 'Courier New', monospace; /* 设置字体为等宽字体 */
+  color: var(--code-block-text);
+  background-color: var(--code-inline-bg);
+  border: 1px solid var(--code-inline-border);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
 }
 
-/* 标题样式 */
-h1 {
-  color: $theme-darkcoffee3;
-  font-family: $font-pt;
-  font-size: 35px;
+div.sourceCode,
+pre.sourceCode {
+  position: relative;
+  background-color: var(--code-block-bg);
+  border: 1px solid var(--code-block-border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
 }
 
-h2 {
-  color: $theme-darkcoffee3;
-  font-family: $font-pt;
-  font-size: 25px;
+pre.sourceCode {
+  padding: 0.6rem 0.8rem;
+  color: var(--code-block-text);
 }
 
-h3, h4 {
-  color: $theme-mocha1;
-  font-family: $font-pt;
+pre.sourceCode code.sourceCode {
+  display: block;
+  padding: 1.8rem 1rem 1rem 1rem;
+  overflow-x: auto;
 }
 
-h4 {
-  color: $theme-darkgreen1;
+code.sourceCode::before {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  padding: 0.12rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--label-text);
+  background-color: var(--code-label-bg);
+  border-radius: 0.4rem;
 }
 
-/* 代码块和推送样式 */
-.render-commit-push {
+code.sourceCode.r::before { content: "R"; }
+code.sourceCode.bash::before { content: "BASH"; }
+code.sourceCode.powershell::before { content: "POWERSHELL"; }
+code.sourceCode.python::before { content: "PYTHON"; }
+
+code span.kw { color: var(--hl-kw); font-weight: 700; }
+code span.dt { color: var(--hl-kw); }
+code span.dv, code span.bn { color: var(--hl-nu); }
+code span.st, code span.ss { color: var(--hl-st); }
+code span.co { color: var(--hl-co); font-style: italic; }
+code span.fu, code span.im { color: var(--hl-fu); font-weight: 600; }
+
+/* 反白/选中时的代码可读性 */
+pre.sourceCode ::selection {
+  background: rgba(125, 232, 188, 0.25);
+  color: var(--code-block-text);
+}
+
+#quarto-margin-sidebar {
+  font-size: 14px;
+}
+
+#TOC {
+  font-size: 14px;
+  background-color: var(--toc-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+#toc-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+#TOC .nav-link {
+  font-size: 1.1em;
+  color: var(--link-color);
+}
+
+#TOC .nav-link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+#toc-actions {
+  font-size: 1.2em;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent-color);
+  background-color: var(--muted-surface);
+  color: var(--text-muted);
+  padding: 0.8rem 1.1rem;
+  border-radius: 8px;
+}
+
+table {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  border: 1px solid var(--muted-border);
+}
+
+div.callout {
+  border-color: var(--border-color);
+  background-color: var(--muted-surface);
+}
+
+div.callout-note {
+  border-left-color: var(--callout-note);
+}
+
+div.callout-tip {
+  border-left-color: var(--callout-tip);
+}
+
+.render-commit-push,
+.pull {
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: #f8f8f8 5px center/3em no-repeat;
-  border-top: 1px solid #5B888C;
-  border-bottom: 1px solid #5B888C;
+  background: var(--muted-surface) 5px center/3em no-repeat;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   background-size: 2em;
   background-position: 0.5em 0.5em;
 }
 
 .pull {
-  padding: 0.5em 0.5em 0em 3em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: #f8f8f8 5px center/3em no-repeat;
-  border-top: 1px solid #E0A890;
-  border-bottom: 1px solid #E0A890;
   background-size: 1em;
   background-position: 1em 0.5em;
 }
-/* 设置侧边栏的字体大小 */
-#quarto-margin-sidebar {
-  font-size: 14px;  // 基础字体大小
+
+.quarto-title .title {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--heading-color);
 }
 
-/* TOC 整体字体大小 */
-#TOC {
-  font-size: 14px; /* 基础字体大小 */
+.quarto-title .quarto-categories {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
-/* TOC 标题 */
-#toc-title {
-  font-size: 1.2em; /* 相对于父元素的1.2倍大小 */
-  font-weight: bold;
+.quarto-title .quarto-category {
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--tag-border);
+  background-color: var(--tag-bg);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tag-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
-/* TOC 链接字体大小 */
-#TOC .nav-link {
-  font-size: 1.2em; /* 相对于父元素的1.1倍大小 */
-  color: #0066cc;    /* 链接颜色 */
+.quarto-title .quarto-category:hover {
+  background-color: var(--code-inline-bg);
+  border-color: var(--border-color);
 }
 
-/* TOC 链接悬停效果 */
-#TOC .nav-link:hover {
-  color: #004080;    /* 悬停时的颜色 */
+.quarto-title-meta {
+  margin-top: 2rem;
+  padding: 0;
+  border: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+
+.quarto-title-meta-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--heading-color);
+}
+
+.quarto-title-meta-contents {
+  margin: 0;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.quarto-listing-default .quarto-post {
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.quarto-listing-default .quarto-post:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.quarto-listing-default .listing-title {
+  margin-bottom: 1.2rem;
+}
+
+.quarto-listing-default .listing-title a {
+  color: var(--heading-color);
+  text-decoration: none;
+}
+
+.quarto-listing-default .listing-title a:hover {
+  color: var(--accent-color);
   text-decoration: underline;
 }
-#toc-actions {
-  font-size: 1.4em; /* 相对于父元素的1.1倍大小 */
+
+.quarto-listing-default .listing-categories {
+  margin-top: 0.6rem;
 }
 
-/* --- 代码块左上角语言标签 --- */
-
-/* 让代码块容器成为相对定位，用来放标签 */
-div.sourceCode,
-pre.sourceCode {
-  position: relative;
+#title-block-header .description {
+  margin: 0.85rem 0 2.4rem;
+  max-width: 760px;
+  line-height: 1.6;
 }
 
-/* 统一的标签外观 */
-code.sourceCode::before {
-  position: absolute;
-  top: 0.15rem;
-  left: 0.15rem;
-  padding: 0.1rem 0.4rem;
-  font-size: 0.70rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: $theme-darkcoffee1;                     /* 文字颜色 */
-  background-color: rgba(255, 255, 255, 0.75);   /* 半透明底色 */
-  border-radius: 0.2rem;
+#title-block-header .quarto-title-meta-contents .date,
+.quarto-listing-default .listing-date {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--heading-color);
 }
 
-/* 给代码正文腾出一点上边距，避免被标签压住 */
-pre.sourceCode code.sourceCode {
-  display: block;
-  padding-top: 2.1rem;
+/* 顶部日/夜切换按钮 */
+.theme-toggle {
+  position: fixed;
+  top: 74px;
+  left: 18px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(5px);
 }
 
-/* 不同语言的标签文字 */
-code.sourceCode.r::before {
-  content: "R";
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--link-hover);
 }
 
-code.sourceCode.bash::before {
-  content: "BASH";
+.theme-toggle__icon {
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
-code.sourceCode.powershell::before {
-  content: "POWERSHELL";
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 66px;
+    left: 12px;
+    padding: 5px 9px;
+    font-size: 0.88rem;
+  }
 }
 
-code.sourceCode.python::before {
-  content: "PYTHON";
+/* 页脚暗色适配 */
+footer,
+.footer,
+.page-footer,
+.quarto-page-footer {
+  background-color: var(--surface-bg);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
+
+footer a,
+.footer a,
+.page-footer a,
+.quarto-page-footer a {
+  color: var(--link-color);
+}
+
+footer a:hover,
+.footer a:hover,
+.page-footer a:hover,
+.quarto-page-footer a:hover {
+  color: var(--link-hover);
 }

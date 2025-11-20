@@ -38,6 +38,10 @@ website:
 format:
   html:
     theme: styles.scss
+    include-in-header: 
+      - _includes/theme-preload.html
+    include-after-body:
+      - _includes/theme-toggle.html
     highlight-style: github #dracula
     toc: true            # 启用目录
     toc-position: right  # 将目录放置在页面的右侧

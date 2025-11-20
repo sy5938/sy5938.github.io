@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-804438b2675e458d6ff5d23af2479f71.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f8b4d9c171d3c77da8000cb5b572835f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-07f9968051e2f913c75d04eba946b0f2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,6 +68,31 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+(() => {
+  const storageKey = 'sywu-site-theme';
+  const root = document.documentElement;
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const prefersDark = window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const initial = getStored() || (prefersDark ? 'dark' : 'light');
+  if (initial === 'dark') {
+    root.classList.add('theme-dark');
+  } else {
+    root.classList.remove('theme-dark');
+  }
+  root.setAttribute('data-color-mode', initial);
+})();
+</script>
 
 
 </head>
@@ -137,7 +162,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#博客封面图listing-预览规则" id="toc-博客封面图listing-预览规则" class="nav-link active" data-scroll-target="#博客封面图listing-预览规则">博客封面图（Listing 预览）规则</a></li>
+  <li><a href="#repository-guidelines" id="toc-repository-guidelines" class="nav-link active" data-scroll-target="#repository-guidelines">Repository Guidelines</a>
+  <ul class="collapse">
+  <li><a href="#项目结构与模块组织" id="toc-项目结构与模块组织" class="nav-link" data-scroll-target="#项目结构与模块组织">项目结构与模块组织</a></li>
+  <li><a href="#构建测试与本地开发" id="toc-构建测试与本地开发" class="nav-link" data-scroll-target="#构建测试与本地开发">构建、测试与本地开发</a></li>
+  <li><a href="#代码风格与命名" id="toc-代码风格与命名" class="nav-link" data-scroll-target="#代码风格与命名">代码风格与命名</a></li>
+  <li><a href="#测试指引" id="toc-测试指引" class="nav-link" data-scroll-target="#测试指引">测试指引</a></li>
+  <li><a href="#commit-与-pull-request" id="toc-commit-与-pull-request" class="nav-link" data-scroll-target="#commit-与-pull-request">Commit 与 Pull Request</a></li>
+  <li><a href="#安全与代理提示" id="toc-安全与代理提示" class="nav-link" data-scroll-target="#安全与代理提示">安全与代理提示</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/AGENTS.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -147,35 +180,129 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p># Repository Guidelines（针对新架构已更新）</p>
-<p>本仓库采用 Quarto 构建静态网站，导航与主题集中在 <code>_quarto.yml</code> 维护；内容按“顶层页面 + 专题目录”组织，输出统一至 <code>docs/</code> 并用于 GitHub Pages 发布。</p>
-<p>## 项目结构与模块组织 - 顶层页面：根目录放主要入口与频道页 <code>*.qmd</code>/<code>*.md</code>（如 <code>index.qmd</code>、<code>blog.qmd</code>、<code>codes.qmd</code>、<code>Chinese.qmd</code>、<code>publications.qmd</code>）。 - 站点配置：<code>_quarto.yml</code>（导航、主题、输出目录、页脚、仓库链接等）。 - 代码笔记频道：<code>codes/</code> 采用“年份/文章”分层：如 <code>codes/2025/2025-09-30-ggplot2.qmd</code>。 - 元数据继承：<code>codes/_metadata.yml</code> 统一注入样式与 TOC 等设置。 - 列表页：<code>codes.qmd</code> 使用 <code>listing</code> 自动聚合 <code>codes/</code> 下的内容（按 <code>date desc</code> 排序）。 - 资源与样式：<code>images/</code>（图片资产，按主题分子目录）、<code>styles.scss</code>（全站主题与变量）。 - HTML 片段：<code>_includes/</code>（如 <code>codes-styles.html</code>，由频道或页面按需 <code>include-in-header</code> 引用）。 - 扩展：<code>_extensions/</code>（Quarto 扩展，包含 <code>coatless/webr</code> 相关文件，勿直接改动其生成代码）。 - 生成产物：<code>docs/</code>（GitHub Pages 发布目录）—请勿手改，改源文件后统一渲染生成。 - 开发缓存：<code>.quarto/</code>（无需手动修改）。</p>
-<p>## 内容与命名约定 - YAML 头部：使用 2 空格缩进；键名统一小写-连字符（如 <code>page-footer</code>、<code>site-url</code>）。 - 页面命名：顶层页面用小写-连字符（如 <code>about-team.qmd</code>）。 - Codes 文章：采用 <code>YYYY-MM-DD-主题.qmd</code> 命名，置于按年份分组目录（如 <code>codes/2025/…</code>）。 - 资源引用：图片统一放入 <code>images/</code>，并按主题分子目录管理；页面内使用相对路径。 - 样式维护：尽量集中到 <code>styles.scss</code>，避免零散内联样式；优先复用已定义 Sass 变量与色板。</p>
-<section id="博客封面图listing-预览规则" class="level3">
-<h3 class="anchored" data-anchor-id="博客封面图listing-预览规则">博客封面图（Listing 预览）规则</h3>
+<section id="repository-guidelines" class="level1">
+<h1>Repository Guidelines</h1>
+<section id="项目结构与模块组织" class="level2">
+<h2 class="anchored" data-anchor-id="项目结构与模块组织">项目结构与模块组织</h2>
 <ul>
-<li>存放位置：建议与文章同目录（如 <code>blog/2025/</code>），文件名可使用 <code>cover.*</code>/<code>preview.*</code> 或与主题相关的英文短名。</li>
-<li>前置元数据：在文章 YAML 中添加：
-<ul>
-<li><code>image: &lt;文件名&gt;</code>（相对路径，指向同目录图片）</li>
-<li>可选：<code>image-alt: &lt;描述&gt;</code>（无障碍与 SEO）、<code>title-block-banner: true</code>（页内顶部展示横幅）</li>
-</ul></li>
-<li>推荐规格：横向 16:9 或 4:3，宽度 ≥ 1200px，体积 ≤ 300KB（优先使用 WebP/JPEG 压缩）。</li>
-<li>列表回退：未设置 <code>image</code> 时，列表不显示封面图；如需全局默认图，后续可在模板层做扩展。</li>
+<li>顶层页面：根目录 <code>*.qmd</code>/<code>*.md</code>（如 <code>index.qmd</code>、<code>codes.qmd</code>）。</li>
+<li>站点配置：<code>_quarto.yml</code>（导航、主题、输出目录）。</li>
+<li>代码笔记：<code>codes/</code> 按 年/文章（如 <code>codes/2025/2025-09-30-ggplot2.qmd</code>），继承 <code>codes/_metadata.yml</code>。</li>
+<li>列表页：<code>codes.qmd</code> 使用 <code>listing</code> 聚合 <code>codes/</code>（<code>date desc</code>）。</li>
+<li>资源/样式：<code>images/</code>、<code>styles.scss</code>；片段：<code>_includes/</code>。</li>
+<li>扩展：<code>_extensions/</code>（含 <code>coatless/webr</code>，勿直接改动）。</li>
+<li>生成产物：<code>docs/</code>（GitHub Pages），禁止手改；缓存：<code>.quarto/</code>。</li>
 </ul>
-<p>## 构建与本地开发 - <code>quarto check</code>：检查本地 Quarto 与依赖。 - <code>quarto preview</code>：本地预览并监听变更（默认 http://localhost:4200）。 - <code>quarto render</code>：渲染全站到 <code>_quarto.yml: output-dir</code>（本仓库为 <code>docs/</code>）。 - <code>quarto clean</code>：清理构建缓存与中间文件。 - 渲染单页示例：<code>quarto render codes/2025/2025-09-30-ggplot2.qmd</code>。 - 工作流建议：修改内容 → <code>quarto preview</code> 验证导航/TOC/图片/链接 → <code>quarto render</code> → 提交包含 <code>docs/</code> 的更新。</p>
-<p>## 样式与扩展 - 主题入口：<code>styles.scss</code>。若需频道定制（如 Codes 列表页），通过页面 YAML 的 <code>include-in-header</code> 引用 <code>_includes/</code> 片段（参考 <code>codes/_metadata.yml</code> 与 <code>codes.qmd</code>）。 - 扩展管理：扩展文件存放于 <code>_extensions/</code>，不建议直接改动第三方扩展生成文件；如需调整，优先在页面/样式层做覆盖。</p>
-<p>## 测试清单 - 预览检查：导航、面包屑/页面导航、TOC、链接、图片、表格、代码高亮是否正常。 - 终端报错：<code>quarto preview</code> 控制台无明显报错与 404；移动/桌面端样式无错位。 - 生成一致性：<code>quarto render</code> 后 <code>docs/</code> 内容与预览一致（含 <code>search.json</code>、<code>sitemap.xml</code> 等）。</p>
-<p>## 提交与 Pull Request 规范 - Commit 信息：动词开头、简洁明确，建议前缀（<code>feat:</code>、<code>fix:</code>、<code>docs:</code>、<code>update:</code>）。 - 例：<code>update: 调整 navbar 配色并修复外链</code>。 - PR 要求：说明变更动机与范围、关联 issue、必要截图/预览说明；包含已渲染的 <code>docs/</code> 变更。 - 发布目录：禁止直接修改 <code>docs/</code> 源文件，所有改动需通过渲染生成。</p>
-<p>## 安全与配置提示 - 站点信息集中在 <code>_quarto.yml: website.*</code> 维护；外链尽量使用 <code>https</code>。 - 新增页面后，记得更新 <code>_quarto.yml: navbar</code> 菜单；新增 Codes 文章遵循年份分组与命名约定。 - 禁止提交密钥与敏感信息。</p>
-<p>## 常见操作示例 - 新增 Codes 文章： 1) 创建文件：<code>codes/2025/2025-10-21-my-topic.qmd</code> 2) 添加 YAML 头并撰写内容（日期、标题、分类等） 3) 预览：<code>quarto preview</code> 4) 渲染：<code>quarto render</code> 5) 提交：包含源文件与 <code>docs/</code> 渲染结果 - 新增顶层页面： 1) 在根目录添加如 <code>about-team.qmd</code> 2) 在 <code>_quarto.yml: navbar</code> 增加菜单项并指向该文件 3) 预览与渲染同上</p>
-<hr>
-<p>面向自动化代理（AGENTS）提示：本文件对整个仓库生效。进行任何改动时，务必遵循以上结构、命名与渲染流程；严禁直接编辑 <code>docs/</code>。如需对频道进行样式或布局调整，优先通过 <code>styles.scss</code>、页面 YAML 或 <code>_includes/</code> 片段实现，不要直接改动第三方扩展代码。</p>
+</section>
+<section id="构建测试与本地开发" class="level2">
+<h2 class="anchored" data-anchor-id="构建测试与本地开发">构建、测试与本地开发</h2>
+<ul>
+<li><code>quarto check</code>：检查本地 Quarto 与依赖。</li>
+<li><code>quarto preview</code>：本地预览并监听（默认 http://localhost:4200）。</li>
+<li><code>quarto render</code>：渲染到 <code>_quarto.yml: output-dir</code>（本仓库为 <code>docs/</code>）。</li>
+<li><code>quarto clean</code>：清理构建缓存。</li>
+<li>单页渲染：<code>quarto render codes/2025/2025-09-30-ggplot2.qmd</code>。</li>
+</ul>
+</section>
+<section id="代码风格与命名" class="level2">
+<h2 class="anchored" data-anchor-id="代码风格与命名">代码风格与命名</h2>
+<ul>
+<li>YAML 使用 2 空格缩进；键名小写-连字符（如 <code>page-footer</code>）。</li>
+<li>顶层页面文件名小写-连字符；Codes 文章 <code>YYYY-MM-DD-主题.qmd</code>，按年份分目录。</li>
+<li>图片放 <code>images/</code> 子目录，页面内相对路径引用。</li>
+<li>样式集中在 <code>styles.scss</code>；频道定制通过页面 YAML <code>include-in-header</code> 引用 <code>_includes/</code>。</li>
+</ul>
+</section>
+<section id="测试指引" class="level2">
+<h2 class="anchored" data-anchor-id="测试指引">测试指引</h2>
+<ul>
+<li>预览检查：导航/面包屑、TOC、链接、图片、表格、代码高亮。</li>
+<li>终端无报错与 404；移动/桌面端样式无错位。</li>
+<li>渲染后 <code>docs/</code> 与预览一致（含 <code>search.json</code>、<code>sitemap.xml</code>）。</li>
+</ul>
+</section>
+<section id="commit-与-pull-request" class="level2">
+<h2 class="anchored" data-anchor-id="commit-与-pull-request">Commit 与 Pull Request</h2>
+<ul>
+<li>Commit 前缀：<code>feat:</code>、<code>fix:</code>、<code>docs:</code>、<code>update:</code>（例：<code>update: 调整 navbar 配色并修复外链</code>）。</li>
+<li>PR 需说明动机与范围、关联 issue、必要截图/预览说明，并包含渲染后的 <code>docs/</code> 变更。</li>
+<li>禁止直接编辑 <code>docs/</code>，一切改动经渲染生成。</li>
+</ul>
+</section>
+<section id="安全与代理提示" class="level2">
+<h2 class="anchored" data-anchor-id="安全与代理提示">安全与代理提示</h2>
+<ul>
+<li>站点信息集中维护于 <code>_quarto.yml: website.*</code>；外链尽量使用 <code>https</code>。</li>
+<li>新增页面后更新 <code>_quarto.yml: navbar</code>；遵循年份分组与命名约定。</li>
+<li>代理与贡献者：勿改动第三方扩展生成代码；优先通过 <code>styles.scss</code>、页面 YAML 或 <code>_includes/</code> 覆盖。</li>
+</ul>
 
 
 </section>
+</section>
 
 </main> <!-- /main -->
+<div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
+  <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
+  <span class="theme-toggle__label">Day</span>
+</div>
+<script>
+(() => {
+  const storageKey = 'sywu-site-theme';
+  const root = document.documentElement;
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const applyTheme = (mode) => {
+    const isDark = mode === 'dark';
+    root.classList.toggle('theme-dark', isDark);
+    root.setAttribute('data-color-mode', mode);
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(isDark));
+      const icon = toggle.querySelector('.theme-toggle__icon');
+      const label = toggle.querySelector('.theme-toggle__label');
+      if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+      if (label) label.textContent = isDark ? 'Night' : 'Day';
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    const stored = getStored();
+    const prefersDark = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = stored || (prefersDark ? 'dark' : 'light');
+    applyTheme(initial);
+
+    toggle.addEventListener('click', () => {
+      const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+      applyTheme(next);
+      try {
+        localStorage.setItem(storageKey, next);
+      } catch (err) {
+        // ignore storage failures
+      }
+    });
+
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener('change', (event) => {
+        if (getStored()) return;
+        applyTheme(event.matches ? 'dark' : 'light');
+      });
+    }
+  });
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

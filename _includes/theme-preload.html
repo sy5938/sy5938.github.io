@@ -1,0 +1,25 @@
+<script>
+(() => {
+  const storageKey = 'sywu-site-theme';
+  const root = document.documentElement;
+
+  const getStored = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const prefersDark = window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const initial = getStored() || (prefersDark ? 'dark' : 'light');
+  if (initial === 'dark') {
+    root.classList.add('theme-dark');
+  } else {
+    root.classList.remove('theme-dark');
+  }
+  root.setAttribute('data-color-mode', initial);
+})();
+</script>
