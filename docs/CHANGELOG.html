@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Siyu Wu">
-<meta name="dcterms.date" content="2025-11-19">
-<meta name="description" content="快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。">
 
-<title>更新 npm 与 Codex CLI – Siyu Wu</title>
+<title>changelog – Siyu Wu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,61 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../images/site-logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-072b1ee2bf0dcd3f49334944f3b96776.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/site-logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-072b1ee2bf0dcd3f49334944f3b96776.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +67,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script>
 (() => {
   const storageKey = 'sywu-site-theme';
@@ -131,392 +92,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   root.setAttribute('data-color-mode', initial);
 })();
 </script>
-<style>
-
-/* Codes listing page styles */
-
-.quarto-title {
-
-  max-width: 760px;
-
-  margin-bottom: 1.8rem;
-
-}
-
-
-
-.quarto-title .title {
-  font-family: "PT Serif", serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--heading-color);
-}
-
-
-.quarto-title .quarto-categories {
-
-  margin-top: 1.25rem;
-
-  display: flex;
-
-  gap: 0.6rem;
-
-  flex-wrap: wrap;
-
-}
-
-
-
-.quarto-title .quarto-category {
-
-  padding: 0.3rem 0.9rem;
-
-  border-radius: 999px;
-
-  border: 1px solid rgba(120, 96, 78, 0.28);
-
-  background-color: #f7efe6;
-
-  font-size: 0.78rem;
-
-  font-weight: 600;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-
-  color: #705542;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 0.35rem;
-
-}
-
-
-
-.quarto-title .quarto-category:hover {
-
-  background-color: #efe2d4;
-
-  border-color: rgba(120, 96, 78, 0.45);
-
-}
-
-
-
-.quarto-title-meta {
-
-  margin-top: 2rem;
-
-  padding: 0;
-
-  border: none;
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-  gap: 1.4rem;
-
-}
-
-
-
-.quarto-title-meta > div {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 0.35rem;
-
-  align-items: flex-start;
-
-}
-
-
-
-.quarto-title-meta-heading {
-
-  font-size: 0.78rem;
-
-  font-weight: 600;
-
-  letter-spacing: 0.22em;
-
-  text-transform: uppercase;
-
-  color: #8a7766;
-
-}
-
-
-
-.quarto-title-meta-contents {
-
-  margin: 0;
-
-  text-align: left;
-
-  font-size: 1rem;
-
-  font-weight: 600;
-
-  color: #3f2c1f;
-
-}
-
-
-
-.quarto-title + blockquote {
-
-  border-left: 4px solid rgba(118, 85, 59, 0.4);
-
-  color: #9a5132;
-
-  padding-left: 1rem;
-
-  margin-top: 1.5rem;
-
-  font-style: italic;
-
-}
-
-
-
-#title-block-header .description {
-
-  margin: 0.85rem 0 2.4rem;
-
-  max-width: 760px;
-
-  line-height: 1.6;
-
-}
-
-
-
-.quarto-listing-default .quarto-post {
-
-  gap: 1.5rem;
-
-  align-items: flex-start;
-
-  padding-bottom: 1.75rem;
-
-  border-bottom: 1px solid #dee2e6;
-
-}
-
-
-
-.quarto-listing-default .quarto-post:last-child {
-
-  padding-bottom: 0;
-
-  border-bottom: none;
-
-}
-
-
-
-.quarto-listing-default .quarto-post .metadata {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 0.35rem;
-
-  text-align: left;
-
-}
-
-
-
-.quarto-listing-default .quarto-post .metadata a {
-
-  display: inline-flex;
-
-  flex-direction: column;
-
-  gap: 0.3rem;
-
-}
-
-
-
-.quarto-listing-default .listing-title {
-
-  margin-bottom: 1.9rem;
-
-  
-
-}
-
-
-
-.quarto-listing-default .listing-categories {
-
-  margin-top: 0.6rem;
-
-
-
-}
-
-
-
-#title-block-header .quarto-title-meta-contents .date,
-
-.quarto-listing-default .listing-date {
-
-  font-size: 0.95rem;
-
-  font-weight: 500;
-
-}
-
-</style>
-
-<script>
-
-// 将 Codes 目录下文章的日期转为本地化显示 + 相对时间
-
-// 同时保留列表页的默认布局
-
-window.addEventListener('DOMContentLoaded', () => {
-
-  // 当前时间
-
-  const now = new Date();
-
-  const dayMs = 24 * 60 * 60 * 1000; // 一天的毫秒数
-
-  const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-  const todayStart = startOfDay(now);
-
-
-
-  // 日期格式化器（中文年月日）
-
-  const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
-
-    year: 'numeric',
-
-    month: 'long',
-
-    day: 'numeric'
-
-  });
-
-
-
-  // 相对时间格式化器（如“3天前”）
-
-  const relativeFormatter = new Intl.RelativeTimeFormat('zh-CN', {
-
-    numeric: 'auto'
-
-  });
-
-
-
-  // 根据天数差选择合适的单位（年/月/周/天）
-
-  const pickUnit = (diffDays) => {
-
-    const abs = Math.abs(diffDays);
-
-    if (abs >= 365) return { unit: 'year', value: Math.round(diffDays / 365) };
-
-    if (abs >= 30) return { unit: 'month', value: Math.round(diffDays / 30) };
-
-    if (abs >= 7) return { unit: 'week', value: Math.round(diffDays / 7) };
-
-    return { unit: 'day', value: diffDays };
-
-  };
-
-
-
-  // 解析日期字符串
-
-  const parseDate = (text) => {
-
-    const trimmed = (text || '').trim();
-
-    if (!trimmed) return null;
-
-    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return new Date(trimmed + 'T00:00:00');
-
-    const parsed = Date.parse(trimmed);
-
-    if (!Number.isNaN(parsed)) return new Date(parsed);
-
-    return null;
-
-  };
-
-
-
-  // 更新元素内容为本地化日期和相对时间
-
-  const updateElement = (el) => {
-
-    if (!el || el.dataset.dynamicDate === 'applied') return;
-
-    const original = el.textContent;
-
-    const date = parseDate(original);
-
-    if (!date) return;
-
-    const targetStart = startOfDay(date);
-
-    const diffDays = Math.round((targetStart.getTime() - todayStart.getTime()) / dayMs);
-
-    const { unit, value } = pickUnit(diffDays);
-
-    const relativeLabel = relativeFormatter.format(value, unit);
-
-    const formattedDate = dateFormatter.format(date);
-
-    el.innerHTML = `${formattedDate} · ${relativeLabel}`;
-
-    el.setAttribute('data-original-date', original);
-
-    el.dataset.dynamicDate = 'applied';
-
-  };
-
-
-
-  // 选择所有需要处理的日期元素并更新
-
-  document
-
-    .querySelectorAll('.quarto-title-meta-contents .date, .listing-date')
-
-    .forEach(updateElement);
-
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </head>
@@ -528,7 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Siyu Wu</span>
     </a>
   </div>
@@ -539,35 +114,35 @@ window.addEventListener('DOMContentLoaded', () => {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../team.html"> 
+    <a class="nav-link" href="./team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications.html"> 
+    <a class="nav-link" href="./publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../books.html"> 
+    <a class="nav-link" href="./books.html"> 
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../codes.html"> 
+    <a class="nav-link" href="./codes.html"> 
 <span class="menu-text">Codes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Chinese.html"> 
+    <a class="nav-link" href="./Chinese.html"> 
 <span class="menu-text">中文</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../CV.pdf"> 
+    <a class="nav-link" href="./CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -586,117 +161,25 @@ window.addEventListener('DOMContentLoaded', () => {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#安装-npm-和-nodejs" id="toc-安装-npm-和-nodejs" class="nav-link active" data-scroll-target="#安装-npm-和-nodejs">安装 npm 和 nodejs</a></li>
-  <li><a href="#更新-npm" id="toc-更新-npm" class="nav-link" data-scroll-target="#更新-npm">更新 npm</a></li>
-  <li><a href="#更新-codex-cli" id="toc-更新-codex-cli" class="nav-link" data-scroll-target="#更新-codex-cli">更新 Codex CLI</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2025-11-20</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/blog/2025/2025-10-21-update-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">更新 npm 与 Codex CLI</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">环境管理</div>
-    <div class="quarto-category">工具更新</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。
-  </div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Siyu Wu </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 19, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<p>本文作为 Blog 频道的首篇测试，记录两个常用更新命令：npm 与 Codex CLI。请按你的本机环境（Windows/macOS/Linux）与安装来源（npm/pipx/Homebrew/源码）选择对应方式。 补充，如果windows 有 winget 可以在 powershell中安装。</p>
-<p><img src="gpt5_screenshot.jpg" class="img-fluid"></p>
-<section id="安装-npm-和-nodejs" class="level2">
-<h2 class="anchored" data-anchor-id="安装-npm-和-nodejs">安装 npm 和 nodejs</h2>
-<p>在windows中，如果想要下载 nodejs, npm库，可以输入以下命令：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>winget install <span class="op">--</span>id<span class="op">=</span>OpenJS<span class="op">.</span><span class="fu">NodeJS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>如果 powershell 不能打开 npm，您可以尝试将 PowerShell 的执行策略更改为允许脚本运行。在管理员权限下的 PowerShell 窗口中运行以下命令： <code>Set-ExecutionPolicy RemoteSigned</code></p>
-<p>补充内容，更新与 2025-12-22 。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-12-22"</code></pre>
-</div>
-</div>
-</section>
-<section id="更新-npm" class="level2">
-<h2 class="anchored" data-anchor-id="更新-npm">更新 npm</h2>
-<p>查看版本：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">-v</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>升级 npm（全局）：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 通用（管理员或有权限的 Shell）</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> npm@latest</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 如遇权限问题（macOS/Linux，可选）</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> npm install <span class="at">-g</span> npm@latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>验证：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>提示：若使用 nvm 管理 Node.js，推荐通过 nvm 升级 Node（会附带合适版本的 npm）：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 例：安装/切换到最新 LTS（nvm 环境）</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install <span class="at">--lts</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> use <span class="at">--lts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="更新-codex-cli" class="level2">
-<h2 class="anchored" data-anchor-id="更新-codex-cli">更新 Codex CLI</h2>
-<p>Codex CLI 的安装来源可能不同，请对应选择。以下命令以常见命令名为示例；若你本地命令不同（如 <code>codex-cli</code>、<code>codex</code>），请据实替换。</p>
-<p>以windows为例：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> @openai/codex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看版本（命令名示例）</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>常见更新路径：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 npm 全局安装（以包名 codex-cli 为例）</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> codex-cli</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 pipx 安装（以可执行名 codex 为例）</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> upgrade codex</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 Homebrew 安装（macOS）</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> upgrade codex-cli</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 若本地是从源码克隆</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /path/to/codex-cli pull <span class="at">--rebase</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>验证：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>说明：Codex CLI 包名/命令名可能因发行渠道不同而有差异。若不确定，可用以下方式定位：</p>
+<section id="section" class="level1">
+<h1>2025-11-20</h1>
 <ul>
-<li>npm：<code>npm list -g --depth=0 | rg codex</code></li>
-<li>pipx：<code>pipx list | rg codex</code></li>
-<li>brew：<code>brew list | rg codex</code></li>
+<li>桌面端主题切换按钮固定在导航右上角（约 top/right 14px，高度 20px），移动端隐藏浮动按钮，导航折叠菜单尾部动态生成“主题”入口，与桌面按钮同步状态。</li>
+<li>主题切换脚本统一入口 <code>applyTheme</code>/<code>syncToggleState</code>，桌面与移动 nav 项共享图标、文案、<code>aria-pressed</code>，并侦听 <code>prefers-color-scheme</code> 自动跟随系统。</li>
+<li>微调导航栏明/暗主题底色与文字色，切换时对比更清晰，与主题色保持一致。</li>
+<li>首页 About 区域链接去除按钮样式（无边框/背景/额外内边距），使用站点全局的链接颜色与悬停色。</li>
+<li>主题入口位置说明：<code>_quarto.yml</code> 仅通过 <code>include-after-body: _includes/theme-toggle.html</code> 注入按钮/脚本，桌面按钮位置由 <code>styles.scss</code>（<code>position: fixed; top/right: 14px</code>）控制；移动端菜单项由 <code>_includes/theme-toggle.html</code> 内的 <code>createMobileToggle()</code> 在 <code>.navbar-nav</code> 末尾 <code>appendChild</code> 动态插入，而非写在导航 YAML。</li>
 </ul>
-</blockquote>
 
 
 </section>
@@ -1199,7 +682,7 @@ window.addEventListener('DOMContentLoaded', () => {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/blog/2025/2025-10-21-update-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a><br></p>
 </div>
@@ -1209,5 +692,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
