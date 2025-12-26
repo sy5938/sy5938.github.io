@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Siyu Wu">
+<meta name="dcterms.date" content="2025-12-26">
+<meta name="description" content="用相对密度、相对频度与相对优势度计算树木群落的重要值，并给出可复用的 R 函数与示例数据演示。">
 
-<title>Team – Siyu Wu</title>
+<title>森林树木群落重要值（IV）的计算 – Siyu Wu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +23,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/site-logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b4fee48521d41d2abaa19ff65e743303.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/site-logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b4fee48521d41d2abaa19ff65e743303.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,6 +105,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script>
 (() => {
   const storageKey = 'sywu-site-theme';
@@ -92,7 +131,422 @@ ul.task-list li input[type="checkbox"] {
   root.setAttribute('data-color-mode', initial);
 })();
 </script>
+<style>
 
+/* Codes listing page styles */
+
+.quarto-title {
+
+  max-width: 760px;
+
+  margin-bottom: 1.8rem;
+
+}
+
+
+
+.quarto-title .title {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--heading-color);
+}
+
+
+.quarto-title .quarto-categories {
+
+  margin-top: 1.25rem;
+
+  display: flex;
+
+  gap: 0.6rem;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.quarto-title .quarto-category {
+
+  padding: 0.3rem 0.9rem;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(120, 96, 78, 0.28);
+
+  background-color: #f7efe6;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: #705542;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+}
+
+
+
+.quarto-title .quarto-category:hover {
+
+  background-color: #efe2d4;
+
+  border-color: rgba(120, 96, 78, 0.45);
+
+}
+
+
+
+.quarto-title-meta {
+
+  margin-top: 2rem;
+
+  padding: 0;
+
+  border: none;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 1.4rem;
+
+}
+
+
+
+.quarto-title-meta > div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.35rem;
+
+  align-items: flex-start;
+
+}
+
+
+
+.quarto-title-meta-heading {
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color: #8a7766;
+
+}
+
+
+
+.quarto-title-meta-contents {
+
+  margin: 0;
+
+  text-align: left;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  color: #3f2c1f;
+
+}
+
+
+
+.quarto-title + blockquote {
+
+  border-left: 4px solid rgba(118, 85, 59, 0.4);
+
+  color: #9a5132;
+
+  padding-left: 1rem;
+
+  margin-top: 1.5rem;
+
+  font-style: italic;
+
+}
+
+
+
+#title-block-header .description {
+
+  margin: 0.85rem 0 2.4rem;
+
+  max-width: 760px;
+
+  line-height: 1.6;
+
+}
+
+
+
+.quarto-listing-default .quarto-post {
+
+  gap: 1.5rem;
+
+  align-items: flex-start;
+
+  padding-bottom: 1.75rem;
+
+  border-bottom: 1px solid #dee2e6;
+
+}
+
+
+
+.quarto-listing-default .quarto-post:last-child {
+
+  padding-bottom: 0;
+
+  border-bottom: none;
+
+}
+
+
+
+.quarto-listing-default .quarto-post .metadata {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.35rem;
+
+  text-align: left;
+
+}
+
+
+
+.quarto-listing-default .quarto-post .metadata a {
+
+  display: inline-flex;
+
+  flex-direction: column;
+
+  gap: 0.3rem;
+
+}
+
+
+
+.quarto-listing-default .listing-title {
+
+  margin-bottom: 1.9rem;
+
+  
+
+}
+
+
+
+.quarto-listing-default .listing-categories {
+
+  margin-top: 0.6rem;
+
+
+
+}
+
+
+
+#title-block-header .quarto-title-meta-contents .date,
+
+.quarto-listing-default .listing-date {
+
+  font-size: 0.95rem;
+
+  font-weight: 500;
+
+}
+
+</style>
+
+<script>
+
+// 将 Codes 目录下文章的日期转为本地化显示 + 相对时间
+
+// 同时保留列表页的默认布局
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  // 当前时间
+
+  const now = new Date();
+
+  const dayMs = 24 * 60 * 60 * 1000; // 一天的毫秒数
+
+  const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  const todayStart = startOfDay(now);
+
+
+
+  // 日期格式化器（中文年月日）
+
+  const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+
+    year: 'numeric',
+
+    month: 'long',
+
+    day: 'numeric'
+
+  });
+
+
+
+  // 相对时间格式化器（如“3天前”）
+
+  const relativeFormatter = new Intl.RelativeTimeFormat('zh-CN', {
+
+    numeric: 'auto'
+
+  });
+
+
+
+  // 根据天数差选择合适的单位（年/月/周/天）
+
+  const pickUnit = (diffDays) => {
+
+    const abs = Math.abs(diffDays);
+
+    if (abs >= 365) return { unit: 'year', value: Math.round(diffDays / 365) };
+
+    if (abs >= 30) return { unit: 'month', value: Math.round(diffDays / 30) };
+
+    if (abs >= 7) return { unit: 'week', value: Math.round(diffDays / 7) };
+
+    return { unit: 'day', value: diffDays };
+
+  };
+
+
+
+  // 解析日期字符串
+
+  const parseDate = (text) => {
+
+    const trimmed = (text || '').trim();
+
+    if (!trimmed) return null;
+
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return new Date(trimmed + 'T00:00:00');
+
+    const parsed = Date.parse(trimmed);
+
+    if (!Number.isNaN(parsed)) return new Date(parsed);
+
+    return null;
+
+  };
+
+
+
+  // 更新元素内容为本地化日期和相对时间
+
+  const updateElement = (el) => {
+
+    if (!el || el.dataset.dynamicDate === 'applied') return;
+
+    const original = el.textContent;
+
+    const date = parseDate(original);
+
+    if (!date) return;
+
+    const targetStart = startOfDay(date);
+
+    const diffDays = Math.round((targetStart.getTime() - todayStart.getTime()) / dayMs);
+
+    const { unit, value } = pickUnit(diffDays);
+
+    const relativeLabel = relativeFormatter.format(value, unit);
+
+    const formattedDate = dateFormatter.format(date);
+
+    el.innerHTML = `${formattedDate} · ${relativeLabel}`;
+
+    el.setAttribute('data-original-date', original);
+
+    el.dataset.dynamicDate = 'applied';
+
+  };
+
+
+
+  // 选择所有需要处理的日期元素并更新
+
+  document
+
+    .querySelectorAll('.quarto-title-meta-contents .date, .listing-date')
+
+    .forEach(updateElement);
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -103,7 +557,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Siyu Wu</span>
     </a>
   </div>
@@ -114,35 +568,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./team.html" aria-current="page"> 
+    <a class="nav-link" href="../../team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./books.html"> 
+    <a class="nav-link" href="../../books.html"> 
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./codes.html"> 
+    <a class="nav-link" href="../../codes.html"> 
 <span class="menu-text">Codes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Chinese.html"> 
+    <a class="nav-link" href="../../Chinese.html"> 
 <span class="menu-text">中文</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./CV.pdf"> 
+    <a class="nav-link" href="../../CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -161,23 +615,53 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#team-members" id="toc-team-members" class="nav-link active" data-scroll-target="#team-members">Team members</a></li>
+  <li><a href="#数据结构示例" id="toc-数据结构示例" class="nav-link active" data-scroll-target="#数据结构示例">数据结构（示例）</a></li>
+  <li><a href="#计算思路与公式" id="toc-计算思路与公式" class="nav-link" data-scroll-target="#计算思路与公式">计算思路与公式</a>
+  <ul class="collapse">
+  <li><a href="#密度与相对密度" id="toc-密度与相对密度" class="nav-link" data-scroll-target="#密度与相对密度">1）密度与相对密度</a></li>
+  <li><a href="#频度与相对频度" id="toc-频度与相对频度" class="nav-link" data-scroll-target="#频度与相对频度">2）频度与相对频度</a></li>
+  <li><a href="#优势度与相对优势度断面积" id="toc-优势度与相对优势度断面积" class="nav-link" data-scroll-target="#优势度与相对优势度断面积">3）优势度与相对优势度（断面积）</a></li>
+  <li><a href="#重要值iv" id="toc-重要值iv" class="nav-link" data-scroll-target="#重要值iv">4）重要值（IV）</a></li>
+  </ul></li>
+  <li><a href="#r-复现读取数据并计算-iv" id="toc-r-复现读取数据并计算-iv" class="nav-link" data-scroll-target="#r-复现读取数据并计算-iv">R 复现：读取数据并计算 IV</a></li>
+  <li><a href="#结果解读建议" id="toc-结果解读建议" class="nav-link" data-scroll-target="#结果解读建议">结果解读建议</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-12-26-tree-importance-value.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Team</h1>
-</div>
+<h1 class="title">森林树木群落重要值（IV）的计算</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Ecology</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    用相对密度、相对频度与相对优势度计算树木群落的重要值，并给出可复用的 R 函数与示例数据演示。
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Siyu Wu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 26, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -187,9 +671,170 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="team-members" class="level2">
-<h2 class="anchored" data-anchor-id="team-members">Team members</h2>
-<p>Siyu Wu（伍斯宇）</p>
+<p>在森林群落分析中，<strong>重要值（Importance Value, IV）</strong> 用来综合描述某个物种在群落中的“地位”。常见的做法是将三个相对指标进行合成：</p>
+<ul>
+<li>相对密度（Relative density）</li>
+<li>相对频度（Relative frequency）</li>
+<li>相对优势度（Relative dominance，常用胸高断面积表征）</li>
+</ul>
+<p>本笔记使用示例数据 <code>data/群落重要值_示例数据.xlsx</code>（每行一株树木记录），并调用已写好的函数 <code>function/calc_tree_importance_value.R</code> 计算每个物种的 IV。</p>
+<section id="数据结构示例" class="level2">
+<h2 class="anchored" data-anchor-id="数据结构示例">数据结构（示例）</h2>
+<p>示例数据包含 3 列：</p>
+<ul>
+<li><code>小样方</code>：样方/小样方编号（用于计算频度）</li>
+<li><code>sp.china</code>：物种名称（中文）</li>
+<li><code>dbh2011</code>：胸径 DBH（默认按 cm 处理；若你的 DBH 单位不同，可在函数参数中指定）</li>
+</ul>
+</section>
+<section id="计算思路与公式" class="level2">
+<h2 class="anchored" data-anchor-id="计算思路与公式">计算思路与公式</h2>
+<p>设群落中共有 <span class="math inline">\(S\)</span> 个物种，第 <span class="math inline">\(i\)</span> 个物种：</p>
+<ul>
+<li>个体数：<span class="math inline">\(n_i\)</span></li>
+<li>出现的样方数（频度计数）：<span class="math inline">\(f_i\)</span></li>
+<li>总断面积（优势度）：<span class="math inline">\(BA_i\)</span></li>
+</ul>
+<section id="密度与相对密度" class="level3">
+<h3 class="anchored" data-anchor-id="密度与相对密度">1）密度与相对密度</h3>
+<p><span class="math display">\[
+RD_i = \\frac{n_i}{\\sum_{k=1}^{S} n_k} \\times 100
+\]</span></p>
+</section>
+<section id="频度与相对频度" class="level3">
+<h3 class="anchored" data-anchor-id="频度与相对频度">2）频度与相对频度</h3>
+<p>频度这里按“物种在多少个样方中出现”来计数：</p>
+<p><span class="math display">\[
+RF_i = \\frac{f_i}{\\sum_{k=1}^{S} f_k} \\times 100
+\]</span></p>
+</section>
+<section id="优势度与相对优势度断面积" class="level3">
+<h3 class="anchored" data-anchor-id="优势度与相对优势度断面积">3）优势度与相对优势度（断面积）</h3>
+<p>单株树的胸高断面积（以 <span class="math inline">\(dbh\)</span> 的米制单位计算）：</p>
+<p><span class="math display">\[
+BA = \\pi \\left(\\frac{dbh}{2}\\right)^2
+\]</span></p>
+<p>物种优势度为其所有个体断面积之和 <span class="math inline">\(BA_i\)</span>，相对优势度：</p>
+<p><span class="math display">\[
+RDo_i = \\frac{BA_i}{\\sum_{k=1}^{S} BA_k} \\times 100
+\]</span></p>
+</section>
+<section id="重要值iv" class="level3">
+<h3 class="anchored" data-anchor-id="重要值iv">4）重要值（IV）</h3>
+<p>这里采用三个相对指标的算术平均：</p>
+<p><span class="math display">\[
+IV_i = \\frac{RD_i + RF_i + RDo_i}{3}
+\]</span></p>
+</section>
+</section>
+<section id="r-复现读取数据并计算-iv" class="level2">
+<h2 class="anchored" data-anchor-id="r-复现读取数据并计算-iv">R 复现：读取数据并计算 IV</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"function/calc_tree_importance_value.R"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/群落重要值_示例数据.xlsx"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 返回 4 列：相对密度、相对频度、相对优势度、重要值（物种名在行名）</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>iv <span class="ot">&lt;-</span> <span class="fu">calc_tree_importance_value</span>(df, <span class="at">dbh_unit =</span> <span class="st">"cm"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iv, <span class="dv">10</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">相对密度</th>
+<th style="text-align: right;">相对频度</th>
+<th style="text-align: right;">相对优势度</th>
+<th style="text-align: right;">重要值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">木荷</td>
+<td style="text-align: right;">13.02</td>
+<td style="text-align: right;">11.88</td>
+<td style="text-align: right;">66.25</td>
+<td style="text-align: right;">30.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">山矾</td>
+<td style="text-align: right;">18.93</td>
+<td style="text-align: right;">11.88</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">10.56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">栲树</td>
+<td style="text-align: right;">8.28</td>
+<td style="text-align: right;">10.89</td>
+<td style="text-align: right;">6.29</td>
+<td style="text-align: right;">8.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">窄基红褐柃</td>
+<td style="text-align: right;">12.43</td>
+<td style="text-align: right;">9.90</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">7.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">苦槠</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">4.95</td>
+<td style="text-align: right;">10.55</td>
+<td style="text-align: right;">6.35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">石栎</td>
+<td style="text-align: right;">1.78</td>
+<td style="text-align: right;">2.97</td>
+<td style="text-align: right;">10.69</td>
+<td style="text-align: right;">5.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">连蕊茶</td>
+<td style="text-align: right;">7.69</td>
+<td style="text-align: right;">5.94</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">4.66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">米槠</td>
+<td style="text-align: right;">5.92</td>
+<td style="text-align: right;">5.94</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">4.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">老鼠矢</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">5.94</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">3.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">格药柃</td>
+<td style="text-align: right;">5.92</td>
+<td style="text-align: right;">4.95</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">3.70</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="结果解读建议" class="level2">
+<h2 class="anchored" data-anchor-id="结果解读建议">结果解读建议</h2>
+<ul>
+<li><strong>相对密度</strong> 高：该物种个体数量多。</li>
+<li><strong>相对频度</strong> 高：该物种在样方中分布更广、更常见。</li>
+<li><strong>相对优势度</strong> 高：该物种更“粗壮/占空间”（断面积大）。</li>
+<li><strong>重要值</strong> 作为综合指标，可用于排序、优势种判定或与其他群落比较。</li>
+</ul>
 
 
 </section>
@@ -692,7 +1337,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sy5938/sy5938.github.io/edit/main/codes/2025/2025-12-26-tree-importance-value.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sy5938/sy5938.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a><br></p>
 </div>
@@ -702,4 +1347,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

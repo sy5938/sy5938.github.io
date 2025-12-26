@@ -72,7 +72,7 @@ $font-size-root: 16px;
   --shadow-soft: 0 12px 45px rgba(0, 0, 0, 0.45);
   --code-block-bg: #0f1724;
   --code-block-border: #1f2c41;
-  --code-block-text: #d9e6f5;
+  --code-block-text: #a17a05;
   --code-inline-bg: #162236;
   --code-inline-border: #223147;
   --code-label-bg: rgba(15, 23, 36, 0.95);
@@ -219,7 +219,6 @@ code.sourceCode::before {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--label-text);
-  background-color: var(--code-label-bg);
   border-radius: 0.4rem;
 }
 
