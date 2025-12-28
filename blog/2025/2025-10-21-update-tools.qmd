@@ -32,12 +32,6 @@ winget install --id=OpenJS.NodeJS
 ```
 
 
-补充内容，更新与 `r Sys.Date()` 。
-
-```{r}
-Sys.Date()
-```
-
 
 ## 更新 npm
 

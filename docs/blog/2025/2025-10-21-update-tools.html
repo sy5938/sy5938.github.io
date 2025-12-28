@@ -107,30 +107,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
+
 (() => {
+
   const storageKey = 'sywu-site-theme';
+
   const root = document.documentElement;
 
+
+
   const getStored = () => {
+
     try {
+
       return localStorage.getItem(storageKey);
+
     } catch (err) {
+
       return null;
+
     }
+
   };
 
+
+
   const prefersDark = window.matchMedia &&
+
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+
+
   const initial = getStored() || (prefersDark ? 'dark' : 'light');
+
   if (initial === 'dark') {
+
     root.classList.add('theme-dark');
+
   } else {
+
     root.classList.remove('theme-dark');
+
   }
+
   root.setAttribute('data-color-mode', initial);
+
 })();
+
 </script>
+
 <style>
 
 /* Codes listing page styles */
@@ -642,53 +667,46 @@ window.addEventListener('DOMContentLoaded', () => {
 <p>在windows中，如果想要下载 nodejs, npm库，可以输入以下命令：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>winget install <span class="op">--</span>id<span class="op">=</span>OpenJS<span class="op">.</span><span class="fu">NodeJS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>如果 powershell 不能打开 npm，您可以尝试将 PowerShell 的执行策略更改为允许脚本运行。在管理员权限下的 PowerShell 窗口中运行以下命令： <code>Set-ExecutionPolicy RemoteSigned</code></p>
-<p>补充内容，更新与 2025-12-26 。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-12-26"</code></pre>
-</div>
-</div>
 </section>
 <section id="更新-npm" class="level2">
 <h2 class="anchored" data-anchor-id="更新-npm">更新 npm</h2>
 <p>查看版本：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">-v</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">-v</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>升级 npm（全局）：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 通用（管理员或有权限的 Shell）</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> npm@latest</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 如遇权限问题（macOS/Linux，可选）</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> npm install <span class="at">-g</span> npm@latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 通用（管理员或有权限的 Shell）</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> npm@latest</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 如遇权限问题（macOS/Linux，可选）</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> npm install <span class="at">-g</span> npm@latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>验证：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>提示：若使用 nvm 管理 Node.js，推荐通过 nvm 升级 Node（会附带合适版本的 npm）：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 例：安装/切换到最新 LTS（nvm 环境）</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install <span class="at">--lts</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> use <span class="at">--lts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 例：安装/切换到最新 LTS（nvm 环境）</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install <span class="at">--lts</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> use <span class="at">--lts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="更新-codex-cli" class="level2">
 <h2 class="anchored" data-anchor-id="更新-codex-cli">更新 Codex CLI</h2>
 <p>Codex CLI 的安装来源可能不同，请对应选择。以下命令以常见命令名为示例；若你本地命令不同（如 <code>codex-cli</code>、<code>codex</code>），请据实替换。</p>
 <p>以windows为例：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> @openai/codex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看版本（命令名示例）</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> @openai/codex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看版本（命令名示例）</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>常见更新路径：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 npm 全局安装（以包名 codex-cli 为例）</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> codex-cli</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 pipx 安装（以可执行名 codex 为例）</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> upgrade codex</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 Homebrew 安装（macOS）</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> upgrade codex-cli</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 若本地是从源码克隆</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /path/to/codex-cli pull <span class="at">--rebase</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 npm 全局安装（以包名 codex-cli 为例）</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> codex-cli</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 pipx 安装（以可执行名 codex 为例）</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> upgrade codex</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 若通过 Homebrew 安装（macOS）</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> upgrade codex-cli</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 若本地是从源码克隆</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-C</span> /path/to/codex-cli pull <span class="at">--rebase</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>验证：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>说明：Codex CLI 包名/命令名可能因发行渠道不同而有差异。若不确定，可用以下方式定位：</p>
 <ul>
@@ -703,95 +721,185 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </main> <!-- /main -->
 <div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
+
   <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
+
   <span class="theme-toggle__label">Day</span>
+
 </div>
+
 <script>
+
 (() => {
+
   const storageKey = 'sywu-site-theme';
+
   const root = document.documentElement;
 
+
+
   const syncToggleState = (el, isDark) => {
+
     if (!el) return;
+
     el.setAttribute('aria-pressed', String(isDark));
+
     const icon = el.querySelector('.theme-toggle__icon');
+
     const label = el.querySelector('.theme-toggle__label');
+
     if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+
     if (label) label.textContent = isDark ? 'Night' : 'Day';
+
   };
+
+
 
   const getStored = () => {
+
     try {
+
       return localStorage.getItem(storageKey);
+
     } catch (err) {
+
       return null;
+
     }
+
   };
+
+
 
   const applyTheme = (mode) => {
+
     const isDark = mode === 'dark';
+
     root.classList.toggle('theme-dark', isDark);
+
     root.setAttribute('data-color-mode', mode);
+
     document
+
       .querySelectorAll('#theme-toggle, #theme-toggle-mobile')
+
       .forEach((el) => syncToggleState(el, isDark));
+
   };
+
+
 
   const createMobileToggle = () => {
+
     const nav = document.querySelector('.navbar .navbar-collapse .navbar-nav');
+
     const existing = document.getElementById('theme-toggle-mobile');
+
     if (existing) return existing;
+
     if (!nav) return null;
 
+
+
     const li = document.createElement('li');
+
     li.className = 'nav-item theme-toggle-mobile-item';
 
+
+
     const btn = document.createElement('button');
+
     btn.id = 'theme-toggle-mobile';
+
     btn.type = 'button';
+
     btn.className = 'nav-link theme-toggle-mobile';
+
     btn.setAttribute('aria-pressed', 'false');
+
     btn.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true">☀️</span><span class="theme-toggle__label">Day</span>';
 
+
+
     li.appendChild(btn);
+
     nav.appendChild(li);
+
     return btn;
+
   };
 
+
+
   document.addEventListener('DOMContentLoaded', () => {
+
     const desktopToggle = document.getElementById('theme-toggle');
+
     const mobileToggle = createMobileToggle();
+
     const toggles = [desktopToggle, mobileToggle].filter(Boolean);
+
     if (!toggles.length) return;
 
+
+
     const stored = getStored();
+
     const prefersDark = window.matchMedia &&
+
       window.matchMedia('(prefers-color-scheme: dark)').matches;
+
     const initial = stored || (prefersDark ? 'dark' : 'light');
+
     applyTheme(initial);
 
+
+
     const handleToggle = () => {
+
       const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+
       applyTheme(next);
+
       try {
+
         localStorage.setItem(storageKey, next);
+
       } catch (err) {
+
         // ignore storage failures
+
       }
+
     };
+
+
 
     toggles.forEach((el) => el.addEventListener('click', handleToggle));
 
+
+
     if (window.matchMedia) {
+
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
       mq.addEventListener('change', (event) => {
+
         if (getStored()) return;
+
         applyTheme(event.matches ? 'dark' : 'light');
+
       });
+
     }
+
   });
+
 })();
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
