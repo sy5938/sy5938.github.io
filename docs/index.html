@@ -67,55 +67,30 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <script>
-
 (() => {
-
   const storageKey = 'sywu-site-theme';
-
   const root = document.documentElement;
 
-
-
   const getStored = () => {
-
     try {
-
       return localStorage.getItem(storageKey);
-
     } catch (err) {
-
       return null;
-
     }
-
   };
 
-
-
   const prefersDark = window.matchMedia &&
-
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-
-
   const initial = getStored() || (prefersDark ? 'dark' : 'light');
-
   if (initial === 'dark') {
-
     root.classList.add('theme-dark');
-
   } else {
-
     root.classList.remove('theme-dark');
-
   }
-
   root.setAttribute('data-color-mode', initial);
-
 })();
-
 </script>
-
 
 
 </head>
@@ -307,185 +282,95 @@ ul.task-list li input[type="checkbox"] {
 
 </main> <!-- /main -->
 <div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
-
   <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
-
   <span class="theme-toggle__label">Day</span>
-
 </div>
-
 <script>
-
 (() => {
-
   const storageKey = 'sywu-site-theme';
-
   const root = document.documentElement;
 
-
-
   const syncToggleState = (el, isDark) => {
-
     if (!el) return;
-
     el.setAttribute('aria-pressed', String(isDark));
-
     const icon = el.querySelector('.theme-toggle__icon');
-
     const label = el.querySelector('.theme-toggle__label');
-
     if (icon) icon.textContent = isDark ? '🌙' : '☀️';
-
     if (label) label.textContent = isDark ? 'Night' : 'Day';
-
   };
-
-
 
   const getStored = () => {
-
     try {
-
       return localStorage.getItem(storageKey);
-
     } catch (err) {
-
       return null;
-
     }
-
   };
-
-
 
   const applyTheme = (mode) => {
-
     const isDark = mode === 'dark';
-
     root.classList.toggle('theme-dark', isDark);
-
     root.setAttribute('data-color-mode', mode);
-
     document
-
       .querySelectorAll('#theme-toggle, #theme-toggle-mobile')
-
       .forEach((el) => syncToggleState(el, isDark));
-
   };
-
-
 
   const createMobileToggle = () => {
-
     const nav = document.querySelector('.navbar .navbar-collapse .navbar-nav');
-
     const existing = document.getElementById('theme-toggle-mobile');
-
     if (existing) return existing;
-
     if (!nav) return null;
 
-
-
     const li = document.createElement('li');
-
     li.className = 'nav-item theme-toggle-mobile-item';
 
-
-
     const btn = document.createElement('button');
-
     btn.id = 'theme-toggle-mobile';
-
     btn.type = 'button';
-
     btn.className = 'nav-link theme-toggle-mobile';
-
     btn.setAttribute('aria-pressed', 'false');
-
     btn.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true">☀️</span><span class="theme-toggle__label">Day</span>';
 
-
-
     li.appendChild(btn);
-
     nav.appendChild(li);
-
     return btn;
-
   };
 
-
-
   document.addEventListener('DOMContentLoaded', () => {
-
     const desktopToggle = document.getElementById('theme-toggle');
-
     const mobileToggle = createMobileToggle();
-
     const toggles = [desktopToggle, mobileToggle].filter(Boolean);
-
     if (!toggles.length) return;
 
-
-
     const stored = getStored();
-
     const prefersDark = window.matchMedia &&
-
       window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     const initial = stored || (prefersDark ? 'dark' : 'light');
-
     applyTheme(initial);
 
-
-
     const handleToggle = () => {
-
       const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
-
       applyTheme(next);
-
       try {
-
         localStorage.setItem(storageKey, next);
-
       } catch (err) {
-
         // ignore storage failures
-
       }
-
     };
-
-
 
     toggles.forEach((el) => el.addEventListener('click', handleToggle));
 
-
-
     if (window.matchMedia) {
-
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
-
       mq.addEventListener('change', (event) => {
-
         if (getStored()) return;
-
         applyTheme(event.matches ? 'dark' : 'light');
-
       });
-
     }
-
   });
-
 })();
-
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
