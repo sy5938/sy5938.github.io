@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="记录开发与研究的笔记、日志与心得，按时间倒序自动展示。">
+<meta name="description" content="这里既有理性的思考，又有人文的一面。会记录工具使用技巧。也有随笔，结合书籍、科研生活感悟、所见所闻，以及人生哲理的思考。">
 
 <title>Blogs – Siyu Wu</title>
 <style>
@@ -100,55 +100,30 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <script>
-
 (() => {
-
   const storageKey = 'sywu-site-theme';
-
   const root = document.documentElement;
 
-
-
   const getStored = () => {
-
     try {
-
       return localStorage.getItem(storageKey);
-
     } catch (err) {
-
       return null;
-
     }
-
   };
 
-
-
   const prefersDark = window.matchMedia &&
-
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-
-
   const initial = getStored() || (prefersDark ? 'dark' : 'light');
-
   if (initial === 'dark') {
-
     root.classList.add('theme-dark');
-
   } else {
-
     root.classList.remove('theme-dark');
-
   }
-
   root.setAttribute('data-color-mode', initial);
-
 })();
-
 </script>
-
 <style>
 
 /* Codes listing page styles */
@@ -641,7 +616,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    记录开发与研究的笔记、日志与心得，按时间倒序自动展示。
+    这里既有理性的思考，又有人文的一面。会记录工具使用技巧。也有随笔，结合书籍、科研生活感悟、所见所闻，以及人生哲理的思考。
   </div>
 </div>
 
@@ -659,15 +634,18 @@ window.Quarto = {
 
 
 <blockquote class="blockquote">
-<p>随笔、项目进展与工具记录会更新在这里。</p>
+<p>友人赠谏：“善始者实繁，克终者盖寡”—— 《谏太宗十思疏》 魏征(唐)</p>
+<p>粗译：开头做得好的实在很多，能够坚持到底的大概很少。</p>
 </blockquote>
+<p><strong><em>坚持写！不放弃！日积月累，多读书，多看报，常思考。</em></strong></p>
+<hr>
 
 
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="JUU1JTkxJUE4JUU4JUFFJUIw" data-listing-date-sort="1766851200000" data-listing-file-modified-sort="1766933264581" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
+<div class="quarto-post image-right" data-index="0" data-categories="JUU1JTkxJUE4JUU4JUFFJUIw" data-listing-date-sort="1766851200000" data-listing-file-modified-sort="1766990583735" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
 <div class="thumbnail"><a href="./blog/2025/2025-12-28-about-love.html" class="no-external">
 
 <img loading="lazy" src="./blog/2025/sodagreen_lives.jpg" class="thumbnail-image">
@@ -697,7 +675,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="JUU3JThFJUFGJUU1JUEyJTgzJUU3JUFFJUExJUU3JTkwJTg2JTJDJUU1JUI3JUE1JUU1JTg1JUI3JUU2JTlCJUI0JUU2JTk2JUIw" data-listing-date-sort="1763481600000" data-listing-file-modified-sort="1766923170035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="132">
+<div class="quarto-post image-right" data-index="1" data-categories="JUU3JThFJUFGJUU1JUEyJTgzJUU3JUFFJUExJUU3JTkwJTg2JTJDJUU1JUI3JUE1JUU1JTg1JUI3JUU2JTlCJUI0JUU2JTk2JUIw" data-listing-date-sort="1763481600000" data-listing-file-modified-sort="1766990583718" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="132">
 <div class="thumbnail"><a href="./blog/2025/2025-10-21-update-tools.html" class="no-external">
 
 <img loading="lazy" src="./blog/2025/gpt5_screenshot.jpg" class="thumbnail-image" alt="Codex 与 npm 更新示意截图">
@@ -733,185 +711,95 @@ Siyu Wu
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
 <div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
-
   <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
-
   <span class="theme-toggle__label">Day</span>
-
 </div>
-
 <script>
-
 (() => {
-
   const storageKey = 'sywu-site-theme';
-
   const root = document.documentElement;
 
-
-
   const syncToggleState = (el, isDark) => {
-
     if (!el) return;
-
     el.setAttribute('aria-pressed', String(isDark));
-
     const icon = el.querySelector('.theme-toggle__icon');
-
     const label = el.querySelector('.theme-toggle__label');
-
     if (icon) icon.textContent = isDark ? '🌙' : '☀️';
-
     if (label) label.textContent = isDark ? 'Night' : 'Day';
-
   };
-
-
 
   const getStored = () => {
-
     try {
-
       return localStorage.getItem(storageKey);
-
     } catch (err) {
-
       return null;
-
     }
-
   };
-
-
 
   const applyTheme = (mode) => {
-
     const isDark = mode === 'dark';
-
     root.classList.toggle('theme-dark', isDark);
-
     root.setAttribute('data-color-mode', mode);
-
     document
-
       .querySelectorAll('#theme-toggle, #theme-toggle-mobile')
-
       .forEach((el) => syncToggleState(el, isDark));
-
   };
-
-
 
   const createMobileToggle = () => {
-
     const nav = document.querySelector('.navbar .navbar-collapse .navbar-nav');
-
     const existing = document.getElementById('theme-toggle-mobile');
-
     if (existing) return existing;
-
     if (!nav) return null;
 
-
-
     const li = document.createElement('li');
-
     li.className = 'nav-item theme-toggle-mobile-item';
 
-
-
     const btn = document.createElement('button');
-
     btn.id = 'theme-toggle-mobile';
-
     btn.type = 'button';
-
     btn.className = 'nav-link theme-toggle-mobile';
-
     btn.setAttribute('aria-pressed', 'false');
-
     btn.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true">☀️</span><span class="theme-toggle__label">Day</span>';
 
-
-
     li.appendChild(btn);
-
     nav.appendChild(li);
-
     return btn;
-
   };
 
-
-
   document.addEventListener('DOMContentLoaded', () => {
-
     const desktopToggle = document.getElementById('theme-toggle');
-
     const mobileToggle = createMobileToggle();
-
     const toggles = [desktopToggle, mobileToggle].filter(Boolean);
-
     if (!toggles.length) return;
 
-
-
     const stored = getStored();
-
     const prefersDark = window.matchMedia &&
-
       window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     const initial = stored || (prefersDark ? 'dark' : 'light');
-
     applyTheme(initial);
 
-
-
     const handleToggle = () => {
-
       const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
-
       applyTheme(next);
-
       try {
-
         localStorage.setItem(storageKey, next);
-
       } catch (err) {
-
         // ignore storage failures
-
       }
-
     };
-
-
 
     toggles.forEach((el) => el.addEventListener('click', handleToggle));
 
-
-
     if (window.matchMedia) {
-
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
-
       mq.addEventListener('change', (event) => {
-
         if (getStored()) return;
-
         applyTheme(event.matches ? 'dark' : 'light');
-
       });
-
     }
-
   });
-
 })();
-
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
