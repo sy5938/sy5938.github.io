@@ -100,30 +100,55 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <script>
+
 (() => {
+
   const storageKey = 'sywu-site-theme';
+
   const root = document.documentElement;
 
+
+
   const getStored = () => {
+
     try {
+
       return localStorage.getItem(storageKey);
+
     } catch (err) {
+
       return null;
+
     }
+
   };
 
+
+
   const prefersDark = window.matchMedia &&
+
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+
+
   const initial = getStored() || (prefersDark ? 'dark' : 'light');
+
   if (initial === 'dark') {
+
     root.classList.add('theme-dark');
+
   } else {
+
     root.classList.remove('theme-dark');
+
   }
+
   root.setAttribute('data-color-mode', initial);
+
 })();
+
 </script>
+
 <style>
 
 /* Codes listing page styles */
@@ -642,7 +667,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0Vjb2xvZ3k=" data-listing-date-sort="1766678400000" data-listing-file-modified-sort="1766717238112" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="89">
+<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0Vjb2xvZ3k=" data-listing-date-sort="1766678400000" data-listing-file-modified-sort="1766922965254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="89">
 <div class="thumbnail"><a href="./codes/2025/2025-12-26-tree-importance-value.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -674,7 +699,7 @@ Siyu Wu
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1760457600000" data-listing-file-modified-sort="1760515225141" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="404">
+<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1760457600000" data-listing-file-modified-sort="1761060334211" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="404">
 <div class="thumbnail"><a href="./codes/2025/2025-10-15-ggside-marginal.html" class="no-external">
 
 <p class="card-img-top"><img src="codes\2025\2025-10-15-ggside-marginal_files\figure-html\unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
@@ -706,7 +731,7 @@ Siyu Wu
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1759161600000" data-listing-file-modified-sort="1759226037661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="287">
+<div class="quarto-post image-right" data-index="2" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1759161600000" data-listing-file-modified-sort="1766922965253" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="287">
 <div class="thumbnail"><a href="./codes/2025/2025-09-30-ggplot2-facets.html" class="no-external">
 
 <p class="card-img-top"><img src="codes\2025\2025-09-30-ggplot2-facets_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
@@ -738,7 +763,7 @@ Siyu Wu
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1759161600000" data-listing-file-modified-sort="1759217480725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ1Zpc3VhbGl6YXRpb24=" data-listing-date-sort="1759161600000" data-listing-file-modified-sort="1766922965254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
 <div class="thumbnail"><a href="./codes/2025/2025-09-30-ggplot2.html" class="no-external">
 
 <p class="card-img-top"><img src="codes\2025\2025-09-30-ggplot2_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
@@ -770,7 +795,7 @@ Siyu Wu
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ0RhdGE=" data-listing-date-sort="1759075200000" data-listing-file-modified-sort="1759219603265" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
+<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ0RhdGE=" data-listing-date-sort="1759075200000" data-listing-file-modified-sort="1761059209685" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
 <div class="thumbnail"><a href="./codes/2025/2025-09-29-r-data-structures.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -806,95 +831,185 @@ Siyu Wu
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
 <div id="theme-toggle" class="theme-toggle" role="button" aria-pressed="false" aria-label="Switch theme">
+
   <span class="theme-toggle__icon" aria-hidden="true">☀️</span>
+
   <span class="theme-toggle__label">Day</span>
+
 </div>
+
 <script>
+
 (() => {
+
   const storageKey = 'sywu-site-theme';
+
   const root = document.documentElement;
 
+
+
   const syncToggleState = (el, isDark) => {
+
     if (!el) return;
+
     el.setAttribute('aria-pressed', String(isDark));
+
     const icon = el.querySelector('.theme-toggle__icon');
+
     const label = el.querySelector('.theme-toggle__label');
+
     if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+
     if (label) label.textContent = isDark ? 'Night' : 'Day';
+
   };
+
+
 
   const getStored = () => {
+
     try {
+
       return localStorage.getItem(storageKey);
+
     } catch (err) {
+
       return null;
+
     }
+
   };
+
+
 
   const applyTheme = (mode) => {
+
     const isDark = mode === 'dark';
+
     root.classList.toggle('theme-dark', isDark);
+
     root.setAttribute('data-color-mode', mode);
+
     document
+
       .querySelectorAll('#theme-toggle, #theme-toggle-mobile')
+
       .forEach((el) => syncToggleState(el, isDark));
+
   };
+
+
 
   const createMobileToggle = () => {
+
     const nav = document.querySelector('.navbar .navbar-collapse .navbar-nav');
+
     const existing = document.getElementById('theme-toggle-mobile');
+
     if (existing) return existing;
+
     if (!nav) return null;
 
+
+
     const li = document.createElement('li');
+
     li.className = 'nav-item theme-toggle-mobile-item';
 
+
+
     const btn = document.createElement('button');
+
     btn.id = 'theme-toggle-mobile';
+
     btn.type = 'button';
+
     btn.className = 'nav-link theme-toggle-mobile';
+
     btn.setAttribute('aria-pressed', 'false');
+
     btn.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true">☀️</span><span class="theme-toggle__label">Day</span>';
 
+
+
     li.appendChild(btn);
+
     nav.appendChild(li);
+
     return btn;
+
   };
 
+
+
   document.addEventListener('DOMContentLoaded', () => {
+
     const desktopToggle = document.getElementById('theme-toggle');
+
     const mobileToggle = createMobileToggle();
+
     const toggles = [desktopToggle, mobileToggle].filter(Boolean);
+
     if (!toggles.length) return;
 
+
+
     const stored = getStored();
+
     const prefersDark = window.matchMedia &&
+
       window.matchMedia('(prefers-color-scheme: dark)').matches;
+
     const initial = stored || (prefersDark ? 'dark' : 'light');
+
     applyTheme(initial);
 
+
+
     const handleToggle = () => {
+
       const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+
       applyTheme(next);
+
       try {
+
         localStorage.setItem(storageKey, next);
+
       } catch (err) {
+
         // ignore storage failures
+
       }
+
     };
+
+
 
     toggles.forEach((el) => el.addEventListener('click', handleToggle));
 
+
+
     if (window.matchMedia) {
+
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
       mq.addEventListener('change', (event) => {
+
         if (getStored()) return;
+
         applyTheme(event.matches ? 'dark' : 'light');
+
       });
+
     }
+
   });
+
 })();
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
