@@ -231,9 +231,9 @@
     "text": "站点信息集中维护于 _quarto.yml: website.*；外链尽量使用 https。\n新增页面后更新 _quarto.yml: navbar；遵循年份分组与命名约定。\n代理与贡献者：勿改动第三方扩展生成代码；优先通过 styles.scss、页面 YAML 或 _includes/ 覆盖。"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "关于我",
+    "objectID": "blog/2025/2025-12-28-about-love.html",
+    "href": "blog/2025/2025-12-28-about-love.html",
+    "title": "为什么开始写周记？浅谈对《爱》的见解",
     "section": "",
     "text": "我是伍斯宇"
   },
