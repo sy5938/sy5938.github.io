@@ -7,4 +7,4 @@ format:
     toc: true
     toc-location: right
     smooth-scroll: true
-
+engine: knitr
