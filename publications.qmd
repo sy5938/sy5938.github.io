@@ -6,11 +6,29 @@ editor: visual
 ::: callout-note
 ## Links
 
-> -   **Google Scholar**:
-> -   **ORCID**:
+> -   **Google Scholar**: https://scholar.google.com.hk/citations?hl=zh-CN&user=68tpwXsAAAAJ
+
+> -   **ORCID**:  https://orcid.org/0009-0007-7566-568X
+
 > -   **ResearchGate:**
 :::
 
-## 期刊论文
+## 📄 Peer-reviewed publications
+
+- [Empowering tree-scale monitoring over large areas: Individual tree delineation from high-resolution imagery](https://doi.org/10.1016/j.isprsjprs.2025.12.022), X. Liang, Y. Wang, J. Pan, J. Heiskanen, N. Wang, **S. Wu**, I. Vuorinne, J. Tian, J. Troles, M. Cloutier, S. Puliti, A. Chandrasekaran, J. Ball, X. Mi, G. Shen, K. Song, G. Shao, R. Astrup, Y. Wang, P. Pellikka, M. Wang, and J. Gong, **ISPRS Journal of Photogrammetry and Remote Sensing 2026** [[pdf]](pdf/publications/Liang_et_al._2026Empowering.pdf)
+
+- [QuadrantSearch: A Novel Method for Registering UAV and Backpack LiDAR Point Clouds in Forested Areas](https://doi.org/10.1109/TGRS.2024.3518056), G. Li, B. Wu, L. Yang, Z. Pan, L. Dong, **S. Wu**, G. Shen, J. Zhang, T. Xiao, L. Zhang, J. Wu, and B. Yu, **IEEE Transactions on Geoscience and Remote Sensing 2025** [[pdf]](pdf/publications/Li_et_al._2025_QuadrantSearch.pdf)
+
+- [Bias in Discontinuous Elevational Transects for Tracking Species Range Shifts](https://doi.org/10.3390/plants14020283), S. Li, J. Yao, Y. Lin, **S. Wu**, Z. Yang, C. Jin, Y. Zhang, Z. Wang, J. Liu, G. Shen, et al., **Plants 2025**[[pdf]](pdf/publications/plants-14-00283.pdf)
+
+
+
+- [Canopy height and stand density mask nature's inherent synergy between forest structural complexity and diversity](https://doi.org/10.1093/jpe/rtaf152), C. Jin, J. Yang, **S. Wu**, Q. Yu, X. Wang, and G. Shen, **Journal of Plant Ecology 2025** [[pdf]](pdf/publications/rtaf152.pdf)
+
+
+
+
+
+
 
 ## 科研项目

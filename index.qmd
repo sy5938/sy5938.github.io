@@ -22,12 +22,9 @@ about:
     - icon: fingerprint
       text: ORCID
       href: https://orcid.org/my-orcid?orcid=0009-0007-7566-568X
-    - icon: solid user
-      text: 工作主页
-      href: https://sy5938.github.io/
-    - icon: 📝
-      text: CV
-      href: CV.pdf
+    - icon: book
+      text: Google Scholar
+      href: https://scholar.google.com.hk/citations?hl=zh-CN&user=68tpwXsAAAAJ
 ---
 
 ::: {#hero-heading}

@@ -18,14 +18,14 @@
     "href": "publications.html",
     "title": "Publications",
     "section": "",
-    "text": "Links\n\n\n\n\n\nGoogle Scholar:\nORCID:\nResearchGate:"
+    "text": "Links\n\n\n\n\n\nGoogle Scholar:\nORCID: https://orcid.org/0009-0007-7566-568X\nResearchGate:"
   },
   {
     "objectID": "publications.html#期刊论文",
     "href": "publications.html#期刊论文",
     "title": "Publications",
     "section": "期刊论文",
-    "text": "期刊论文"
+    "text": "期刊论文\n\nEmpowering tree-scale monitoring over large areas: Individual tree delineation from high-resolution imagery, X. Liang, Y. Wang, J. Pan, J. Heiskanen, N. Wang, S. Wu, I. Vuorinne, J. Tian, J. Troles, M. Cloutier, S. Puliti, A. Chandrasekaran, J. Ball, X. Mi, G. Shen, K. Song, G. Shao, R. Astrup, Y. Wang, P. Pellikka, M. Wang, and J. Gong, ISPRS Journal of Photogrammetry and Remote Sensing 2026 [PDF]\nQuadrantSearch: A Novel Method for Registering UAV and Backpack LiDAR Point Clouds in Forested Areas, G. Li, B. Wu, L. Yang, Z. Pan, L. Dong, S. Wu, G. Shen, J. Zhang, T. Xiao, L. Zhang, J. Wu, and B. Yu, IEEE Transactions on Geoscience and Remote Sensing 2025 [pdf]\nBias in Discontinuous Elevational Transects for Tracking Species Range Shifts, S. Li, J. Yao, Y. Lin, S. Wu, Z. Yang, C. Jin, Y. Zhang, Z. Wang, J. Liu, G. Shen, et al., Plants 2025[pdf]\nCanopy height and stand density mask nature’s inherent synergy between forest structural complexity and diversity, C. Jin, J. Yang, S. Wu, Q. Yu, X. Wang, and G. Shen, Journal of Plant Ecology 2025 [pdf]"
   },
   {
     "objectID": "publications.html#科研项目",
@@ -158,7 +158,14 @@
     "href": "blog.html",
     "title": "Blogs",
     "section": "",
-    "text": "友人赠谏：“善始者实繁，克终者盖寡”—— 《谏太宗十思疏》 魏征(唐)\n粗译：开头做得好的实在很多，能够坚持到底的大概很少。\n\n坚持写！不放弃！日积月累，多读书，多看报，常思考。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2026年第一个周末是娱乐和开心的\n\n\n\n周记\n\n\n\n2026年第一个周末，学，玩，吃\n\n\n\n\n\n2026-01-11\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n毕业季的迷茫及自我探索\n\n\n\n周记\n\n\n\n2026年，学业生涯已经走向尾声了。\n\n\n\n\n\n2026-01-04\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n为什么开始写周记？浅谈对《爱》的见解\n\n\n\n周记\n\n\n\n2025年最后一个周末,记录下我此刻的思考和状态。\n\n\n\n\n\n2025-12-28\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n更新 npm 与 Codex CLI\n\n\n\n环境管理\n\n工具更新\n\n\n\n快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。\n\n\n\n\n\n2025-11-19\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
+    "text": "友人赠谏：“善始者实繁，克终者盖寡”—— 《谏太宗十思疏》 魏征(唐)\n粗译：开头做得好的实在很多，能够坚持到底的大概很少。\n\n坚持写！不放弃！日积月累，多读书，多看报，常思考。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n关于记录的力量，时间会给你答案：生态学家万师强讲述学术人生\n\n\n\n周记\n\n观后感\n\n\n\n万师强老师分享多年做学术经验。\n\n\n\n\n\n2026-01-22\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n2026年第一个周末是娱乐和开心的\n\n\n\n周记\n\n\n\n2026年第一个周末，学，玩，吃\n\n\n\n\n\n2026-01-11\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n毕业季的迷茫及自我探索\n\n\n\n周记\n\n\n\n2026年，学业生涯已经走向尾声了。\n\n\n\n\n\n2026-01-04\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n为什么开始写周记？浅谈对《爱》的见解\n\n\n\n周记\n\n\n\n2025年最后一个周末,记录下我此刻的思考和状态。\n\n\n\n\n\n2025-12-28\n\n\n伍斯宇\n\n\n\n\n\n\n\n\n\n\n\n\n更新 npm 与 Codex CLI\n\n\n\n环境管理\n\n工具更新\n\n\n\n快速记录：升级 npm 到最新版本，并根据安装方式升级 Codex CLI。\n\n\n\n\n\n2025-11-19\n\n\nSiyu Wu\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/2026/2026-01-11-Social_class.html",
+    "href": "blog/2026/2026-01-11-Social_class.html",
+    "title": "2026年第一个周末是娱乐和开心的",
+    "section": "",
+    "text": "这周娱乐有点过头啦！没有什么特别的感想呢，感觉能心态健康的活着，娱乐娱乐和锻炼锻炼身体，就已经很幸福了！！\n\n文章终于定稿了要投了，准备给合作者发邮件去啦，希望投稿顺利！\n\n\n摆烂玩虽然堕落，但也很有用\n这一周假期，玩了好多呀，主要重温了一下十五年前的主要活动————去上网，玩的好开心啊哈哈哈。\n对，没错，去网咖上网啦。约了几个平时关系比较好的，也一起打篮球的师弟（ZK，柴教练）去网吧上网打 LOL。你还别说，现在的网咖环境还真是挺好！ 玩到后半夜，我都恍惚我明天还要去上课，仿佛回到中学偷偷跑出去上网的那种氛围感。\n\n\n\n网咖的电脑，真的环境挺好的。\n\n\n还跟郑JQ他们玩了手机版的鹅鸭杀，你别说还挺上头的。赛后复盘，一直在后悔为什么自己在开麦的时候没表现的更好一点，像回味跟别人吵架一样。\n这游戏还挺锻炼口才的，你要劝说其他人跟着你投票，我常常失败。后面找到一个技巧，你就输出一两个简单的观点，再给出你的证据就好了！ 说多了之后，有信息差的人往往不会被你 persuade ！因为这个点输了好几把好人局，急的直跺脚，不知道怎么说才能让队友跟着你归票！\n过年回去团建，又多了一个游戏可以玩，不错！\n\n\n\n鹅鸭杀好玩\n\n\n马上要过年回家了！好开心的，回家看看父母，跟朋友聚聚会啦。人的一生没有多少个1年了，本周是关键词是：玩和期待。"
   },
   {
     "objectID": "blog/2025/2025-12-28-about-love.html",
@@ -231,9 +238,9 @@
     "text": "站点信息集中维护于 _quarto.yml: website.*；外链尽量使用 https。\n新增页面后更新 _quarto.yml: navbar；遵循年份分组与命名约定。\n代理与贡献者：勿改动第三方扩展生成代码；优先通过 styles.scss、页面 YAML 或 _includes/ 覆盖。"
   },
   {
-    "objectID": "blog/2025/2025-12-28-about-love.html",
-    "href": "blog/2025/2025-12-28-about-love.html",
-    "title": "为什么开始写周记？浅谈对《爱》的见解",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "关于我",
     "section": "",
     "text": "我是伍斯宇"
   },
@@ -280,11 +287,18 @@
     "text": "Figure 1: 摄于 2025 年 12 月 31 日跨年夜晚上，华东师范大学闵行校区\n\n\n\n有个投篮一镜到底，祝各位来年好运连连！！ 连续进球小视频链接\n\n自我价值\n这周开了 2025 年的最后一次组会，聊了组里每个人最近一个月的进展，具体细节已经记不大清了。只记得，沈老师多次谈及我未来工作的选择，也从各个角度试探性地问我：考虑得怎么样？打算继续做研究吗？如果做的话，出国的事情还去吗？（能感觉到他的真诚）\n关于到底继续不继续做研究，我其实已经打退堂鼓了。我的导师人很 nice，也很尊重我的想法；当然我做事也比较认真，他交代的任务我基本都会 120% 去完成。所以我们这 5 年来合作得很愉快。\n一方面，我们两个在气质上也比较合得来，他说一句话我就能 get 到他的意思。他技术很强，我既仰慕技术强者，也很喜欢钻研技术，所以我们也能一起聊、一起分享技术方面的东西。他没有什么架子，日常交流就像大我几届的师兄——只是实力很强，是实打实的博士生导师水平的“大师兄”。（且慢……我好像说了一堆跟着他继续做研究的好处，而不是考虑quit的理由…捂脸）\n会上讨论师妹代码的时候，我们来回拉扯了几句，就关于我是否做研究有了以下对话：\n\n沈老师：“你这段代码里，为什么做了 0–1 归一化，后面又做了 Z-score 标准化？”\n师妹：“emmm 不知道。”\n沈老师：“Z-score 是什么来着？这里求几何平均数的代码对吗？”\n师妹：“emmm… emmm 应该对的吧。”\n我出来解围道：“Z-score 是均值为 0、标准差为 1 的标准化。前后重复写了，有些冗余，但不影响结果。”\n又补充道：“求几何平均数的代码是对的，做 exp() 后再除以样本数也是对的，因为取 log 之后幂就乘下来了……”\n沈老师趁机又劝我一句：“你看，你研究功底已经这么深了，不继续做研究可惜了。”\n\n后面又帮其他人答疑了下，他们对计数数据分布族的选择之类存在误区，错把解释变量中存在计数数据也去定义分布族了…(感觉我在各种分析工具，统计技术方面确实也花时间下了一些功夫了，不继续做确实也蛮可惜的。)\n能感觉到沈老师想要我继续把研究做下去。再次感谢导师的认可，可是现在要走学术求真的路，门槛太高了……感觉坚持不下去了。\n如果想回海南的高校，最低要求：\n\n3 篇《Ecology Letters》《Global Change Biology》……\n或 2 篇顶刊 + 1 个青年基金\n\n这还是今年的要求，再过 3 年不知道要起飞到什么水平了……感觉我们选择的这个群落生态学方向，出成果太难了。不是我们这个领域的老师水平不行，而是受限于各种客观条件，比如：\n\n野外调查周期往往较长，数据收集完都几年过去了；\n群落理论百花齐放，你从各个角度都要自圆其说；基于观测数据的分析，有多个过程机制可以塑造当前格局，搞不清楚是哪儿个；\n因此你需要防御性地提出自己的观点时，必须小心翼翼的，一不小心就会踩到别的理论的尾巴\n\n因此，群落生态学家往往以严谨和理论知识储备丰富而著称。\n群落生态学的严谨是好的一面，它锻炼的是我全方位的能力。不过这也苦了我们这些“小喽啰”，症结就在于难出成果。也让我在这么多年的研究学习中几乎要“变态”，甚至都快有心魔了：我痛苦地意识到，想在群落生态学领域做出一番建树，甚至出一篇优秀成果，真的是比登天还难。\n此时想起《霸王别姬》里的一句台词：“得挨多少打，才能成角啊！”我预计即便再来 3 年的博士后经历，也难以实现所谓的“最低要求”，这是我打退堂鼓的主要原因。\n做研究真的挺有趣，但这条路也很难。当人要面临现实问题时，很容易放弃困难的，选择容易的那条路。感觉自己都快奔三了：家庭没有，钱也没存下多少，成果也没有，毕业还不一定能按时毕业，hhhh。\n我想选择容易的那条路，回家试着考考事业单位、考考公务员。\n我不知道我现在的选择对不对。本篇就以弗罗斯特的作品《未选择的路》结尾吧，希望我选择的路，决定一生的路是条好路。\n跨年夜自己打球有感，见上图。\n\n\n《未选择的路》\n此诗《未选择的路》（The Road Not Taken）出自美国诗人罗伯特·弗罗斯特（Robert Frost）1916 年诗集《山间洼地》（Mountain Interval）。\n\n黄色的树林里分出两条路，\n可惜我不能同时去涉足，\n我在那路口久久伫立，\n我向着一条路极目望去，\n直到它消失在丛林深处。\n但我却选择了另外一条路，\n它荒草萋萋，十分幽寂，\n显得更诱人，更美丽，\n虽然在这条小路上，\n很少留下旅人的足迹，\n虽然那天清晨落叶满地，\n两条路都未经脚印污染。\n呵，留下一条路等改日再见！\n但我知道路径延绵无尽头，\n恐怕我难以再回返。\n也许多年后在某个地方，\n我将轻声叹息将往事回顾：\n一片树林里分出两条路——\n而我选择了人迹更少的一条，\n从此决定了我一生的道路。\n\n\nThe Road Not Taken\n\nTwo roads diverged in a yellow wood,\nAnd sorry I could not travel both\nAnd be one traveler, long I stood\nAnd looked down one as far as I could\nTo where it bent in the undergrowth;\nThen took the other, as just as fair,\nAnd having perhaps the better claim,\nBecause it was grassy and wanted wear;\nThough as for that the passing there\nHad worn them really about the same,\nAnd both that morning equally lay\nIn leaves no step had trodden black.\nOh, I kept the first for another day!\nYet knowing how way leads on to way,\nI doubted if I should ever come back.\nI shall be telling this with a sigh\nSomewhere ages and ages hence:\nTwo roads diverged in a wood, and I—\nI took the one less traveled by,\nAnd that has made all the difference."
   },
   {
-    "objectID": "blog/2026/2026-01-04-alone.html#the-road-not-taken",
-    "href": "blog/2026/2026-01-04-alone.html#the-road-not-taken",
-    "title": "毕业季的迷茫及自我探索",
-    "section": "The Road Not Taken",
-    "text": "The Road Not Taken\n\nTwo roads diverged in a yellow wood,\nAnd sorry I could not travel both\nAnd be one traveler, long I stood\nAnd looked down one as far as I could\nTo where it bent in the undergrowth;\nThen took the other, as just as fair,\nAnd having perhaps the better claim,\nBecause it was grassy and wanted wear;\nThough as for that the passing there\nHad worn them really about the same,\nAnd both that morning equally lay\nIn leaves no step had trodden black.\nOh, I kept the first for another day!\nYet knowing how way leads on to way,\nI doubted if I should ever come back.\nI shall be telling this with a sigh\nSomewhere ages and ages hence:\nTwo roads diverged in a wood, and I—\nI took the one less traveled by,\nAnd that has made all the difference."
+    "objectID": "blog/2026/2026-01-22-Scientific_experiences.html",
+    "href": "blog/2026/2026-01-22-Scientific_experiences.html",
+    "title": "关于记录的力量，时间会给你答案：生态学家万师强讲述学术人生",
+    "section": "",
+    "text": "万师强老师祖籍河南人，目前现任职于河北大学，著名生态系统生态学家，设计过多个气候变化下的控制实验，曾经到美国骆亦奇老师门下读过书，是夏建阳老师的当年在植物所的导师。当年从美国带回来6大箱的打印文献（以前网上搜索文献不方便，都是纸质版本的为主），让夏老师按照作者的首字母进行排序，夏老师还私下偷偷抱怨过，这是农民工做的事情，为什么让研究生来做哈哈哈哈哈。不过据说，按人名分类这个事情，让夏老师受益匪浅，能快速的了解了整个领域的全貌，哪儿些作者比较出名。今天听了他万老师报告，他分享了他整个学习生涯和多年带学生的经验和小故事，由趣事，有吐槽，有教训。\n在这里分享下听报告听到的有趣的故事，主要是把本子上的会议纸质记录转为电子的信息，顺便加深一下印象和感悟。"
+  },
+  {
+    "objectID": "blog/2026/2026-01-22-Scientific_experiences.html#博士和博士后期间是人一生中最专注于做事情的阶段",
+    "href": "blog/2026/2026-01-22-Scientific_experiences.html#博士和博士后期间是人一生中最专注于做事情的阶段",
+    "title": "关于记录的力量，时间会给你答案：生态学家万师强讲述学术人生",
+    "section": "博士和博士后期间是人一生中最专注于做事情的阶段。",
+    "text": "博士和博士后期间是人一生中最专注于做事情的阶段。"
   },
   {
     "objectID": "books.html",
@@ -481,12 +495,5 @@
     "title": "Siyu Wu’s Lab",
     "section": "联系与合作",
     "text": "联系与合作\n如需合作或了解更多信息，欢迎通过邮箱联系，也欢迎在 GitHub 与我交流。期待与对生态学、遥感和数据科学有共同兴趣的伙伴展开合作。"
-  },
-  {
-    "objectID": "blog/2026/2026-01-11-Social_class.html",
-    "href": "blog/2026/2026-01-11-Social_class.html",
-    "title": "2026年第一个周末是娱乐和开心的",
-    "section": "",
-    "text": "这周娱乐有点过头啦！没有什么特别的感想呢，感觉能心态健康的活着，娱乐娱乐和锻炼锻炼身体，就已经很幸福了！！\n\n文章终于定稿了要投了，准备给合作者发邮件去啦，希望投稿顺利！\n\n\n摆烂玩虽然堕落，但也很有用\n这一周假期，玩了好多呀，主要重温了一下十五年前的主要活动————去上网，玩的好开心啊哈哈哈。\n对，没错，去网咖上网啦。约了几个平时关系比较好的，也一起打篮球的师弟（ZK，柴教练）去网吧上网打 LOL。你还别说，现在的网咖环境还真是挺好！ 玩到后半夜，我都恍惚我明天还要去上课，仿佛回到中学偷偷跑出去上网的那种氛围感。\n\n\n\n网咖的电脑，真的环境挺好的。\n\n\n还跟郑JQ他们玩了手机版的鹅鸭杀，你别说还挺上头的。赛后复盘，一直在后悔为什么自己在开麦的时候没表现的更好一点，像回味跟别人吵架一样。\n这游戏还挺锻炼口才的，你要劝说其他人跟着你投票，我常常失败。后面找到一个技巧，你就输出一两个简单的观点，再给出你的证据就好了！ 说多了之后，有信息差的人往往不会被你 persuade ！因为这个点输了好几把好人局，急的直跺脚，不知道怎么说才能让队友跟着你归票！\n过年回去团建，又多了一个游戏可以玩，不错！\n\n\n\n鹅鸭杀好玩\n\n\n马上要过年回家了！好开心的，回家看看父母，跟朋友聚聚会啦。人的一生没有多少个1年了，本周是关键词是：玩和期待。"
   }
 ]
